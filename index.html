@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
     <title>Study with Mbah — Tembus PTN Impian Bersama Mbah! | Persiapan UTBK SNBT</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; connect-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.ibb.co.com https://placehold.co; form-action 'self'; upgrade-insecure-requests;">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -149,7 +153,7 @@
                 <a href="#" class="flex items-center gap-3 group">
                     <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-pine-700 via-pine-500 to-pine-300 p-0.5 shadow-md group-hover:scale-105 transition-transform">
                         <div class="w-full h-full bg-pine-100 dark:bg-pine-800 rounded-[14px] flex items-center justify-center overflow-hidden">
-                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Mascot" class="w-full h-full object-cover object-top scale-125" onerror="this.onerror=null; this.src='https://placehold.co/100x100/235347/ffffff?text=Mbah';">
+                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Mascot" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-125" onerror="this.onerror=null; this.src='https://placehold.co/100x100/235347/ffffff?text=Mbah';">
                         </div>
                     </div>
                     <div>
@@ -262,7 +266,7 @@
                             <div class="absolute -inset-2 rounded-3xl border-2 border-dashed border-pine-500/40 animate-pulse"></div>
                             
                             <div class="w-full h-full rounded-2xl bg-white dark:bg-pine-800/90 border-2 border-pine-500/40 p-2 flex items-center justify-center shadow-lg animate-float overflow-hidden">
-                                <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah - Maskot Kucing Berbusana Adat Jawa" class="w-full h-full object-contain rounded-xl hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/400x400/235347/ffffff?text=Mbah+Mascot';">
+                                <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah - Maskot Kucing Berbusana Adat Jawa" loading="lazy" decoding="async" class="w-full h-full object-contain rounded-xl hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/400x400/235347/ffffff?text=Mbah+Mascot';">
                             </div>
                         </div>
 
@@ -540,7 +544,7 @@
                     </blockquote>
                     <div class="mt-6 flex items-center justify-center gap-3">
                         <div class="w-12 h-12 rounded-full border-2 border-pine-500 dark:border-pine-300 overflow-hidden bg-white flex items-center justify-center shadow-md">
-                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Avatar" class="w-full h-full object-cover object-top scale-125 translate-y-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/235347/ffffff?text=Mbah';">
+                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Avatar" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-125 translate-y-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/235347/ffffff?text=Mbah';">
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-pine-900 dark:text-pine-100 text-sm">Tim StudyWithMbah</div>
@@ -632,11 +636,11 @@
                         <div class="grid sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-pine-800 dark:text-pine-300 mb-1.5">Nama Panggilan</label>
-                                <input type="text" required placeholder="Contoh: Andi Pejuang UI" class="w-full bg-pine-50/50 dark:bg-pine-800/50 border border-pine-500/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pine-500 transition-colors text-pine-900 dark:text-white placeholder-pine-400 font-medium">
+                                <input type="text" name="nickname" id="nickname" required maxlength="50" autocomplete="nickname" spellcheck="false" placeholder="Contoh: Andi Pejuang UI" class="w-full bg-pine-50/50 dark:bg-pine-800/50 border border-pine-500/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pine-500 transition-colors text-pine-900 dark:text-white placeholder-pine-400 font-medium">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-pine-800 dark:text-pine-300 mb-1.5">PTN Impian Utama</label>
-                                <input type="text" required placeholder="Contoh: UI / ITB / UGM / ITS" class="w-full bg-pine-50/50 dark:bg-pine-800/50 border border-pine-500/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pine-500 transition-colors text-pine-900 dark:text-white placeholder-pine-400 font-medium">
+                                <input type="text" name="dream_ptn" id="dream-ptn" required maxlength="100" autocomplete="off" spellcheck="false" placeholder="Contoh: UI / ITB / UGM / ITS" class="w-full bg-pine-50/50 dark:bg-pine-800/50 border border-pine-500/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pine-500 transition-colors text-pine-900 dark:text-white placeholder-pine-400 font-medium">
                             </div>
                         </div>
 
@@ -667,7 +671,7 @@
 
     <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pine-900/60 dark:bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeDetailModal(event)">
         <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 relative scale-95 transition-transform duration-300" id="modal-card">
-            <button onclick="closeDetailModalDirect()" class="absolute top-4 right-4 text-pine-700 dark:text-pine-300 hover:text-pine-900 dark:hover:text-white text-xl font-bold">&times;</button>
+            <button type="button" aria-label="Tutup" onclick="closeDetailModalDirect()" class="absolute top-4 right-4 text-pine-700 dark:text-pine-300 hover:text-pine-900 dark:hover:text-white text-xl font-bold">&times;</button>
             <span id="modal-badge" class="inline-block text-xs font-mono font-bold px-2.5 py-1 rounded bg-pine-500/20 text-pine-900 dark:text-pine-100 mb-2">Badge</span>
             <h3 id="modal-title" class="text-2xl font-bold mb-3 text-pine-900 dark:text-white">Title</h3>
             <p id="modal-desc" class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed mb-6 font-medium">Description</p>
@@ -675,7 +679,7 @@
             <h4 class="text-xs font-bold uppercase tracking-wider text-pine-700 dark:text-pine-300 mb-3">Topik Utama yang Dipelajari:</h4>
             <div id="modal-tags" class="flex flex-wrap gap-2 mb-8"></div>
 
-            <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" onclick="closeDetailModalDirect()" class="block w-full text-center bg-pine-500 hover:bg-pine-700 text-white font-bold py-3 rounded-xl transition-all">
+            <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" rel="noopener noreferrer" onclick="closeDetailModalDirect()" class="block w-full text-center bg-pine-500 hover:bg-pine-700 text-white font-bold py-3 rounded-xl transition-all">
                 Mulai Pelajari via Saluran WA & Discord
             </a>
         </div>
@@ -765,7 +769,15 @@
             document.getElementById('modal-desc').innerText = desc;
             
             const tagsContainer = document.getElementById('modal-tags');
-            tagsContainer.innerHTML = tags.map(t => `<span class="px-3 py-1 rounded-lg text-xs font-mono font-semibold bg-pine-500/10 text-pine-900 dark:text-pine-100 border border-pine-500/20">${t}</span>`).join('');
+            // Build tags with DOM APIs instead of innerHTML, so future dynamic data
+            // cannot become HTML/JS even if the data source changes later.
+            tagsContainer.replaceChildren();
+            tags.forEach((tag) => {
+                const span = document.createElement('span');
+                span.className = 'px-3 py-1 rounded-lg text-xs font-mono font-semibold bg-pine-500/10 text-pine-900 dark:text-pine-100 border border-pine-500/20';
+                span.textContent = String(tag);
+                tagsContainer.appendChild(span);
+            });
             
             const modal = document.getElementById('detail-modal');
             modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -784,6 +796,10 @@
             document.getElementById('modal-card').classList.add('scale-95');
         }
 
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closeDetailModalDirect();
+        });
+
         /* Toast Handler */
         function showToast(msg) {
             const toast = document.getElementById('toast');
@@ -797,8 +813,17 @@
         /* Form Submission Handler */
         function handleJoinSubmit(e) {
             e.preventDefault();
-            showToast('Selamat bergabung! Silakan cek Saluran WA & Discord Mbah.');
-            e.target.reset();
+
+            // This static page has no backend. Do not imply that personal data
+            // was submitted or stored when nothing was actually transmitted.
+            const form = e.currentTarget;
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            showToast('Siap! Data tidak dikirim atau disimpan oleh halaman ini. Silakan gunakan tautan komunitas di atas.');
+            form.reset();
         }
 
         /* Stats Counter Animation (Preserving target 6000) */
