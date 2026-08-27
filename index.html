@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests; script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com 'sha256-XZGPFVMvI0VBg6FI4xTYJGEfubDyBXLZr9t+ftFSDuU=' 'sha256-Jdl3eMhDsyA1uRk3MNJ2aDppUb5JhnkPvf/f72iaJGE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://i.ibb.co.com https://placehold.co; connect-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; media-src 'self'; worker-src 'self' blob:;">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
     <title>Study with Mbah — Tembus PTN Impian Bersama Mbah! | Persiapan UTBK SNBT</title>
 
     <!-- Google Fonts -->
@@ -178,16 +176,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #10B981;
         }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-            }
-            #cursor-glow { display: none !important; }
-        }
-
     </style>
 </head>
 <body class="font-sans antialiased relative min-h-screen selection:bg-pine-500 selection:text-white">
@@ -226,38 +214,38 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
             
-            <a href="#" data-action="landing" class="flex items-center gap-3 group">
+            <a href="#" onclick="showLandingView(); return false;" class="flex items-center gap-3 group">
                 <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-pine-700 via-emeraldCustom-500 to-pine-300 p-0.5 shadow-md group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                     <div class="w-full h-full bg-pine-50 dark:bg-pine-800 rounded-[14px] flex items-center justify-center overflow-hidden">
-                        <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Mascot" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="w-full h-full object-cover object-top scale-125 group-hover:scale-135 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/100x100/3A7A6E/ffffff?text=Mbah';">
+                        <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Mascot" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-125 group-hover:scale-135 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/100x100/3A7A6E/ffffff?text=Mbah';">
                     </div>
                 </div>
                 <div>
                     <span class="font-extrabold text-lg tracking-tight block leading-tight text-pine-950 dark:text-pine-100 group-hover:text-emeraldCustom-600 dark:group-hover:text-emeraldCustom-400 transition-colors">Study with <span class="gradient-text">Mbah Community</span></span>
-                    <span class="text-[10px] font-mono uppercase tracking-widest text-pine-700 dark:text-pine-300 block font-bold">Pejuang TKA, SNBT & MANDIRI</span>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-pine-700 dark:text-pine-300 block font-bold">Pejuang TKA,SNBT,& MANDIRI</span>
                 </div>
             </a>
 
             <nav class="hidden lg:flex items-center gap-7 font-semibold text-sm text-pine-950 dark:text-pine-100">
-                <a href="#about" data-action="landing" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">Tentang Mbah</a>
-                <a href="#fundamental" data-action="landing" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">4 Fundamental</a>
-                <a href="#subtes" data-action="landing" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">7 Subtes SNBT</a>
-                <a href="#quote" data-action="landing" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">Motivasi</a>
-                <a href="#join" data-action="landing" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">Komunitas</a>
+                <a href="#about" onclick="showLandingView()" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">Tentang Mbah</a>
+                <a href="#fundamental" onclick="showLandingView()" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">4 Fundamental</a>
+                <a href="#subtes" onclick="showLandingView()" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">7 Subtes SNBT</a>
+                <a href="#quote" onclick="showLandingView()" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">Motivasi</a>
+                <a href="#join" onclick="showLandingView()" class="hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 hover:-translate-y-0.5 transition-all">Komunitas</a>
             </nav>
 
             <div class="flex items-center gap-3">
-                <button type="button" id="theme-toggle" aria-pressed="false" class="p-2.5 rounded-xl glass-card hover:scale-105 active:scale-95 transition-all text-pine-900 dark:text-pine-100 flex items-center justify-center" aria-label="Toggle Theme">
+                <button id="theme-toggle" class="p-2.5 rounded-xl glass-card hover:scale-105 active:scale-95 transition-all text-pine-900 dark:text-pine-100 flex items-center justify-center" aria-label="Toggle Theme">
                     <svg id="theme-sun" class="w-5 h-5 hidden dark:block text-emeraldCustom-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     <svg id="theme-moon" class="w-5 h-5 block dark:hidden text-pine-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                 </button>
 
-                <a href="#join" data-action="landing" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-pine-700 via-emeraldCustom-600 to-pine-500 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md btn-interactive">
+                <a href="#join" onclick="showLandingView()" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-pine-700 via-emeraldCustom-600 to-pine-500 text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md btn-interactive">
                     <span>Mulai Belajar</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
 
-                <button type="button" id="mobile-menu-btn" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden p-2.5 rounded-xl glass-card text-pine-900 dark:text-pine-100">
+                <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl glass-card text-pine-900 dark:text-pine-100">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
@@ -265,11 +253,11 @@
     </div>
 
     <div id="mobile-menu" class="hidden lg:hidden glass-card border-t border-pine-500/20 px-6 py-4 space-y-3 font-semibold text-sm">
-        <a href="#about" data-action="landing" class="block text-pine-900 dark:text-pine-100 hover:text-emeraldCustom-600 py-1">Tentang Mbah</a>
-        <a href="#fundamental" data-action="landing" class="block text-pine-900 dark:text-pine-100 hover:text-emeraldCustom-600 py-1">4 Fundamental</a>
-        <a href="#subtes" data-action="landing" class="block text-pine-900 dark:text-pine-100 hover:text-emeraldCustom-600 py-1">7 Subtes SNBT</a>
-        <a href="#quote" data-action="landing" class="block text-pine-900 dark:text-pine-100 hover:text-emeraldCustom-600 py-1">Motivasi Mbah</a>
-        <a href="#join" data-action="landing" class="block w-full text-center bg-emeraldCustom-600 text-white font-bold py-2.5 rounded-xl mt-2">Gabung Komunitas</a>
+        <a href="#about" onclick="showLandingView()" class="block text-pine-900 dark:text-pine-100 hover:text-emeraldCustom-600 py-1">Tentang Mbah</a>
+        <a href="#fundamental" onclick="showLandingView()" class="block text-pine-900 dark:text-pine-100 hover:text-emeraldCustom-600 py-1">4 Fundamental</a>
+        <a href="#subtes" onclick="showLandingView()" class="block text-pine-900 dark:text-pine-100 hover:text-emeraldCustom-600 py-1">7 Subtes SNBT</a>
+        <a href="#quote" onclick="showLandingView()" class="block text-pine-900 dark:text-pine-100 hover:text-emeraldCustom-600 py-1">Motivasi Mbah</a>
+        <a href="#join" onclick="showLandingView()" class="block w-full text-center bg-emeraldCustom-600 text-white font-bold py-2.5 rounded-xl mt-2">Gabung Komunitas</a>
     </div>
 </header>
 
@@ -334,7 +322,7 @@
                             <div class="absolute -inset-2 rounded-3xl border-2 border-dashed border-emeraldCustom-500/40 animate-pulse"></div>
                             
                             <div class="w-full h-full rounded-2xl bg-white dark:bg-pine-800/90 border-2 border-emeraldCustom-500/40 p-2 flex items-center justify-center shadow-lg animate-float overflow-hidden">
-                                <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah - Maskot Kucing Berbusana Adat Jawa" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="w-full h-full object-contain rounded-xl group-hover:scale-110 group-hover:rotate-1 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x400/3A7A6E/ffffff?text=Mbah+Mascot';">
+                                <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah - Maskot Kucing Berbusana Adat Jawa" loading="lazy" decoding="async" class="w-full h-full object-contain rounded-xl group-hover:scale-110 group-hover:rotate-1 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x400/3A7A6E/ffffff?text=Mbah+Mascot';">
                             </div>
                         </div>
 
@@ -349,7 +337,7 @@
                         <div class="mt-6 p-4 rounded-2xl bg-pine-500/10 dark:bg-pine-900/80 border border-pine-500/20 flex items-center justify-between text-left hover:border-emeraldCustom-500/40 transition-all">
                             <div>
                                 <div class="text-[11px] font-mono uppercase text-pine-950 dark:text-pine-300 font-bold">Target Impian</div>
-                                <div class="text-sm font-bold text-pine-950 dark:text-white">Lolos UI, ITB, UGM, ITS, Unpad, Undip, UB, Unair, dll.</div>
+                                <div class="text-sm font-bold text-pine-950 dark:text-white">Lolos UI, ITB, UGM, ITS, Unpad,Undip,UB,Unair,dll...</div>
                             </div>
                             <span class="px-3 py-1.5 rounded-lg bg-emeraldCustom-600 text-white font-mono text-xs font-bold border border-emeraldCustom-500/40 shadow-sm">
                                 SKOR 730+
@@ -399,7 +387,7 @@
                         </div>
                         <h3 class="text-xl font-bold mb-3 text-pine-950 dark:text-pine-300 group-hover:text-emeraldCustom-600 transition-colors">Komunitas Suportif</h3>
                         <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
-                            Grup dan server diskusi yang tersedia kapan saja untuk bertanya soal dan bertumbuh bersama para pejuang lainnya.
+                            Grup dan Server diskusi 24/7 tempat bertanya soal dan sebagai tempat bertumbuh bareng dengan para pejuang lainnya.
                         </p>
                     </div>
 
@@ -420,10 +408,7 @@
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     
                     <!-- LOGIKA FUNDAMENTAL CARD -->
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emeraldCustom-500 flex flex-col justify-between cursor-pointer group relative overflow-hidden" data-subtest="logika-fundamental" role="button" tabindex="0">
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emeraldCustom-500/20 text-emeraldCustom-600 dark:text-emeraldCustom-400 border border-emeraldCustom-500/30">Materi Ready</span>
-                        </div>
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emeraldCustom-500 flex flex-col justify-between cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('logika-fundamental')">
                         <div>
                             <h3 class="text-xl font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 dark:group-hover:text-emeraldCustom-400 transition-colors">Logika</h3>
                             <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
@@ -437,10 +422,7 @@
                     </div>
 
                     <!-- MATEMATIKA FUNDAMENTAL CARD -->
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-500 flex flex-col justify-between cursor-pointer group relative overflow-hidden" data-subtest="matematika-fundamental" role="button" tabindex="0">
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emeraldCustom-500/20 text-emeraldCustom-600 dark:text-emeraldCustom-400 border border-emeraldCustom-500/30">Materi Ready</span>
-                        </div>
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-500 flex flex-col justify-between cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('matematika-fundamental')">
                         <div>
                             <h3 class="text-xl font-bold mb-2 text-pine-950 dark:text-white group-hover:text-pine-600 transition-colors">Matematika</h3>
                             <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
@@ -454,10 +436,7 @@
                     </div>
 
                     <!-- B. INDONESIA FUNDAMENTAL CARD -->
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emeraldCustom-600 flex flex-col justify-between cursor-pointer group relative overflow-hidden" data-subtest="indonesia-fundamental" role="button" tabindex="0">
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emeraldCustom-500/20 text-emeraldCustom-600 dark:text-emeraldCustom-400 border border-emeraldCustom-500/30">Materi Ready</span>
-                        </div>
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emeraldCustom-600 flex flex-col justify-between cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('indonesia-fundamental')">
                         <div>
                             <h3 class="text-xl font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">B. Indonesia</h3>
                             <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
@@ -471,10 +450,7 @@
                     </div>
 
                     <!-- B. INGGRIS FUNDAMENTAL CARD -->
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-600 flex flex-col justify-between cursor-pointer group relative overflow-hidden" data-subtest="inggris-fundamental" role="button" tabindex="0">
-                        <div class="absolute top-3 right-3">
-                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emeraldCustom-500/20 text-emeraldCustom-600 dark:text-emeraldCustom-400 border border-emeraldCustom-500/30">Materi Ready</span>
-                        </div>
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-600 flex flex-col justify-between cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('inggris-fundamental')">
                         <div>
                             <h3 class="text-xl font-bold mb-2 text-pine-950 dark:text-white group-hover:text-pine-600 transition-colors">B. Inggris</h3>
                             <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
@@ -497,7 +473,7 @@
                 <div class="text-center max-w-3xl mx-auto mb-16">
                     <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-pine-950 dark:text-white">7 Subtes UTBK SNBT</h2>
                     <p class="text-pine-800 dark:text-pine-300 mt-4 leading-relaxed font-semibold">
-                        Materi difokuskan pada penguasaan menyeluruh <strong class="text-pine-950 dark:text-white font-extrabold">Tes Potensi Skolastik (TPS)</strong> dan <strong class="text-pine-950 dark:text-white font-extrabold">Tes Literasi</strong> sesuai standar terbaru.
+                        Materi difokuskan pada penguasaan menyeluruh <strong class="text-pine-950 dark:text-white font-extrabold">Tes Potensi Skolastik (TPS)</strong> dan <strong class="text-pine-950 dark:text-white font-extrabold">Tes Literasi</strong> sesuai standar terbaru. Klik subtes untuk membuka modul & video playlist!
                     </p>
                 </div>
 
@@ -508,32 +484,52 @@
 
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         
-                        <div class="glass-card rounded-2xl p-6 cursor-pointer group" data-modal-title="Penalaran Umum" data-modal-badge="Subtes TPS" data-modal-desc="Induktif, deduktif, dan kuantitatif untuk memecahkan masalah dengan logika." data-modal-tags="Penalaran Induktif|Penalaran Deduktif|Penalaran Kuantitatif" role="button" tabindex="0">
-                            <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Penalaran Umum</h4>
-                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
-                                Induktif, deduktif, dan kuantitatif untuk memecahkan masalah dengan logika.
+                        <!-- PU -->
+                        <div class="glass-card rounded-2xl p-6 cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('pu-subtest')">
+                            <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Penalaran Umum (PU)</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium mb-4">
+                                Induktif, deduktif, & kuantitatif untuk memecahkan masalah dengan logika.
                             </p>
+                            <div class="pt-3 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-emeraldCustom-600 dark:text-emeraldCustom-400">
+                                <span>Buka Modul & Video</span>
+                                <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                            </div>
                         </div>
 
-                        <div class="glass-card rounded-2xl p-6 cursor-pointer group" data-modal-title="Pengetahuan & Pemahaman Umum" data-modal-badge="Subtes TPS" data-modal-desc="Uji wawasan kognitif dan kemampuan memahami pesan tertulis secara umum." data-modal-tags="Makna Kata|Sinonim & Antonim|Wawasan Kognitif" role="button" tabindex="0">
-                            <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Pengetahuan & Pemahaman</h4>
-                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                        <!-- PPU -->
+                        <div class="glass-card rounded-2xl p-6 cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('ppu-subtest')">
+                            <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Pengetahuan & Pemahaman (PPU)</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium mb-4">
                                 Uji wawasan kognitif dan kemampuan memahami pesan tertulis secara umum.
                             </p>
+                            <div class="pt-3 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-emeraldCustom-600 dark:text-emeraldCustom-400">
+                                <span>Buka Modul & Drive</span>
+                                <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                            </div>
                         </div>
 
-                        <div class="glass-card rounded-2xl p-6 cursor-pointer group" data-modal-title="Pemahaman Bacaan & Menulis (PBM)" data-modal-badge="Subtes TPS" data-modal-desc="Kelancaran membaca teks panjang dan menguasai kaidah penulisan yang tepat." data-modal-tags="Ejaan Bahasa Indonesia|Konjungsi Kalimat|Paragraf Efektif" role="button" tabindex="0">
+                        <!-- PBM -->
+                        <div class="glass-card rounded-2xl p-6 cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('pbm-subtest')">
                             <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Pemahaman Bacaan (PBM)</h4>
-                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium mb-4">
                                 Kelancaran membaca teks panjang dan menguasai kaidah penulisan yang tepat.
                             </p>
+                            <div class="pt-3 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-emeraldCustom-600 dark:text-emeraldCustom-400">
+                                <span>Buka Modul & Drive</span>
+                                <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                            </div>
                         </div>
 
-                        <div class="glass-card rounded-2xl p-6 cursor-pointer group" data-modal-title="Pengetahuan Kuantitatif" data-modal-badge="Subtes TPS" data-modal-desc="Matematika (aljabar, statistika, geometri dan materi lainnya) dengan trik hitung cepat." data-modal-tags="Aljabar & Persamaan|Statistika Dasar|Geometri|dan lain sebagainya" role="button" tabindex="0">
-                            <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Pengetahuan Kuantitatif</h4>
-                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
-                                Subtes yang mengukur kemampuan berpikir logis dan matematis peserta menggunakan angka dan data.
+                        <!-- PK -->
+                        <div class="glass-card rounded-2xl p-6 cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('pk-subtest')">
+                            <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Pengetahuan Kuantitatif (PK)</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium mb-4">
+                                Mengukur kemampuan berpikir logis dan matematis menggunakan angka & data.
                             </p>
+                            <div class="pt-3 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-emeraldCustom-600 dark:text-emeraldCustom-400">
+                                <span>Buka Modul & Video</span>
+                                <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                            </div>
                         </div>
 
                     </div>
@@ -546,25 +542,40 @@
 
                     <div class="grid md:grid-cols-3 gap-6">
                         
-                        <div class="glass-card rounded-2xl p-6 cursor-pointer group" data-modal-title="Literasi B. Indonesia" data-modal-badge="Subtes Literasi" data-modal-desc="Analisis teks kompleks, gagasan utama, dan kesimpulan kritis dari sastra/info." data-modal-tags="Analisis Teks Kompleks|Gagasan Utama|Kesimpulan Kritis" role="button" tabindex="0">
+                        <!-- Literasi B. Indonesia -->
+                        <div class="glass-card rounded-2xl p-6 cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('lit-indo-subtest')">
                             <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Literasi B. Indonesia</h4>
-                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium mb-4">
                                 Analisis teks kompleks, gagasan utama, dan kesimpulan kritis dari teks bacaan.
                             </p>
+                            <div class="pt-3 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-emeraldCustom-600 dark:text-emeraldCustom-400">
+                                <span>Buka Modul & Video</span>
+                                <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                            </div>
                         </div>
 
-                        <div class="glass-card rounded-2xl p-6 cursor-pointer group" data-modal-title="Literasi B. Inggris" data-modal-badge="Subtes Literasi" data-modal-desc="Memahami argumen dan konteks teks akademik Inggris (reading skill focus)." data-modal-tags="Academic Reading|Argument Analysis|Tone & Purpose" role="button" tabindex="0">
+                        <!-- Literasi B. Inggris -->
+                        <div class="glass-card rounded-2xl p-6 cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('lit-inggris-subtest')">
                             <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Literasi B. Inggris</h4>
-                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium mb-4">
                                 Memahami argumen dan konteks teks akademik Inggris (reading skill focus).
                             </p>
+                            <div class="pt-3 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-emeraldCustom-600 dark:text-emeraldCustom-400">
+                                <span>Buka Modul & Video</span>
+                                <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                            </div>
                         </div>
 
-                        <div class="glass-card rounded-2xl p-6 cursor-pointer group" data-modal-title="Penalaran Matematika" data-modal-badge="Subtes Literasi" data-modal-desc="Aplikasi konsep matematika dalam kehidupan nyata. Soal cerita HOTS butuh nalar tinggi." data-modal-tags="Soal Cerita HOTS|Model Matematika Realistis|Analisis Grafik & Data" role="button" tabindex="0">
-                            <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Penalaran Matematika</h4>
-                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
-                                Pengaplikasian konsep matematika dalam kehidupan sehari-hari.
+                        <!-- Penalaran Matematika -->
+                        <div class="glass-card rounded-2xl p-6 cursor-pointer group relative overflow-hidden" onclick="openSubtestPage('pm-subtest')">
+                            <h4 class="text-lg font-bold mb-2 text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Penalaran Matematika (PM)</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium mb-4">
+                                Pengaplikasian konsep matematika dalam kehidupan sehari-hari (soal cerita HOTS).
                             </p>
+                            <div class="pt-3 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-emeraldCustom-600 dark:text-emeraldCustom-400">
+                                <span>Buka Modul & Video</span>
+                                <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                            </div>
                         </div>
 
                     </div>
@@ -582,7 +593,7 @@
                     </blockquote>
                     <div class="mt-6 flex items-center justify-center gap-3">
                         <div class="w-12 h-12 rounded-full border-2 border-emeraldCustom-500 dark:border-emeraldCustom-400 overflow-hidden bg-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
-                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Avatar" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="w-full h-full object-cover object-top scale-125 translate-y-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/3A7A6E/ffffff?text=Mbah';">
+                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Avatar" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-125 translate-y-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/3A7A6E/ffffff?text=Mbah';">
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-pine-950 dark:text-pine-100 text-sm">Study With Mbah Community</div>
@@ -600,7 +611,7 @@
                     <div class="text-center max-w-3xl mx-auto mb-10">
                         <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-pine-950 dark:text-white mt-4">Siap Berjuang Bersama?</h2>
                         <p class="text-pine-800 dark:text-pine-300 text-sm sm:text-base leading-relaxed mt-3 font-semibold">
-                            Mari wujudkan mimpimu memakai jas almamater PTN impian kalian. Teman-teman bisa bergabung dengan komunitas kami dan dapatkan info PTN, materi, & latihan soal.
+                            Mari wujudkan mimpimu memakai jas almamater PTN impian kalian.Teman-teman bisa bergabung dengan komunitas kami dan dapatkan info PTN, materi, & latihan soal.
                         </p>
                     </div>
 
@@ -609,7 +620,7 @@
                         <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-5 border border-emeraldCustom-500/30 flex flex-col justify-between group hover:border-emeraldCustom-500">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="w-10 h-10 rounded-xl bg-emeraldCustom-500/20 flex items-center justify-center p-2 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                                    <img src="https://i.ibb.co.com/8gW1K2Np/image.png" alt="Saluran WhatsApp" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="w-full h-full object-contain">
+                                    <img src="https://i.ibb.co.com/8gW1K2Np/image.png" alt="Saluran WA" class="w-full h-full object-contain">
                                 </div>
                                 <span class="text-[10px] font-mono uppercase text-emeraldCustom-600 dark:text-emeraldCustom-400 font-bold bg-emeraldCustom-500/10 px-2 py-0.5 rounded">Resmi</span>
                             </div>
@@ -622,20 +633,20 @@
                         <a href="https://discord.gg/Sd2WvzFpM" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-5 border border-emeraldCustom-500/30 flex flex-col justify-between group hover:border-emeraldCustom-500">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="w-10 h-10 rounded-xl bg-emeraldCustom-500/20 flex items-center justify-center p-2 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
-                                    <img src="https://i.ibb.co.com/mV62BVZy/image.png" alt="Discord" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="w-full h-full object-contain">
+                                    <img src="https://i.ibb.co.com/mV62BVZy/image.png" alt="Discord" class="w-full h-full object-contain">
                                 </div>
                                 <span class="text-[10px] font-mono uppercase text-emeraldCustom-600 dark:text-emeraldCustom-400 font-bold bg-emeraldCustom-500/10 px-2 py-0.5 rounded">Server discuss</span>
                             </div>
                             <div>
                                 <h4 class="font-bold text-pine-950 dark:text-white group-hover:text-emeraldCustom-600 transition-colors">Discord </h4>
-                                <p class="text-pine-800 dark:text-pine-300 text-xs mt-1 font-medium">Tempat bedah soal & voice study room yang tersedia kapan saja.</p>
+                                <p class="text-pine-800 dark:text-pine-300 text-xs mt-1 font-medium">Tempat bedah soal 24/7 & voice study room.</p>
                             </div>
                         </a>
 
                         <a href="https://tiktok.com/@studywithmbah" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-5 border border-emeraldCustom-500/30 flex flex-col justify-between group hover:border-emeraldCustom-500">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="w-10 h-10 rounded-xl bg-emeraldCustom-500/20 flex items-center justify-center p-2 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                                    <img src="https://i.ibb.co.com/VYG9ffLV/image.png" alt="TikTok" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="w-full h-full object-contain">
+                                    <img src="https://i.ibb.co.com/VYG9ffLV/image.png" alt="TikTok" class="w-full h-full object-contain">
                                 </div>
                                 <span class="text-[10px] font-mono uppercase text-emeraldCustom-600 dark:text-emeraldCustom-400 font-bold bg-emeraldCustom-500/10 px-2 py-0.5 rounded">Edisi Konten</span>
                             </div>
@@ -648,7 +659,7 @@
                         <a href="https://x.com/StudyWithMbah" target="_blank" rel="noopener noreferrer" class="glass-card rounded-2xl p-5 border border-emeraldCustom-500/30 flex flex-col justify-between group hover:border-emeraldCustom-500">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="w-10 h-10 rounded-xl bg-emeraldCustom-500/20 flex items-center justify-center p-2 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
-                                    <img src="https://i.ibb.co.com/bR3zdWmw/image.png" alt="X (Twitter)" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="w-full h-full object-contain">
+                                    <img src="https://i.ibb.co.com/bR3zdWmw/image.png" alt="X (Twitter)" class="w-full h-full object-contain">
                                 </div>
                                 <span class="text-[10px] font-mono uppercase text-emeraldCustom-600 dark:text-emeraldCustom-400 font-bold bg-emeraldCustom-500/10 px-2 py-0.5 rounded">Thread SOAL</span>
                             </div>
@@ -669,7 +680,7 @@
     <!-- SUBTEST DETAIL PAGE VIEW (DYNAMIC CONTAINER) -->
     <div id="subtest-view" class="hidden py-12 lg:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Back Navigation Button -->
-        <button data-action="landing" class="mb-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass-card text-pine-900 dark:text-pine-100 font-semibold text-sm hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 btn-interactive">
+        <button onclick="showLandingView()" class="mb-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl glass-card text-pine-900 dark:text-pine-100 font-semibold text-sm hover:text-emeraldCustom-600 dark:hover:text-emeraldCustom-400 btn-interactive">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             <span>Kembali ke Halaman Utama</span>
         </button>
@@ -682,7 +693,7 @@
 
 <footer class="py-12 border-t border-pine-500/20 dark:border-pine-300/15 relative z-10 bg-white dark:bg-pine-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:items-center sm:justify-between">
-        <div class="flex items-center justify-center gap-3 mb-4 sm:mb-0 hover:scale-105 transition-transform cursor-pointer" data-action="landing">
+        <div class="flex items-center justify-center gap-3 mb-4 sm:mb-0 hover:scale-105 transition-transform cursor-pointer" onclick="showLandingView()">
             <span class="text-2xl animate-bounce">🐱</span>
             <span class="font-bold tracking-tight text-pine-950 dark:text-white">Study with Mbah</span>
             <span class="text-xs font-mono font-bold text-pine-950 dark:text-pine-300 bg-emeraldCustom-500/10 px-2 py-0.5 rounded border border-emeraldCustom-500/20">UTBK SNBT 2026/2027</span>
@@ -694,9 +705,9 @@
 </footer>
 
 <!-- General Modal for Subtests without dedicated page yet -->
-<div id="detail-modal" role="dialog" aria-modal="true" aria-hidden="true" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pine-950/40 dark:bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" data-action="close-modal-backdrop">
+<div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pine-950/40 dark:bg-black/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeDetailModal(event)">
     <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 relative scale-95 transition-transform duration-300" id="modal-card">
-        <button type="button" id="modal-close-btn" aria-label="Tutup" data-action="close-modal" class="absolute top-4 right-4 text-pine-800 dark:text-pine-300 hover:text-pine-950 dark:hover:text-white text-xl font-bold hover:scale-125 transition-transform">&times;</button>
+        <button type="button" aria-label="Tutup" onclick="closeDetailModalDirect()" class="absolute top-4 right-4 text-pine-800 dark:text-pine-300 hover:text-pine-950 dark:hover:text-white text-xl font-bold hover:scale-125 transition-transform">&times;</button>
         <span id="modal-badge" class="inline-block text-xs font-mono font-bold px-2.5 py-1 rounded bg-emeraldCustom-500/20 text-pine-950 dark:text-pine-100 mb-2">Badge</span>
         <h3 id="modal-title" class="text-2xl font-bold mb-3 text-pine-950 dark:text-white">Title</h3>
         <p id="modal-desc" class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed mb-6 font-medium">Description</p>
@@ -704,7 +715,7 @@
         <h4 class="text-xs font-bold uppercase tracking-wider text-pine-950 dark:text-pine-300 mb-3">Topik Utama yang Dipelajari:</h4>
         <div id="modal-tags" class="flex flex-wrap gap-2 mb-8"></div>
 
-        <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" rel="noopener noreferrer" data-action="close-modal" class="block w-full text-center bg-emeraldCustom-600 hover:bg-emeraldCustom-500 text-white font-bold py-3 rounded-xl btn-interactive">
+        <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" rel="noopener noreferrer" onclick="closeDetailModalDirect()" class="block w-full text-center bg-emeraldCustom-600 hover:bg-emeraldCustom-500 text-white font-bold py-3 rounded-xl btn-interactive">
             Mulai Pelajari via Saluran WA & Discord
         </a>
     </div>
@@ -715,8 +726,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
-    // Data Subtes & Modul Fundamental
+    // Data Subtes & Modul
     const subtestData = {
+        // --- 4 MATERI FUNDAMENTAL ---
         'logika-fundamental': {
             badge: 'Materi Fundamental',
             title: 'Logika Fundamental',
@@ -750,60 +762,87 @@
             subtitle: 'Reading Comprehension & Grammar Essentials',
             description: 'Meningkatkan kemampuan pemahaman bacaan akademik bahasa Inggris, analisis struktur kalimat, tata bahasa, serta kosakata kontekstual untuk persiapan maksimal menghadapi Literasi Bahasa Inggris.',
             topics: ['Main Idea & Context', 'Grammar Essentials', 'Vocabulary in Context', 'Inference Questions'],
-            materiUrl: null, // Jika belum ada playlist YouTube
+            materiUrl: null,
             soalUrl: 'https://drive.google.com/drive/folders/1Yry1TGGUXTvNa5byBchWUUw0pKjseOgz?usp=drive_link'
+        },
+
+        // --- 7 SUBTES SNBT ---
+        'pu-subtest': {
+            badge: 'Subtes TPS',
+            title: 'Penalaran Umum (PU)',
+            subtitle: 'Kemampuan Menganalisis & Memecahkan Masalah Menggunakan Logika',
+            description: 'Uji kemampuan berpikir secara logis, analitis, dan runtut. Subtes ini mencakup penalaran induktif, deduktif, serta penalaran kuantitatif menggunakan data angka sederhana.',
+            topics: ['Penalaran Induktif', 'Penalaran Deduktif', 'Penalaran Kuantitatif', 'Silogisme Kompleks'],
+            materiUrl: 'https://youtube.com/playlist?list=PLPtbHTXes2LNXEln1sgp7UlJrlIeTDogq&si=IB63LAsLQDO_E8LS',
+            soalUrl: 'https://drive.google.com/drive/folders/1Ckq7yGqrJY1yiLOzaq1d6iGQYeo__QMG?usp=drive_link'
+        },
+        'ppu-subtest': {
+            badge: 'Subtes TPS',
+            title: 'Pengetahuan & Pemahaman Umum (PPU)',
+            subtitle: 'Uji Wawasan Kognitif & Kemampuan Memahami Pesan Tertulis',
+            description: 'Menguji kemampuan memahami pesan, ide, dan wawasan kognitif dari teks tertulis, pilihan kata, sinonim/antonim, serta hubungan antar gagasan.',
+            topics: ['Makna Kata & Istilah', 'Sinonim & Antonim', 'Wawasan Kognitif', 'Pemahaman Teks Kognitif'],
+            materiUrl: null,
+            soalUrl: 'https://drive.google.com/drive/folders/1U36MRMR6VnNLbs1NCYaXMoKM-N_gti-f?usp=drive_link'
+        },
+        'pbm-subtest': {
+            badge: 'Subtes TPS',
+            title: 'Pemahaman Bacaan & Menulis (PBM)',
+            subtitle: 'Kelancaran Membaca Teks Panjang & Penguasaan Kaidah Penulisan',
+            description: 'Fokus pada penguasaan ejaan bahasa Indonesia, kerapihan struktur kalimat, konjungsi, dan keefektifan susunan paragraf dalam teks bacaan.',
+            topics: ['Ejaan Bahasa Indonesia (EBI)', 'Konjungsi Kalimat', 'Paragraf Efektif', 'Kepaduan Paragraf'],
+            materiUrl: null,
+            soalUrl: 'https://drive.google.com/drive/folders/1PezGd21KY-8d4RhqWWSvV6qwfOJysrt1?usp=drive_link'
+        },
+        'pk-subtest': {
+            badge: 'Subtes TPS',
+            title: 'Pengetahuan Kuantitatif (PK)',
+            subtitle: 'Penerapan Matematika Dasar, Aljabar, Geometri & Peluang',
+            description: 'Subtes yang menguji pemahaman matematis peserta, mulai dari konsep aljabar, teori bilangan, geometri, hingga analisis kecukupan data (pernyataan 1 & 2).',
+            topics: ['Aljabar & Persamaan', 'Geometri & Bangun Datar/Ruang', 'Statistika & Peluang', 'Analisis Kecukupan Data'],
+            materiUrl: 'https://youtube.com/playlist?list=PLPtbHTXes2LODiuJ0tHgrIMLeozqQakGM&si=hCN-NrVK8IRTFoXh',
+            soalUrl: 'https://drive.google.com/drive/folders/1N0QlQT5ej12YfRDlUI6njf3r_q3G7zCo?usp=drive_link'
+        },
+        'lit-indo-subtest': {
+            badge: 'Subtes Literasi',
+            title: 'Literasi Bahasa Indonesia',
+            subtitle: 'Memahami Teks Kompleks, Evaluasi Gagasan, & Kesimpulan Kritis',
+            description: 'Uji kemampuan membaca kritis terhadap berbagai ragam teks bacaan (sastra, ilmiah, populer). Mengidentifikasi fakta, opini, gagasan utama, dan inferensi implisit.',
+            topics: ['Analisis Teks Kompleks', 'Gagasan Utama & Ide Pokok', 'Simpulan Kritis', 'Evaluasi Argumen Penulis'],
+            materiUrl: 'https://youtube.com/playlist?list=PLPtbHTXes2LPdFISsxrircxNkJZ4DTKuz&si=I-_ug8kySwEuSxtf',
+            soalUrl: 'https://drive.google.com/drive/folders/1wTb0dE6rqRbX4GkcsoxCh-urDcWXl1vE?usp=drive_link'
+        },
+        'lit-inggris-subtest': {
+            badge: 'Subtes Literasi',
+            title: 'Literasi Bahasa Inggris',
+            subtitle: 'Academic Reading Skills, Argumentation, & Contextual Inference',
+            description: 'Menguji kemampuan membaca dan memahami wacana akademik berbahasa Inggris. Berfokus pada penemuan main idea, tone of author, implikasi kalimat, serta analisis argumen.',
+            topics: ['Main Idea & Paragraph Topic', 'Author’s Tone & Purpose', 'Inference & Implication', 'Vocabulary in Academic Context'],
+            materiUrl: 'https://youtube.com/playlist?list=PLPtbHTXes2LOLIOQLMhkmiQ3H99DwL1_n&si=ew5oyUFfDPqEiYhw',
+            soalUrl: 'https://drive.google.com/drive/folders/1IUqQxo6jqJKR3fZ18TxMHWEJj4gA8Xza?usp=drive_link'
+        },
+        'pm-subtest': {
+            badge: 'Subtes Literasi',
+            title: 'Penalaran Matematika (PM)',
+            subtitle: 'Pemecahan Masalah Kehidupan Nyata Berbasis Konsep Matematika (HOTS)',
+            description: 'Fokus pada penyelesaian soal cerita panjang bernuansa studi kasus nyata. Menguji kemampuan dalam memodelkan masalah sehari-hari ke dalam rumus matematika.',
+            topics: ['Soal Cerita Studi Kasus', 'Model Matematika Realistis', 'Analisis Grafik & Data', 'Optimasi & Aritmatika'],
+            materiUrl: 'https://youtube.com/playlist?list=PLPtbHTXes2LOPt4mtAcQwbWpD2y1QLJdr&si=tZ3U6_X34c3FhJCk',
+            soalUrl: 'https://drive.google.com/drive/folders/1j5y_zsoa4QoA6AgATzl1WiJqZHPlSm9_?usp=drive_link'
         }
     };
 
-    const ALLOWED_EXTERNAL_HOSTS = new Set([
-        'youtube.com', 'www.youtube.com', 'youtu.be',
-        'drive.google.com', 'docs.google.com',
-        'whatsapp.com', 'www.whatsapp.com',
-        'discord.gg', 'discord.com', 'www.discord.com',
-        'tiktok.com', 'www.tiktok.com',
-        'x.com', 'www.x.com'
-    ]);
-
-    function escapeHTML(value) {
-        return value.replace(/[&<>'"]/g, (char) => ({
-            '&': '&amp;', '<': '&lt;', '>': '&gt;',
-            '"': '&quot;', "'": '&#39;'
-        })[char]);
-    }
-
-    function safeExternalUrl(value) {
-        try {
-            const url = new URL(value, window.location.href);
-            if (url.protocol !== 'https:') return null;
-            const host = url.hostname.toLowerCase();
-            const allowed = [...ALLOWED_EXTERNAL_HOSTS].some((item) => host === item || host.endsWith('.' + item));
-            return allowed ? url.href : null;
-        } catch {
-            return null;
-        }
-    }
-
-    function openExternal(url) {
-        const safeUrl = safeExternalUrl(url);
-        if (!safeUrl) return false;
-        window.open(safeUrl, '_blank', 'noopener,noreferrer');
-        return true;
-    }
-
     function openSubtestPage(id) {
-        if (typeof id !== 'string' || !Object.prototype.hasOwnProperty.call(subtestData, id)) return;
         const data = subtestData[id];
+        if (!data) return;
 
         const contentContainer = document.getElementById('subtest-content');
-        const safeMateriUrl = data.materiUrl ? safeExternalUrl(data.materiUrl) : null;
-        const safeSoalUrl = data.soalUrl ? safeExternalUrl(data.soalUrl) : null;
-        if (data.soalUrl && !safeSoalUrl) return;
-
+        
         const topicsHTML = data.topics.map(t => 
-            `<span class="px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-emeraldCustom-500/10 text-pine-950 dark:text-pine-100 border border-emeraldCustom-500/20">${escapeHTML(String(t))}</span>`
+            `<span class="px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-emeraldCustom-500/10 text-pine-950 dark:text-pine-100 border border-emeraldCustom-500/20">${t}</span>`
         ).join('');
 
-        const materiCardHTML = safeMateriUrl ? `
+        const materiCardHTML = data.materiUrl ? `
             <!-- Card 1: Akses Video Materi -->
             <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border-t-4 border-t-emeraldCustom-500 group">
                 <div>
@@ -813,11 +852,11 @@
                     <span class="text-xs font-mono font-bold text-emeraldCustom-600 dark:text-emeraldCustom-400 uppercase tracking-wider">Video Konsep & Pembahasan</span>
                     <h2 class="text-2xl font-bold text-pine-950 dark:text-white mt-1 mb-3">Playlist Video Materi</h2>
                     <p class="text-sm text-pine-800 dark:text-pine-300 leading-relaxed font-medium mb-6">
-                        Akses seluruh rekaman video penjelasan konsep dasar secara bertahap dan terstruktur melalui playlist resmi YouTube Study with Mbah.
+                        Akses seluruh rekaman video penjelasan konsep materi secara bertahap dan terstruktur melalui playlist resmi YouTube Study with Mbah.
                     </p>
                 </div>
 
-                <a href="${safeMateriUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-emeraldCustom-600 to-pine-600 hover:from-emeraldCustom-500 hover:to-pine-500 text-white font-bold py-4 px-6 rounded-2xl shadow-lg btn-interactive">
+                <a href="${data.materiUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-emeraldCustom-600 to-pine-600 hover:from-emeraldCustom-500 hover:to-pine-500 text-white font-bold py-4 px-6 rounded-2xl shadow-lg btn-interactive">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                     <span>Buka Playlist YouTube Materi</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -844,16 +883,16 @@
             <div class="glass-card rounded-3xl p-8 sm:p-10 mb-10 relative overflow-hidden">
                 <div class="absolute -top-12 -right-12 w-48 h-48 bg-emeraldCustom-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldCustom-500/10 border border-emeraldCustom-500/30 text-pine-950 dark:text-emeraldCustom-400 font-mono text-xs font-bold mb-4">
-                    ${escapeHTML(String(data.badge))}
+                    ${data.badge}
                 </div>
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-pine-950 dark:text-white mb-3">
-                    ${escapeHTML(String(data.title))}
+                    ${data.title}
                 </h1>
                 <p class="text-base sm:text-lg text-pine-800 dark:text-pine-300 font-semibold mb-6 max-w-3xl">
-                    ${escapeHTML(String(data.subtitle))}
+                    ${data.subtitle}
                 </p>
                 <p class="text-sm text-pine-800 dark:text-pine-300 leading-relaxed font-medium mb-8 max-w-4xl">
-                    ${escapeHTML(String(data.description))}
+                    ${data.description}
                 </p>
 
                 <div>
@@ -869,20 +908,20 @@
                 
                 ${materiCardHTML}
 
-                <!-- Card 2: Akses Google Drive Soal -->
+                <!-- Card 2: Akses Google Drive Soal / Modul -->
                 <div class="glass-card rounded-3xl p-8 flex flex-col justify-between border-t-4 border-t-pine-500 group">
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-pine-500/15 border border-pine-500/30 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
                             📂
                         </div>
                         <span class="text-xs font-mono font-bold text-pine-950 dark:text-pine-300 uppercase tracking-wider">Bank Soal PDF & Pembahasan</span>
-                        <h2 class="text-2xl font-bold text-pine-950 dark:text-white mt-1 mb-3">Google Drive Latihan Soal</h2>
+                        <h2 class="text-2xl font-bold text-pine-950 dark:text-white mt-1 mb-3">Latihan Soal & Modul</h2>
                         <p class="text-sm text-pine-800 dark:text-pine-300 leading-relaxed font-medium mb-6">
-                            Unduh modul latihan soal harian, lembar kerja siswa, dan kunci pembahasan format PDF langsung melalui folder Google Drive resmi.
+                            Unduh modul latihan soal harian, lembar kerja siswa, dan kunci pembahasan format PDF langsung melalui akses resmi Study with Mbah.
                         </p>
                     </div>
 
-                    <a href="${safeSoalUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-pine-800 via-pine-700 to-pine-600 hover:from-pine-700 hover:to-pine-500 text-white font-bold py-4 px-6 rounded-2xl shadow-lg btn-interactive">
+                    <a href="${data.soalUrl}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-pine-800 via-pine-700 to-pine-600 hover:from-pine-700 hover:to-pine-500 text-white font-bold py-4 px-6 rounded-2xl shadow-lg btn-interactive">
                         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
                         <span>Buka Folder Drive Latihan Soal</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -903,41 +942,19 @@
     }
 
     const cursorGlow = document.getElementById('cursor-glow');
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hasGSAP = typeof window.gsap !== 'undefined';
-
-    if (!reducedMotion && hasGSAP && !('ontouchstart' in window)) {
-        window.addEventListener('mousemove', (e) => {
-            window.gsap.to(cursorGlow, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.4,
-                ease: 'power2.out'
-            });
-        }, { passive: true });
-    }
-
-    function finishLoaderFallback() {
-        document.body.style.overflow = 'auto';
-        const loader = document.getElementById('loader-screen');
-        if (loader) {
-            loader.style.transition = 'transform 0.7s ease';
-            loader.style.transform = 'translateY(-100%)';
-        }
-        document.querySelectorAll('[data-target]').forEach((counter) => {
-            counter.textContent = Math.floor(Number(counter.dataset.target) || 0).toLocaleString('id-ID') + (counter.dataset.suffix || '');
+    window.addEventListener('mousemove', (e) => {
+        gsap.to(cursorGlow, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.4,
+            ease: "power2.out"
         });
-    }
+    });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        if (!hasGSAP || reducedMotion) {
-            finishLoaderFallback();
-            return;
-        }
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.registerPlugin(ScrollTrigger);
 
-        if (typeof window.ScrollTrigger !== 'undefined') window.gsap.registerPlugin(window.ScrollTrigger);
-
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
 
         const counterObj = { value: 0 };
         const counterEl = document.getElementById("loader-counter");
@@ -1033,9 +1050,6 @@
             ease: "back.out(1.7)"
         }, "-=1.2");
 
-        if (typeof window.ScrollTrigger === 'undefined') {
-            return;
-        }
         const sections = document.querySelectorAll("#landing-view section:not(:first-child)");
         sections.forEach((sec) => {
             gsap.from(sec.children, {
@@ -1054,20 +1068,13 @@
     });
 
     const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas ? canvas.getContext('2d', { alpha: true }) : null;
-    let width = canvas ? (canvas.width = window.innerWidth) : 0;
-    let height = canvas ? (canvas.height = window.innerHeight) : 0;
-    let canvasRunning = !reducedMotion && !!ctx && !document.hidden;
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
 
     window.addEventListener('resize', () => {
-        if (!canvas) return;
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
-    }, { passive: true });
-
-    document.addEventListener('visibilitychange', () => {
-        canvasRunning = !reducedMotion && !!ctx && !document.hidden;
-        if (canvasRunning) requestAnimationFrame(drawCanvas);
     });
 
     const particleColors = ['#10B981', '#3A7A6E', '#52998C', '#224D45'];
@@ -1081,7 +1088,6 @@
     }));
 
     function drawCanvas() {
-        if (!ctx || !canvasRunning) return;
         ctx.clearRect(0, 0, width, height);
 
         particles.forEach((p, index) => {
@@ -1113,29 +1119,18 @@
 
         requestAnimationFrame(drawCanvas);
     }
-    if (canvasRunning) drawCanvas();
+    drawCanvas();
 
     const themeBtn = document.getElementById('theme-toggle');
-    const savedTheme = (() => {
-        try { return localStorage.getItem('swm-theme'); } catch { return null; }
-    })();
-    if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-    }
-    themeBtn.setAttribute('aria-pressed', document.documentElement.classList.contains('dark') ? 'true' : 'false');
     themeBtn.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.toggle('dark');
-        document.documentElement.classList.toggle('light', !isDark);
-        themeBtn.setAttribute('aria-pressed', String(isDark));
-        try { localStorage.setItem('swm-theme', isDark ? 'dark' : 'light'); } catch { /* Storage may be unavailable. */ }
+        document.documentElement.classList.toggle('dark');
+        document.documentElement.classList.toggle('light');
     });
 
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     mobileMenuBtn.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('hidden') === false;
-        mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+        mobileMenu.classList.toggle('hidden');
     });
 
     function openDetailModal(title, badge, desc, tags) {
@@ -1153,10 +1148,8 @@
         });
         
         const modal = document.getElementById('detail-modal');
-        modal.setAttribute('aria-hidden', 'false');
         modal.classList.remove('opacity-0', 'pointer-events-none');
         document.getElementById('modal-card').classList.remove('scale-95');
-        document.getElementById('modal-close-btn')?.focus();
     }
 
     function closeDetailModal(e) {
@@ -1168,46 +1161,10 @@
     function closeDetailModalDirect() {
         const modal = document.getElementById('detail-modal');
         modal.classList.add('opacity-0', 'pointer-events-none');
-        modal.setAttribute('aria-hidden', 'true');
         document.getElementById('modal-card').classList.add('scale-95');
     }
 
-    document.addEventListener('click', (event) => {
-        const target = event.target.closest('[data-action], [data-subtest], [data-modal-title]');
-        if (!target) return;
-
-        if (target.matches('[data-subtest]')) {
-            openSubtestPage(target.dataset.subtest);
-            return;
-        }
-
-        if (target.matches('[data-modal-title]')) {
-            openDetailModal(
-                target.dataset.modalTitle,
-                target.dataset.modalBadge,
-                target.dataset.modalDesc,
-                (target.dataset.modalTags || '').split('|').filter(Boolean)
-            );
-            return;
-        }
-
-        const action = target.dataset.action;
-        if (action === 'landing') {
-            showLandingView();
-            if (target.getAttribute('href') === '#') event.preventDefault();
-        } else if (action === 'close-modal') {
-            closeDetailModalDirect();
-        } else if (action === 'close-modal-backdrop' && event.target.id === 'detail-modal') {
-            closeDetailModalDirect();
-        }
-    });
-
     document.addEventListener('keydown', (event) => {
-        const target = event.target.closest?.('[data-subtest], [data-modal-title]');
-        if ((event.key === 'Enter' || event.key === ' ') && target) {
-            event.preventDefault();
-            target.click();
-        }
         if (event.key === 'Escape') closeDetailModalDirect();
     });
 </script>
