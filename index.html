@@ -7,7 +7,7 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
     <title>Study with Mbah — Tembus PTN Impian Bersama Mbah! | Persiapan UTBK SNBT</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; connect-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.ibb.co.com https://placehold.co; form-action 'self'; upgrade-insecure-requests;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; connect-src 'self'; script-src 'self' 'nonce-6xxQ923jvqf15ZcFI569TdE_zte6ccUD' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://i.ibb.co.com https://placehold.co; form-action 'self'; upgrade-insecure-requests;">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+    <script nonce="6xxQ923jvqf15ZcFI569TdE_zte6ccUD">
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -176,7 +176,7 @@
                 <a href="#" class="flex items-center gap-3 group">
                     <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-pine-700 via-pine-500 to-pine-300 p-0.5 shadow-md group-hover:scale-105 transition-transform">
                         <div class="w-full h-full bg-pine-100 dark:bg-pine-800 rounded-[14px] flex items-center justify-center overflow-hidden">
-                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Mascot" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-125" onerror="this.onerror=null; this.src='https://placehold.co/100x100/235347/ffffff?text=Mbah';">
+                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Mascot" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-125" data-fallback="Mbah">
                         </div>
                     </div>
                     <div>
@@ -289,7 +289,7 @@
                             <div class="absolute -inset-2 rounded-3xl border-2 border-dashed border-pine-500/40 animate-pulse"></div>
                             
                             <div class="w-full h-full rounded-2xl bg-white dark:bg-pine-800/90 border-2 border-pine-500/40 p-2 flex items-center justify-center shadow-lg animate-float overflow-hidden">
-                                <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah - Maskot Kucing Berbusana Adat Jawa" loading="lazy" decoding="async" class="w-full h-full object-contain rounded-xl hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/400x400/235347/ffffff?text=Mbah+Mascot';">
+                                <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah - Maskot Kucing Berbusana Adat Jawa" loading="lazy" decoding="async" class="w-full h-full object-contain rounded-xl hover:scale-105 transition-transform duration-300" data-fallback="Mbah Mascot">
                             </div>
                         </div>
 
@@ -380,7 +380,7 @@
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     
                     <!-- Card 1: Logika -->
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-500 flex flex-col justify-between hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('Logika', 'Materi Penalaran & Pemecahan Masalah Kritis', 'Fokus pada pemecahan masalah kritis, silogisme, dan penalaran deduktif/induktif.', ['Silogisme', 'Analogi Logika', 'Penalaran Induktif', 'Penalaran Kuantitatif'])">
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-500 flex flex-col justify-between hover:border-pine-500 transition-all cursor-pointer group" data-modal-title="Logika" data-modal-badge="Materi Penalaran & Pemecahan Masalah Kritis" data-modal-desc="Fokus pada pemecahan masalah kritis, silogisme, dan penalaran deduktif/induktif." data-modal-tags="'Silogisme', 'Analogi Logika', 'Penalaran Induktif', 'Penalaran Kuantitatif'">
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="w-10 h-10 rounded-xl bg-pine-500/20 text-pine-900 dark:text-pine-100 font-extrabold flex items-center justify-center text-xl">01</span>
@@ -398,7 +398,7 @@
                     </div>
 
                     <!-- Card 2: Matematika -->
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-jawa-amber flex flex-col justify-between hover:border-jawa-amber transition-all cursor-pointer group" onclick="openDetailModal('Matematika', 'Pemantapan Konsep Aljabar & Geometri', 'Pemantapan konsep dasar aljabar, aritmatika, dan geometri mulai dari nol besar.', ['Aljabar Dasar', 'Aritmatika Sosial', 'Geometri & Bangun', 'Persamaan Kuadrat'])">
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-jawa-amber flex flex-col justify-between hover:border-jawa-amber transition-all cursor-pointer group" data-modal-title="Matematika" data-modal-badge="Pemantapan Konsep Aljabar & Geometri" data-modal-desc="Pemantapan konsep dasar aljabar, aritmatika, dan geometri mulai dari nol besar." data-modal-tags="'Aljabar Dasar', 'Aritmatika Sosial', 'Geometri & Bangun', 'Persamaan Kuadrat'">
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="w-10 h-10 rounded-xl bg-jawa-amber/20 text-jawa-amber font-extrabold flex items-center justify-center text-xl">02</span>
@@ -416,7 +416,7 @@
                     </div>
 
                     <!-- Card 3: B. Indonesia -->
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-700 dark:border-t-pine-300 flex flex-col justify-between hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('B. Indonesia', 'EBI & Analisis Teks Panjang', 'Penguasaan EBI, struktur kalimat efektif, dan trik baca cepat untuk teks panjang.', ['Ejaan EBI', 'Kalimat Efektif', 'Gagasan Utama', 'Trik Baca Cepat'])">
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-700 dark:border-t-pine-300 flex flex-col justify-between hover:border-pine-500 transition-all cursor-pointer group" data-modal-title="B. Indonesia" data-modal-badge="EBI & Analisis Teks Panjang" data-modal-desc="Penguasaan EBI, struktur kalimat efektif, dan trik baca cepat untuk teks panjang." data-modal-tags="'Ejaan EBI', 'Kalimat Efektif', 'Gagasan Utama', 'Trik Baca Cepat'">
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="w-10 h-10 rounded-xl bg-pine-700/20 text-pine-900 dark:text-pine-100 font-extrabold flex items-center justify-center text-xl">03</span>
@@ -434,7 +434,7 @@
                     </div>
 
                     <!-- Card 4: B. Inggris -->
-                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-600 flex flex-col justify-between hover:border-emerald-500 transition-all cursor-pointer group" onclick="openDetailModal('B. Inggris', 'Reading Comprehension & Grammar', 'Membangun fondasi grammar dan reading comprehension yang kuat & terarah.', ['Main Idea & Context', 'Grammar Essentials', 'Vocabulary in Context', 'Inference Question'])">
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-600 flex flex-col justify-between hover:border-emerald-500 transition-all cursor-pointer group" data-modal-title="B. Inggris" data-modal-badge="Reading Comprehension & Grammar" data-modal-desc="Membangun fondasi grammar dan reading comprehension yang kuat & terarah." data-modal-tags="'Main Idea & Context', 'Grammar Essentials', 'Vocabulary in Context', 'Inference Question'">
                         <div>
                             <div class="flex items-center justify-between mb-4">
                                 <span class="w-10 h-10 rounded-xl bg-emerald-600/20 text-emerald-800 dark:text-emerald-300 font-extrabold flex items-center justify-center text-xl">04</span>
@@ -478,7 +478,7 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         
                         <!-- Subtes 1 -->
-                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('1. Penalaran Umum', 'Subtes TPS', 'Induktif, deduktif, & kuantitatif untuk memecahkan masalah dengan logika.', ['Penalaran Induktif', 'Penalaran Deduktif', 'Penalaran Kuantitatif'])">
+                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" data-modal-title="1. Penalaran Umum" data-modal-badge="Subtes TPS" data-modal-desc="Induktif, deduktif, & kuantitatif untuk memecahkan masalah dengan logika." data-modal-tags="'Penalaran Induktif', 'Penalaran Deduktif', 'Penalaran Kuantitatif'">
                             <span class="text-xs font-mono px-2.5 py-1 rounded bg-pine-500/10 border border-pine-500/20 text-pine-800 dark:text-pine-300 font-bold block w-fit mb-3">Subtes #1</span>
                             <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">Penalaran Umum</h4>
                             <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
@@ -487,7 +487,7 @@
                         </div>
 
                         <!-- Subtes 2 -->
-                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('2. Pengetahuan & Pemahaman Umum', 'Subtes TPS', 'Uji wawasan kognitif dan kemampuan memahami pesan tertulis secara umum.', ['Makna Kata', 'Sinonim & Antonim', 'Wawasan Kognitif'])">
+                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" data-modal-title="2. Pengetahuan & Pemahaman Umum" data-modal-badge="Subtes TPS" data-modal-desc="Uji wawasan kognitif dan kemampuan memahami pesan tertulis secara umum." data-modal-tags="'Makna Kata', 'Sinonim & Antonim', 'Wawasan Kognitif'">
                             <span class="text-xs font-mono px-2.5 py-1 rounded bg-pine-500/10 border border-pine-500/20 text-pine-800 dark:text-pine-300 font-bold block w-fit mb-3">Subtes #2</span>
                             <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">Pengetahuan & Pemahaman</h4>
                             <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
@@ -496,7 +496,7 @@
                         </div>
 
                         <!-- Subtes 3 -->
-                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('3. Pemahaman Bacaan & Menulis (PBM)', 'Subtes TPS', 'Kelancaran membaca teks panjang dan menguasai kaidah penulisan yang tepat.', ['Ejaan Bahasa Indonesia', 'Konjungsi Kalimat', 'Paragraf Efektif'])">
+                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" data-modal-title="3. Pemahaman Bacaan & Menulis (PBM)" data-modal-badge="Subtes TPS" data-modal-desc="Kelancaran membaca teks panjang dan menguasai kaidah penulisan yang tepat." data-modal-tags="'Ejaan Bahasa Indonesia', 'Konjungsi Kalimat', 'Paragraf Efektif'">
                             <span class="text-xs font-mono px-2.5 py-1 rounded bg-pine-500/10 border border-pine-500/20 text-pine-800 dark:text-pine-300 font-bold block w-fit mb-3">Subtes #3</span>
                             <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">Pemahaman Bacaan (PBM)</h4>
                             <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
@@ -505,7 +505,7 @@
                         </div>
 
                         <!-- Subtes 4 -->
-                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('4. Pengetahuan Kuantitatif', 'Subtes TPS', 'Matematika dasar (aljabar, statistika, geometri) dengan trik hitung cepat.', ['Aljabar & Persamaan', 'Statistika Dasar', 'Geometri', 'Hitung Cepat'])">
+                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" data-modal-title="4. Pengetahuan Kuantitatif" data-modal-badge="Subtes TPS" data-modal-desc="Matematika dasar (aljabar, statistika, geometri) dengan trik hitung cepat." data-modal-tags="'Aljabar & Persamaan', 'Statistika Dasar', 'Geometri', 'Hitung Cepat'">
                             <span class="text-xs font-mono px-2.5 py-1 rounded bg-pine-500/10 border border-pine-500/20 text-pine-800 dark:text-pine-300 font-bold block w-fit mb-3">Subtes #4</span>
                             <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">Pengetahuan Kuantitatif</h4>
                             <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
@@ -526,7 +526,7 @@
                     <div class="grid md:grid-cols-3 gap-6">
                         
                         <!-- Subtes 5 -->
-                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" onclick="openDetailModal('5. Literasi B. Indonesia', 'Subtes Literasi', 'Analisis teks kompleks, gagasan utama, dan kesimpulan kritis dari sastra/info.', ['Analisis Teks Kompleks', 'Gagasan Utama', 'Kesimpulan Kritis'])">
+                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" data-modal-title="5. Literasi B. Indonesia" data-modal-badge="Subtes Literasi" data-modal-desc="Analisis teks kompleks, gagasan utama, dan kesimpulan kritis dari sastra/info." data-modal-tags="'Analisis Teks Kompleks', 'Gagasan Utama', 'Kesimpulan Kritis'">
                             <span class="text-xs font-mono px-2.5 py-1 rounded bg-jawa-amber/10 border border-jawa-amber/20 text-jawa-amber font-bold block w-fit mb-3">Subtes #5</span>
                             <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-jawa-amber transition-colors">Literasi B. Indonesia</h4>
                             <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
@@ -535,7 +535,7 @@
                         </div>
 
                         <!-- Subtes 6 -->
-                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" onclick="openDetailModal('6. Literasi B. Inggris', 'Subtes Literasi', 'Memahami argumen dan konteks teks akademik Inggris (reading skill focus).', ['Academic Reading', 'Argument Analysis', 'Tone & Purpose'])">
+                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" data-modal-title="6. Literasi B. Inggris" data-modal-badge="Subtes Literasi" data-modal-desc="Memahami argumen dan konteks teks akademik Inggris (reading skill focus)." data-modal-tags="'Academic Reading', 'Argument Analysis', 'Tone & Purpose'">
                             <span class="text-xs font-mono px-2.5 py-1 rounded bg-jawa-amber/10 border border-jawa-amber/20 text-jawa-amber font-bold block w-fit mb-3">Subtes #6</span>
                             <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-jawa-amber transition-colors">Literasi B. Inggris</h4>
                             <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
@@ -544,7 +544,7 @@
                         </div>
 
                         <!-- Subtes 7 -->
-                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" onclick="openDetailModal('7. Penalaran Matematika', 'Subtes Literasi', 'Aplikasi konsep matematika dalam kehidupan nyata. Soal cerita HOTS butuh nalar tinggi.', ['Soal Cerita HOTS', 'Model Matematika Realistis', 'Analisis Grafik & Data'])">
+                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" data-modal-title="7. Penalaran Matematika" data-modal-badge="Subtes Literasi" data-modal-desc="Aplikasi konsep matematika dalam kehidupan nyata. Soal cerita HOTS butuh nalar tinggi." data-modal-tags="'Soal Cerita HOTS', 'Model Matematika Realistis', 'Analisis Grafik & Data'">
                             <span class="text-xs font-mono px-2.5 py-1 rounded bg-jawa-amber/10 border border-jawa-amber/20 text-jawa-amber font-bold block w-fit mb-3">Subtes #7</span>
                             <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-jawa-amber transition-colors">Penalaran Matematika</h4>
                             <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
@@ -567,7 +567,7 @@
                     </blockquote>
                     <div class="mt-6 flex items-center justify-center gap-3">
                         <div class="w-12 h-12 rounded-full border-2 border-pine-500 dark:border-pine-300 overflow-hidden bg-white flex items-center justify-center shadow-md">
-                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Avatar" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-125 translate-y-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/235347/ffffff?text=Mbah';">
+                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Avatar" loading="lazy" decoding="async" class="w-full h-full object-cover object-top scale-125 translate-y-1" data-fallback="Mbah">
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-pine-900 dark:text-pine-100 text-sm">Tim StudyWithMbah</div>
@@ -654,7 +654,7 @@
                     </div>
 
                     <!-- Quick Registration Form -->
-                    <form id="join-form" onsubmit="handleJoinSubmit(event)" class="bg-white/90 dark:bg-pine-900/90 p-6 sm:p-8 rounded-2xl border border-pine-500/20 max-w-2xl mx-auto space-y-4 shadow-lg">
+                    <form id="join-form" class="bg-white/90 dark:bg-pine-900/90 p-6 sm:p-8 rounded-2xl border border-pine-500/20 max-w-2xl mx-auto space-y-4 shadow-lg">
                         <h4 class="text-center font-extrabold text-base text-pine-900 dark:text-white">Dapatkan Starter Kit UTBK & Notifikasi Drill Soal</h4>
                         <div class="grid sm:grid-cols-2 gap-4">
                             <div>
@@ -692,9 +692,9 @@
         </div>
     </footer>
 
-    <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pine-900/60 dark:bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeDetailModal(event)">
+    <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pine-900/60 dark:bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 relative scale-95 transition-transform duration-300" id="modal-card">
-            <button type="button" aria-label="Tutup" onclick="closeDetailModalDirect()" class="absolute top-4 right-4 text-pine-700 dark:text-pine-300 hover:text-pine-900 dark:hover:text-white text-xl font-bold">&times;</button>
+            <button type="button" aria-label="Tutup" id="modal-close-btn" class="absolute top-4 right-4 text-pine-700 dark:text-pine-300 hover:text-pine-900 dark:hover:text-white text-xl font-bold">&times;</button>
             <span id="modal-badge" class="inline-block text-xs font-mono font-bold px-2.5 py-1 rounded bg-pine-500/20 text-pine-900 dark:text-pine-100 mb-2">Badge</span>
             <h3 id="modal-title" class="text-2xl font-bold mb-3 text-pine-900 dark:text-white">Title</h3>
             <p id="modal-desc" class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed mb-6 font-medium">Description</p>
@@ -702,7 +702,7 @@
             <h4 class="text-xs font-bold uppercase tracking-wider text-pine-700 dark:text-pine-300 mb-3">Topik Utama yang Dipelajari:</h4>
             <div id="modal-tags" class="flex flex-wrap gap-2 mb-8"></div>
 
-            <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" rel="noopener noreferrer" onclick="closeDetailModalDirect()" class="block w-full text-center bg-pine-500 hover:bg-pine-700 text-white font-bold py-3 rounded-xl transition-all">
+            <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" rel="noopener noreferrer" id="modal-close-btn" class="block w-full text-center bg-pine-500 hover:bg-pine-700 text-white font-bold py-3 rounded-xl transition-all">
                 Mulai Pelajari via Saluran WA & Discord
             </a>
         </div>
@@ -718,7 +718,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <script>
+    <script nonce="6xxQ923jvqf15ZcFI569TdE_zte6ccUD">
         /* Opening & Scroll GSAP Animations */
         document.addEventListener("DOMContentLoaded", () => {
             gsap.registerPlugin(ScrollTrigger);
@@ -931,10 +931,8 @@
             document.getElementById('modal-card').classList.remove('scale-95');
         }
 
-        function closeDetailModal(e) {
-            if (e.target.id === 'detail-modal') {
-                closeDetailModalDirect();
-            }
+        function closeDetailModal() {
+            closeDetailModalDirect();
         }
 
         function closeDetailModalDirect() {
@@ -945,6 +943,45 @@
 
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') closeDetailModalDirect();
+        });
+
+        /* Secure event delegation: replaces inline onclick/onsubmit handlers */
+        document.addEventListener('click', (event) => {
+            const modalTrigger = event.target.closest('[data-modal-title]');
+            if (modalTrigger) {
+                const tags = modalTrigger.dataset.modalTags
+                    .split(',')
+                    .map(tag => tag.trim().replace(/^['\"]|['\"]$/g, ''))
+                    .filter(Boolean);
+                openDetailModal(
+                    modalTrigger.dataset.modalTitle,
+                    modalTrigger.dataset.modalBadge,
+                    modalTrigger.dataset.modalDesc,
+                    tags
+                );
+                return;
+            }
+
+            if (event.target.id === 'detail-modal') {
+                closeDetailModalDirect();
+                return;
+            }
+
+            if (event.target.closest('#modal-close-btn')) {
+                closeDetailModalDirect();
+            }
+        });
+
+        document.getElementById('join-form').addEventListener('submit', handleJoinSubmit);
+
+        /* Safe image fallback without inline event handlers */
+        document.querySelectorAll('img[data-fallback]').forEach((img) => {
+            img.addEventListener('error', () => {
+                if (img.dataset.fallbackApplied === '1') return;
+                img.dataset.fallbackApplied = '1';
+                const label = encodeURIComponent(img.dataset.fallback || 'Mbah');
+                img.src = `data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23235347'/%3E%3Ctext x='200' y='220' text-anchor='middle' font-family='sans-serif' font-size='42' fill='white'%3E${label}%3C/text%3E%3C/svg%3E`;
+            }, { once: true });
         });
 
         /* Toast Handler */
