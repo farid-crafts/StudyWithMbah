@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study with Mbah — Tembus PTN Impian Bersama Mbah! | Persiapan UTBK SNBT</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        // Preserved Palette based on User Image
+                        pine: {
+                            900: '#051F20', // Very dark pine
+                            800: '#0B2B26', // Deep emerald
+                            700: '#163832', // Dark sage
+                            500: '#235347', // Mid forest green
+                            300: '#8EB69B', // Soft sage green
+                            100: '#DAF1DE', // Pale ice mint green
+                            50:  '#F2F9F4', // Ultra light mint background
+                        },
+                        jawa: {
+                            gold: '#f59e0b',
+                            amber: '#d97706',
+                            brown: '#78350f',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            /* Light Theme Defaults - Crisp High Contrast */
+            --bg-main: #F2F9F4;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-border: rgba(35, 83, 71, 0.2);
+            --text-main: #051F20;
+            --text-muted: #163832;
+            --accent-glow: rgba(35, 83, 71, 0.12);
+            --header-bg: rgba(242, 249, 244, 0.88);
+        }
+
+        html.dark {
+            /* Dark Theme Defaults - Warm Pine Deep Atmosphere */
+            --bg-main: #051F20;
+            --card-bg: rgba(11, 43, 38, 0.85);
+            --card-border: rgba(142, 182, 155, 0.22);
+            --text-main: #DAF1DE;
+            --text-muted: #8EB69B;
+            --accent-glow: rgba(142, 182, 155, 0.15);
+            --header-bg: rgba(5, 31, 32, 0.88);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        canvas#bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #235347 0%, #d97706 50%, #8EB69B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #DAF1DE 0%, #f59e0b 50%, #8EB69B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1deg); }
+        }
+
+        .animate-float {
+            animation: float-slow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.85; }
+            50% { transform: scale(1.03); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.85; }
+        }
+
+        .pulse-badge {
+            animation: pulse-ring 3s infinite ease-in-out;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #051F20;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #163832;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8EB69B;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased relative min-h-screen selection:bg-pine-500 selection:text-white">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b border-pine-500/20 dark:border-pine-300/15 bg-white/85 dark:bg-pine-900/85 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo with Mbah Mascot -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="relative w-11 h-11 rounded-2xl bg-gradient-to-tr from-pine-700 via-pine-500 to-pine-300 p-0.5 shadow-md group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-pine-100 dark:bg-pine-800 rounded-[14px] flex items-center justify-center overflow-hidden">
+                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Mascot" class="w-full h-full object-cover object-top scale-125" onerror="this.onerror=null; this.src='https://placehold.co/100x100/235347/ffffff?text=Mbah';">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-extrabold text-lg tracking-tight block leading-tight text-pine-900 dark:text-pine-100">Study with <span class="gradient-text">Mbah</span></span>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-pine-700 dark:text-pine-300 block font-bold">Pejuang PTN & UTBK SNBT</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden lg:flex items-center gap-7 font-semibold text-sm text-pine-900 dark:text-pine-100">
+                    <a href="#about" class="hover:text-pine-500 dark:hover:text-pine-300 transition-colors">Tentang Mbah</a>
+                    <a href="#fundamental" class="hover:text-pine-500 dark:hover:text-pine-300 transition-colors">4 Fundamental</a>
+                    <a href="#subtes" class="hover:text-pine-500 dark:hover:text-pine-300 transition-colors">7 Subtes SNBT</a>
+                    <a href="#quote" class="hover:text-pine-500 dark:hover:text-pine-300 transition-colors">Motivasi</a>
+                    <a href="#join" class="hover:text-pine-500 dark:hover:text-pine-300 transition-colors">Komunitas</a>
+                </nav>
+
+                <!-- Header Actions (Theme Toggle & CTA) -->
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle" class="p-2.5 rounded-xl glass-card hover:border-pine-500/40 transition-all text-pine-900 dark:text-pine-100 flex items-center justify-center" aria-label="Toggle Theme">
+                        <!-- Sun Icon (Light Mode) -->
+                        <svg id="theme-sun" class="w-5 h-5 hidden dark:block text-jawa-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <!-- Moon Icon (Dark Mode) -->
+                        <svg id="theme-moon" class="w-5 h-5 block dark:hidden text-pine-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+
+                    <a href="#join" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-pine-700 via-pine-500 to-jawa-amber text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                        <span>Mulai Belajar</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+
+                    <button id="mobile-menu-btn" class="lg:hidden p-2.5 rounded-xl glass-card text-pine-900 dark:text-pine-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-card border-t border-pine-500/20 px-6 py-4 space-y-3 font-semibold text-sm">
+            <a href="#about" class="block text-pine-900 dark:text-pine-100 hover:text-pine-500 py-1">Tentang Mbah</a>
+            <a href="#fundamental" class="block text-pine-900 dark:text-pine-100 hover:text-pine-500 py-1">4 Fundamental</a>
+            <a href="#subtes" class="block text-pine-900 dark:text-pine-100 hover:text-pine-500 py-1">7 Subtes SNBT</a>
+            <a href="#quote" class="block text-pine-900 dark:text-pine-100 hover:text-pine-500 py-1">Motivasi Mbah</a>
+            <a href="#join" class="block w-full text-center bg-pine-500 text-white font-bold py-2.5 rounded-xl mt-2">Gabung Komunitas</a>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+
+        <section class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-pine-500/30 text-pine-800 dark:text-pine-100 font-mono text-xs font-bold tracking-wide pulse-badge">
+                        <span class="w-2.5 h-2.5 rounded-full bg-pine-500 dark:bg-pine-300 animate-ping"></span>
+                        🎓 INTENSIVE BATCH UTBK-SNBT 2026 / 2027
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-pine-900 dark:text-white">
+                        Tembus PTN Impian <br class="hidden sm:inline"/>
+                        <span class="gradient-text">Bersama Mbah!</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-pine-800 dark:text-pine-300 max-w-2xl leading-relaxed font-medium">
+                        Komunitas belajar asik, materi terstruktur, dan bimbingan intensif persiapan SNBT. <strong class="text-pine-900 dark:text-white font-extrabold">Jangan cuma hafal rumus, pahami logikanya disini!</strong>
+                    </p>
+
+                    <!-- Hero Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#join" class="bg-gradient-to-r from-pine-700 via-pine-500 to-emerald-700 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-2">
+                            <span>🚀 Mulai Belajar</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+
+                        <a href="#subtes" class="glass-card hover:bg-pine-500/10 text-pine-900 dark:text-pine-100 font-bold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2">
+                            <span>📚 Lihat Materi</span>
+                        </a>
+                    </div>
+
+                    <!-- Live Active Stats -->
+                    <div class="pt-8 border-t border-pine-500/20 dark:border-pine-300/15 grid grid-cols-2 sm:grid-cols-3 gap-6">
+                        <div class="glass-card p-4 rounded-xl border-l-4 border-l-pine-500">
+                            <div class="text-2xl sm:text-3xl font-black font-mono text-pine-900 dark:text-pine-100" data-target="6000">0</div>
+                            <div class="text-xs text-pine-800 dark:text-pine-300 font-bold mt-1">Telah bergabung bersama Mbah</div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl border-l-4 border-l-jawa-gold">
+                            <div class="text-2xl sm:text-3xl font-black font-mono text-jawa-amber dark:text-jawa-gold">700+</div>
+                            <div class="text-xs text-pine-800 dark:text-pine-300 font-bold mt-1">Target Skor SNBT</div>
+                        </div>
+
+                        <div class="glass-card p-4 rounded-xl border-l-4 border-l-pine-300 col-span-2 sm:col-span-1">
+                            <div class="text-2xl sm:text-3xl font-black font-mono text-pine-700 dark:text-pine-300">100%</div>
+                            <div class="text-xs text-pine-800 dark:text-pine-300 font-bold mt-1">Akses Bimbingan & Diskusi Gratis</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mascot Visual Card -->
+                <div class="lg:col-span-5">
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden text-center">
+                        
+                        <!-- Background Glow Accent -->
+                        <div class="absolute -top-12 -right-12 w-48 h-48 bg-pine-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-jawa-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <!-- Mascot Display Card -->
+                        <div class="relative z-10 mx-auto w-64 h-64 sm:w-72 sm:h-72 mb-6">
+                            <div class="absolute -inset-2 rounded-3xl border-2 border-dashed border-pine-500/40 animate-pulse"></div>
+                            
+                            <div class="w-full h-full rounded-2xl bg-white dark:bg-pine-800/90 border-2 border-pine-500/40 p-2 flex items-center justify-center shadow-lg animate-float overflow-hidden">
+                                <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah - Maskot Kucing Berbusana Adat Jawa" class="w-full h-full object-contain rounded-xl hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/400x400/235347/ffffff?text=Mbah+Mascot';">
+                            </div>
+                        </div>
+
+                        <!-- Mascot Identity Pill -->
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-jawa-amber/15 border border-jawa-amber/30 text-jawa-brown dark:text-jawa-gold font-mono text-xs font-bold mb-3">
+                            Maskot StudyWith Mbah
+                        </div>
+
+                        <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto font-medium">
+                            Belajar konsep dasar tanpa panik bersama Mbah sampai paham akar rumputnya!
+                        </p>
+
+                        <!-- Target Skor Interactive Simulator Pill -->
+                        <div class="mt-6 p-4 rounded-2xl bg-pine-500/10 dark:bg-pine-900/80 border border-pine-500/20 flex items-center justify-between text-left">
+                            <div>
+                                <div class="text-[11px] font-mono uppercase text-pine-700 dark:text-pine-300 font-bold">Target Impian Kamu</div>
+                                <div class="text-sm font-bold text-pine-900 dark:text-white">Lolos UI, ITB, UGM, ITS, Unpad...</div>
+                            </div>
+                            <span class="px-3 py-1.5 rounded-lg bg-pine-500 text-white font-mono text-xs font-bold border border-pine-500/40">
+                                SKOR 700+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="about" class="py-20 border-t border-pine-500/20 dark:border-pine-300/15 bg-pine-500/5 dark:bg-pine-900/40 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="font-mono text-xs uppercase tracking-widest text-pine-700 dark:text-pine-300 font-bold block mb-2">// WADAH BELAJAR INTENSIF UTBK</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-pine-900 dark:text-white">Apa itu Study With Mbah?</h2>
+                    <p class="text-pine-800 dark:text-pine-300 mt-4 leading-relaxed text-base sm:text-lg font-medium">
+                        <strong class="text-pine-900 dark:text-white font-extrabold">Study With Mbah</strong> adalah wadah belajar intensif khusus untuk persiapan SNBT. Kami memadukan materi terstruktur dengan pendekatan yang ramah. Bersama maskot kebanggaan kita, <strong class="text-pine-900 dark:text-white font-extrabold">'Mbah' (Kucing Berbusana Adat Jawa)</strong>, belajar tidak lagi menegangkan, tapi jadi rutinitas yang menyenangkan.
+                    </p>
+                </div>
+
+                <!-- 3 Pillars Grid -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    
+                    <div class="glass-card rounded-2xl p-8 hover:border-pine-500 transition-all hover:-translate-y-1 group">
+                        <div class="w-14 h-14 rounded-2xl bg-pine-500/10 border border-pine-500/30 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                            🌱
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-pine-900 dark:text-pine-100">Konsep Sebelum Trik</h3>
+                        <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
+                            Pantang mengajarkan cara cepat sebelum kamu paham akar rumput konsep materinya. Sekali nalar terbentuk, variasi soal apa pun pasti bisa dilibas!
+                        </p>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-8 hover:border-jawa-amber transition-all hover:-translate-y-1 group">
+                        <div class="w-14 h-14 rounded-2xl bg-jawa-amber/10 border border-jawa-amber/30 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                            🧠
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-jawa-amber dark:text-jawa-gold">Pendekatan Psikologis</h3>
+                        <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
+                            Dukungan mental dan motivasi rutin agar tidak <em>burnout</em> selama masa persiapan UTBK. Kesehatan mentalmu sama pentingnya dengan materi pelajaran.
+                        </p>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-8 hover:border-pine-300 transition-all hover:-translate-y-1 group">
+                        <div class="w-14 h-14 rounded-2xl bg-pine-300/20 border border-pine-300/40 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                            🤝
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-pine-700 dark:text-pine-300">Komunitas Suportif</h3>
+                        <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
+                            Grup diskusi 24/7 tempat kamu bisa bertanya soal sulit dan dibantu oleh teman maupun mentor tanpa takut di-judge.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="fundamental" class="py-20 border-t border-pine-500/20 dark:border-pine-300/15">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="font-mono text-xs uppercase tracking-widest text-pine-700 dark:text-pine-300 font-bold block mb-2">// FONDASI SKOR MAKSIMAL</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-pine-900 dark:text-white">4 Materi Fundamental</h2>
+                    <p class="text-pine-800 dark:text-pine-300 mt-4 leading-relaxed font-semibold">
+                        Kuasai empat pilar utama ini sebelum melangkah ke soal campuran. Fondasi kuat, skor melesat!
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Card 1: Logika -->
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-500 flex flex-col justify-between hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('Logika', 'Materi Penalaran & Pemecahan Masalah Kritis', 'Fokus pada pemecahan masalah kritis, silogisme, dan penalaran deduktif/induktif.', ['Silogisme', 'Analogi Logika', 'Penalaran Induktif', 'Penalaran Kuantitatif'])">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-xl bg-pine-500/20 text-pine-900 dark:text-pine-100 font-extrabold flex items-center justify-center text-xl">01</span>
+                                <span class="text-xs font-mono text-pine-700 dark:text-pine-300 font-bold">Pilar #1</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 dark:group-hover:text-pine-300 transition-colors">Logika</h3>
+                            <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
+                                Fokus pada pemecahan masalah kritis, silogisme, dan penalaran deduktif/induktif.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-pine-700 dark:text-pine-300">
+                            <span>Pelajari Fondasi</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Matematika -->
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-jawa-amber flex flex-col justify-between hover:border-jawa-amber transition-all cursor-pointer group" onclick="openDetailModal('Matematika', 'Pemantapan Konsep Aljabar & Geometri', 'Pemantapan konsep dasar aljabar, aritmatika, dan geometri mulai dari nol besar.', ['Aljabar Dasar', 'Aritmatika Sosial', 'Geometri & Bangun', 'Persamaan Kuadrat'])">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-xl bg-jawa-amber/20 text-jawa-amber font-extrabold flex items-center justify-center text-xl">02</span>
+                                <span class="text-xs font-mono text-pine-700 dark:text-pine-300 font-bold">Pilar #2</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-pine-900 dark:text-white group-hover:text-jawa-amber transition-colors">Matematika</h3>
+                            <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
+                                Pemantapan konsep dasar aljabar, aritmatika, dan geometri mulai dari nol besar.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-jawa-amber">
+                            <span>Pelajari Fondasi</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: B. Indonesia -->
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pine-700 dark:border-t-pine-300 flex flex-col justify-between hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('B. Indonesia', 'EBI & Analisis Teks Panjang', 'Penguasaan EBI, struktur kalimat efektif, dan trik baca cepat untuk teks panjang.', ['Ejaan EBI', 'Kalimat Efektif', 'Gagasan Utama', 'Trik Baca Cepat'])">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-xl bg-pine-700/20 text-pine-900 dark:text-pine-100 font-extrabold flex items-center justify-center text-xl">03</span>
+                                <span class="text-xs font-mono text-pine-700 dark:text-pine-300 font-bold">Pilar #3</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">B. Indonesia</h3>
+                            <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
+                                Penguasaan EBI, struktur kalimat efektif, dan trik baca cepat untuk teks panjang.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-pine-700 dark:text-pine-300">
+                            <span>Pelajari Fondasi</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: B. Inggris -->
+                    <div class="glass-card rounded-2xl p-6 border-t-4 border-t-emerald-600 flex flex-col justify-between hover:border-emerald-500 transition-all cursor-pointer group" onclick="openDetailModal('B. Inggris', 'Reading Comprehension & Grammar', 'Membangun fondasi grammar dan reading comprehension yang kuat & terarah.', ['Main Idea & Context', 'Grammar Essentials', 'Vocabulary in Context', 'Inference Question'])">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-xl bg-emerald-600/20 text-emerald-800 dark:text-emerald-300 font-extrabold flex items-center justify-center text-xl">04</span>
+                                <span class="text-xs font-mono text-pine-700 dark:text-pine-300 font-bold">Pilar #4</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-pine-900 dark:text-white group-hover:text-emerald-600 transition-colors">B. Inggris</h3>
+                            <p class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed font-medium">
+                                Membangun fondasi grammar dan reading comprehension yang kuat & terarah.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-pine-500/20 dark:border-pine-300/15 flex items-center justify-between text-xs font-bold text-emerald-700 dark:text-emerald-300">
+                            <span>Pelajari Fondasi</span>
+                            <span>&rarr;</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="subtes" class="py-20 border-t border-pine-500/20 dark:border-pine-300/15 bg-pine-500/5 dark:bg-pine-900/40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pine-500/10 border border-pine-500/30 text-pine-800 dark:text-pine-300 font-mono text-xs font-bold mb-3">
+                        🎯 KURIKULUM LENGKAP BPPP
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-pine-900 dark:text-white">7 Subtes UTBK SNBT</h2>
+                    <p class="text-pine-800 dark:text-pine-300 mt-4 leading-relaxed font-semibold">
+                        Materi difokuskan pada penguasaan menyeluruh <strong class="text-pine-900 dark:text-white font-extrabold">Tes Potensi Skolastik (TPS)</strong> dan <strong class="text-pine-900 dark:text-white font-extrabold">Tes Literasi</strong> sesuai standar terbaru BPPP.
+                    </p>
+                </div>
+
+                <!-- Group 1: TPS -->
+                <div class="mb-12">
+                    <h3 class="text-xl font-bold text-pine-900 dark:text-pine-100 mb-6 flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-lg bg-pine-500/20 text-pine-900 dark:text-pine-100 border border-pine-500/30 font-mono text-sm">BAGIAN 1</span>
+                        <span>Tes Potensi Skolastik (TPS)</span>
+                    </h3>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <!-- Subtes 1 -->
+                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('1. Penalaran Umum', 'Subtes TPS', 'Induktif, deduktif, & kuantitatif untuk memecahkan masalah dengan logika.', ['Penalaran Induktif', 'Penalaran Deduktif', 'Penalaran Kuantitatif'])">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-pine-500/10 border border-pine-500/20 text-pine-800 dark:text-pine-300 font-bold block w-fit mb-3">Subtes #1</span>
+                            <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">Penalaran Umum</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                                Induktif, deduktif, & kuantitatif untuk memecahkan masalah dengan logika.
+                            </p>
+                        </div>
+
+                        <!-- Subtes 2 -->
+                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('2. Pengetahuan & Pemahaman Umum', 'Subtes TPS', 'Uji wawasan kognitif dan kemampuan memahami pesan tertulis secara umum.', ['Makna Kata', 'Sinonim & Antonim', 'Wawasan Kognitif'])">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-pine-500/10 border border-pine-500/20 text-pine-800 dark:text-pine-300 font-bold block w-fit mb-3">Subtes #2</span>
+                            <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">Pengetahuan & Pemahaman</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                                Uji wawasan kognitif dan kemampuan memahami pesan tertulis secara umum.
+                            </p>
+                        </div>
+
+                        <!-- Subtes 3 -->
+                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('3. Pemahaman Bacaan & Menulis (PBM)', 'Subtes TPS', 'Kelancaran membaca teks panjang dan menguasai kaidah penulisan yang tepat.', ['Ejaan Bahasa Indonesia', 'Konjungsi Kalimat', 'Paragraf Efektif'])">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-pine-500/10 border border-pine-500/20 text-pine-800 dark:text-pine-300 font-bold block w-fit mb-3">Subtes #3</span>
+                            <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">Pemahaman Bacaan (PBM)</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                                Kelancaran membaca teks panjang dan menguasai kaidah penulisan yang tepat.
+                            </p>
+                        </div>
+
+                        <!-- Subtes 4 -->
+                        <div class="glass-card rounded-2xl p-6 hover:border-pine-500 transition-all cursor-pointer group" onclick="openDetailModal('4. Pengetahuan Kuantitatif', 'Subtes TPS', 'Matematika dasar (aljabar, statistika, geometri) dengan trik hitung cepat.', ['Aljabar & Persamaan', 'Statistika Dasar', 'Geometri', 'Hitung Cepat'])">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-pine-500/10 border border-pine-500/20 text-pine-800 dark:text-pine-300 font-bold block w-fit mb-3">Subtes #4</span>
+                            <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-pine-500 transition-colors">Pengetahuan Kuantitatif</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                                Matematika dasar (aljabar, statistika, geometri) dengan trik hitung cepat.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Group 2: Literasi & Penalaran -->
+                <div>
+                    <h3 class="text-xl font-bold text-jawa-amber dark:text-jawa-gold mb-6 flex items-center gap-3">
+                        <span class="px-3 py-1 rounded-lg bg-jawa-amber/20 border border-jawa-amber/30 font-mono text-sm">BAGIAN 2</span>
+                        <span>Tes Literasi & Penalaran</span>
+                    </h3>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        
+                        <!-- Subtes 5 -->
+                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" onclick="openDetailModal('5. Literasi B. Indonesia', 'Subtes Literasi', 'Analisis teks kompleks, gagasan utama, dan kesimpulan kritis dari sastra/info.', ['Analisis Teks Kompleks', 'Gagasan Utama', 'Kesimpulan Kritis'])">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-jawa-amber/10 border border-jawa-amber/20 text-jawa-amber font-bold block w-fit mb-3">Subtes #5</span>
+                            <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-jawa-amber transition-colors">Literasi B. Indonesia</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                                Analisis teks kompleks, gagasan utama, dan kesimpulan kritis dari sastra/info.
+                            </p>
+                        </div>
+
+                        <!-- Subtes 6 -->
+                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" onclick="openDetailModal('6. Literasi B. Inggris', 'Subtes Literasi', 'Memahami argumen dan konteks teks akademik Inggris (reading skill focus).', ['Academic Reading', 'Argument Analysis', 'Tone & Purpose'])">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-jawa-amber/10 border border-jawa-amber/20 text-jawa-amber font-bold block w-fit mb-3">Subtes #6</span>
+                            <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-jawa-amber transition-colors">Literasi B. Inggris</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                                Memahami argumen dan konteks teks akademik Inggris (reading skill focus).
+                            </p>
+                        </div>
+
+                        <!-- Subtes 7 -->
+                        <div class="glass-card rounded-2xl p-6 hover:border-jawa-gold transition-all cursor-pointer group" onclick="openDetailModal('7. Penalaran Matematika', 'Subtes Literasi', 'Aplikasi konsep matematika dalam kehidupan nyata. Soal cerita HOTS butuh nalar tinggi.', ['Soal Cerita HOTS', 'Model Matematika Realistis', 'Analisis Grafik & Data'])">
+                            <span class="text-xs font-mono px-2.5 py-1 rounded bg-jawa-amber/10 border border-jawa-amber/20 text-jawa-amber font-bold block w-fit mb-3">Subtes #7</span>
+                            <h4 class="text-lg font-bold mb-2 text-pine-900 dark:text-white group-hover:text-jawa-amber transition-colors">Penalaran Matematika</h4>
+                            <p class="text-pine-800 dark:text-pine-300 text-xs sm:text-sm leading-relaxed font-medium">
+                                Aplikasi konsep matematika dalam kehidupan nyata. Soal cerita HOTS butuh nalar tinggi.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="quote" class="py-20 border-t border-pine-500/20 dark:border-pine-300/15 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="glass-card rounded-3xl p-8 sm:p-12 shadow-2xl relative">
+                    <span class="text-6xl text-pine-500 dark:text-pine-300 font-serif leading-none block mb-4">“</span>
+                    <blockquote class="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-pine-900 dark:text-white leading-snug">
+                        Belajar itu bukan tentang seberapa cepat kamu berlari, tapi seberapa kuat konsistensi yang bisa kamu pertahankan.
+                    </blockquote>
+                    <div class="mt-6 flex items-center justify-center gap-3">
+                        <div class="w-12 h-12 rounded-full border-2 border-pine-500 dark:border-pine-300 overflow-hidden bg-white flex items-center justify-center shadow-md">
+                            <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah Avatar" class="w-full h-full object-cover object-top scale-125 translate-y-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/235347/ffffff?text=Mbah';">
+                        </div>
+                        <div class="text-left">
+                            <div class="font-bold text-pine-900 dark:text-pine-100 text-sm">Tim StudyWithMbah</div>
+                            <div class="text-xs text-pine-700 dark:text-pine-300 font-semibold">Penyemangat Pejuang PTN Indonesia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="join" class="py-20 border-t border-pine-500/20 dark:border-pine-300/15 bg-pine-500/5 dark:bg-pine-900/40">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="glass-card rounded-3xl p-8 sm:p-12 border border-pine-500/30 relative overflow-hidden shadow-2xl">
+                    <div class="text-center max-w-3xl mx-auto mb-10">
+                        <span class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-pine-500/20 text-pine-900 dark:text-pine-100 border border-pine-500/30">
+                            JOIN THE PEJUANG PTN CIRCLE
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-pine-900 dark:text-white mt-4">Siap Berjuang Bersama?</h2>
+                        <p class="text-pine-800 dark:text-pine-300 text-sm sm:text-base leading-relaxed mt-3 font-semibold">
+                            Mari wujudkan mimpimu memakai jaket almamater PTN kebanggaan. Bergabunglah dengan komunitas kami dan dapatkan info materi & diskusi gratis!
+                        </p>
+                    </div>
+
+                    <!-- Social Channels Grid -->
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+                        
+                        <!-- Saluran WhatsApp -->
+                        <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" rel="noopener noreferrer" class="glass-card hover:bg-emerald-500/15 rounded-2xl p-5 border border-emerald-500/30 transition-all flex flex-col justify-between group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 flex items-center justify-center text-xl font-bold">
+                                    📱
+                                </div>
+                                <span class="text-[10px] font-mono uppercase text-emerald-800 dark:text-emerald-300 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">Resmi</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-pine-900 dark:text-white group-hover:text-emerald-600 transition-colors">Saluran WA</h4>
+                                <p class="text-pine-700 dark:text-pine-300 text-xs mt-1 font-medium">Update materi harian & info latihan soal SNBT.</p>
+                            </div>
+                        </a>
+
+                        <!-- Discord -->
+                        <a href="https://discord.gg/Sd2WvzFpM" target="_blank" rel="noopener noreferrer" class="glass-card hover:bg-indigo-500/15 rounded-2xl p-5 border border-indigo-500/30 transition-all flex flex-col justify-between group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xl font-bold">
+                                    💬
+                                </div>
+                                <span class="text-[10px] font-mono uppercase text-indigo-800 dark:text-indigo-300 font-bold bg-indigo-500/10 px-2 py-0.5 rounded">Grup Live</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-pine-900 dark:text-white group-hover:text-indigo-600 transition-colors">Discord Server</h4>
+                                <p class="text-pine-700 dark:text-pine-300 text-xs mt-1 font-medium">Tempat bedah soal 24/7 & voice study room.</p>
+                            </div>
+                        </a>
+
+                        <!-- TikTok -->
+                        <a href="https://tiktok.com/@studywithmbah" target="_blank" rel="noopener noreferrer" class="glass-card hover:bg-pink-500/15 rounded-2xl p-5 border border-pink-500/30 transition-all flex flex-col justify-between group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-700 dark:text-pink-300 flex items-center justify-center text-xl font-bold">
+                                    🎵
+                                </div>
+                                <span class="text-[10px] font-mono uppercase text-pink-800 dark:text-pink-300 font-bold bg-pink-500/10 px-2 py-0.5 rounded">Konten Edisi</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-pine-900 dark:text-white group-hover:text-pink-600 transition-colors">TikTok Mbah</h4>
+                                <p class="text-pine-700 dark:text-pine-300 text-xs mt-1 font-medium">Micro-learning 1 menit & pembahasan kilat.</p>
+                            </div>
+                        </a>
+
+                        <!-- X (Twitter) -->
+                        <a href="https://x.com/StudyWithMbah" target="_blank" rel="noopener noreferrer" class="glass-card hover:bg-cyan-500/15 rounded-2xl p-5 border border-cyan-500/30 transition-all flex flex-col justify-between group">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-xl font-bold">
+                                    🐦
+                                </div>
+                                <span class="text-[10px] font-mono uppercase text-cyan-800 dark:text-cyan-300 font-bold bg-cyan-500/10 px-2 py-0.5 rounded">Thread SOAL</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-pine-900 dark:text-white group-hover:text-cyan-600 transition-colors">X (Twitter)</h4>
+                                <p class="text-pine-700 dark:text-pine-300 text-xs mt-1 font-medium">Thread tips SNBT, latihan harian, & info PTN.</p>
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <!-- Quick Registration Form -->
+                    <form id="join-form" onsubmit="handleJoinSubmit(event)" class="bg-white/90 dark:bg-pine-900/90 p-6 sm:p-8 rounded-2xl border border-pine-500/20 max-w-2xl mx-auto space-y-4 shadow-lg">
+                        <h4 class="text-center font-extrabold text-base text-pine-900 dark:text-white">Dapatkan Starter Kit UTBK & Notifikasi Drill Soal</h4>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-pine-800 dark:text-pine-300 mb-1.5">Nama Panggilan</label>
+                                <input type="text" required placeholder="Contoh: Andi Pejuang UI" class="w-full bg-pine-50/50 dark:bg-pine-800/50 border border-pine-500/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pine-500 transition-colors text-pine-900 dark:text-white placeholder-pine-400 font-medium">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-pine-800 dark:text-pine-300 mb-1.5">PTN Impian Utama</label>
+                                <input type="text" required placeholder="Contoh: UI / ITB / UGM / ITS" class="w-full bg-pine-50/50 dark:bg-pine-800/50 border border-pine-500/30 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-pine-500 transition-colors text-pine-900 dark:text-white placeholder-pine-400 font-medium">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-pine-700 via-pine-500 to-jawa-amber text-white font-bold py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all text-sm">
+                            🎓 Gabung Komunitas & Ambil Starter Kit Gratis
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-pine-500/20 dark:border-pine-300/15 relative z-10 bg-white dark:bg-pine-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:flex sm:items-center sm:justify-between">
+            <div class="flex items-center justify-center gap-3 mb-4 sm:mb-0">
+                <span class="text-2xl">🐱</span>
+                <span class="font-bold tracking-tight text-pine-900 dark:text-white">Study with Mbah</span>
+                <span class="text-xs font-mono font-bold text-pine-700 dark:text-pine-300 bg-pine-500/10 px-2 py-0.5 rounded border border-pine-500/20">UTBK SNBT 2026/2027</span>
+            </div>
+            <p class="text-xs text-pine-700 dark:text-pine-300 font-semibold">
+                © 2026 Komunitas Study with Mbah. Dibuat dengan 💚 untuk Pejuang PTN se-Indonesia.
+            </p>
+        </div>
+    </footer>
+
+    <div id="detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pine-900/60 dark:bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeDetailModal(event)">
+        <div class="glass-card max-w-lg w-full rounded-2xl p-6 sm:p-8 relative scale-95 transition-transform duration-300" id="modal-card">
+            <button onclick="closeDetailModalDirect()" class="absolute top-4 right-4 text-pine-700 dark:text-pine-300 hover:text-pine-900 dark:hover:text-white text-xl font-bold">&times;</button>
+            <span id="modal-badge" class="inline-block text-xs font-mono font-bold px-2.5 py-1 rounded bg-pine-500/20 text-pine-900 dark:text-pine-100 mb-2">Badge</span>
+            <h3 id="modal-title" class="text-2xl font-bold mb-3 text-pine-900 dark:text-white">Title</h3>
+            <p id="modal-desc" class="text-pine-800 dark:text-pine-300 text-sm leading-relaxed mb-6 font-medium">Description</p>
+            
+            <h4 class="text-xs font-bold uppercase tracking-wider text-pine-700 dark:text-pine-300 mb-3">Topik Utama yang Dipelajari:</h4>
+            <div id="modal-tags" class="flex flex-wrap gap-2 mb-8"></div>
+
+            <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" onclick="closeDetailModalDirect()" class="block w-full text-center bg-pine-500 hover:bg-pine-700 text-white font-bold py-3 rounded-xl transition-all">
+                Mulai Pelajari via Saluran WA & Discord
+            </a>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-white dark:bg-pine-800 border border-pine-500 text-pine-900 dark:text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300">
+        <span class="text-xl">✅</span>
+        <span id="toast-message" class="text-xs font-bold">Pesan berhasil dikirim!</span>
+    </div>
+
+    <script>
+        /* Canvas Animation Background with Palette Colors */
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Using Palette Colors (#235347, #8EB69B, #d97706)
+        const particleColors = ['#235347', '#8EB69B', '#d97706', '#163832'];
+        const particles = Array.from({ length: 45 }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * 2.5 + 1,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            color: particleColors[Math.floor(Math.random() * particleColors.length)]
+        }));
+
+        function drawCanvas() {
+            ctx.clearRect(0, 0, width, height);
+
+            particles.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = 0.4;
+                ctx.fill();
+
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = p.color;
+                        ctx.globalAlpha = (1 - dist / 120) * 0.15;
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            requestAnimationFrame(drawCanvas);
+        }
+        drawCanvas();
+
+        /* Theme Toggle Handler (Light <-> Dark) */
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            document.documentElement.classList.toggle('light');
+        });
+
+        /* Mobile Menu Handler */
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        /* Modal Functions */
+        function openDetailModal(title, badge, desc, tags) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-badge').innerText = badge;
+            document.getElementById('modal-desc').innerText = desc;
+            
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = tags.map(t => `<span class="px-3 py-1 rounded-lg text-xs font-mono font-semibold bg-pine-500/10 text-pine-900 dark:text-pine-100 border border-pine-500/20">${t}</span>`).join('');
+            
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.getElementById('modal-card').classList.remove('scale-95');
+        }
+
+        function closeDetailModal(e) {
+            if (e.target.id === 'detail-modal') {
+                closeDetailModalDirect();
+            }
+        }
+
+        function closeDetailModalDirect() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('modal-card').classList.add('scale-95');
+        }
+
+        /* Toast Handler */
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        /* Form Submission Handler */
+        function handleJoinSubmit(e) {
+            e.preventDefault();
+            showToast('Selamat bergabung! Silakan cek Saluran WA & Discord Mbah.');
+            e.target.reset();
+        }
+
+        /* Stats Counter Animation (Preserving target 6000) */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('[data-target]').forEach(counter => {
+                        const target = +counter.dataset.target;
+                        let count = 0;
+                        const inc = target / 50;
+                        const updateCount = () => {
+                            if (count < target) {
+                                count += inc;
+                                counter.innerText = Math.ceil(count).toLocaleString('id-ID') + '+';
+                                setTimeout(updateCount, 25);
+                            } else {
+                                counter.innerText = target.toLocaleString('id-ID') + '+';
+                            }
+                        };
+                        updateCount();
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(document.querySelector('#about'));
+    </script>
+</body>
+</html>
