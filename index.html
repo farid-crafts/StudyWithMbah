@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Study with Mbah — Premium Community</title>
+    
+    <link rel="icon" type="image/jpg" href="https://i.ibb.co.com/svN7crBV/image.jpg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        // Light Mode Colors (Playful)
+                        bgCream: '#F9EFE4',
+                        brutalPink: '#FF5C9D',
+                        brutalYellow: '#FFC83D',
+                        brutalBlue: '#84B4FF',
+                        brutalGreen: '#00D084',
+                        
+                        // Dark Mode Colors (Neubrutalism)
+                        neoDarkBg: '#111111',
+                        neoGreen: '#D5FF00',
+                        neoBlue: '#3B5AFE',
+                        neoOrange: '#FF6E00',
+                        neoPink: '#FF00FF',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ========================================================= */
+        /* GLOBAL ANIMATION & TRANSITIONS                            */
+        /* ========================================================= */
+        
+        body {
+            transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ANIMASI "GONG" PREMIUM - Bouncy Spring Cubic-Bezier */
+        .layout-anim {
+            transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        }
+
+        /* ========================================================= */
+        /* LIGHT MODE VARIABLES (Playful Brutalism)                  */
+        /* ========================================================= */
+        :root {
+            --bg-body: #F9EFE4;
+            --text-main: #111111;
+            --border-main: #111111;
+            --shadow-main: #111111;
+            --card-bg: #FFFFFF;
+        }
+
+        /* ========================================================= */
+        /* DARK MODE VARIABLES (Neubrutalism)                        */
+        /* ========================================================= */
+        .dark {
+            --bg-body: #111111;
+            --text-main: #111111;
+            --border-main: #111111;
+            --shadow-main: #D5FF00; /* Shadow warna hijau neon default dark */
+            --card-bg: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+        }
+
+        /* Brutalist Base */
+        .brutal-border { border: 3px solid var(--border-main); }
+        .brutal-shadow { box-shadow: 6px 6px 0px var(--shadow-main); }
+        .brutal-shadow-lg { box-shadow: 12px 12px 0px var(--shadow-main); }
+
+        /* SVG Drop Shadow untuk Partikel Melayang */
+        .svg-shadow {
+            filter: drop-shadow(5px 5px 0px var(--shadow-main));
+        }
+        .dark .svg-shadow-alt {
+            filter: drop-shadow(5px 5px 0px #FF6E00); /* Variasi shadow oranye */
+        }
+
+        .brutal-btn {
+            border: 3px solid var(--border-main);
+            box-shadow: 5px 5px 0px var(--shadow-main);
+            font-weight: 900;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+        
+        .brutal-btn:active {
+            transform: translate(5px, 5px) !important;
+            box-shadow: 0px 0px 0px var(--shadow-main) !important;
+        }
+
+        /* Hover efek independen */
+        .hover-lift:hover {
+            transform: translate(-4px, -4px) scale(1.02);
+            box-shadow: 10px 10px 0px var(--shadow-main);
+        }
+        
+        /* Highlight Teks Khusus Dark Mode */
+        .dark .neo-highlight {
+            background-color: #D5FF00;
+            padding: 0 10px;
+            border-radius: 8px;
+            border: 3px solid #111;
+            display: inline-block;
+            transform: rotate(-2deg);
+        }
+    </style>
+</head>
+<body class="antialiased relative selection:bg-neoGreen selection:text-black pt-4 sm:pt-8 px-4 sm:px-8 pb-10">
+
+<!-- ========================================================= -->
+<!-- HUD PARTIKEL BRUTALISM (Tetap di layar)                   -->
+<!-- Z-INDEX 0 (Di Belakang Card) & Z-INDEX 20 (Di Depan Card) -->
+<!-- ========================================================= -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    
+    <!-- [Z-20 DEPAN] Partikel 1: Bintang 4 Sudut -->
+    <svg class="layout-anim absolute z-20 w-16 h-16 text-brutalPink dark:text-neoGreen fill-current svg-shadow
+                left-[5%] top-[10%] rotate-12 scale-100
+                dark:left-[85%] dark:top-[25%] dark:-rotate-[60deg] dark:scale-[1.8]" viewBox="0 0 100 100">
+        <path d="M50 0 Q50 50 100 50 Q50 50 50 100 Q50 50 0 50 Q50 50 50 0 Z"/>
+    </svg>
+
+    <!-- [Z-0 BELAKANG] Partikel 2: Tanda Tambah / Cross -->
+    <svg class="layout-anim absolute z-0 w-24 h-24 text-brutalYellow dark:text-neoBlue fill-current svg-shadow dark:svg-shadow-alt
+                right-[10%] top-[15%] rotate-45 scale-100
+                dark:right-[15%] dark:top-[85%] dark:rotate-180 dark:scale-75" viewBox="0 0 100 100">
+        <path d="M35 15 H65 V35 H85 V65 H65 V85 H35 V65 H15 V35 H35 Z" stroke="var(--border-main)" stroke-width="4"/>
+    </svg>
+
+    <!-- [Z-0 BELAKANG] Partikel 3: Dot Grid Transparan -->
+    <div class="layout-anim absolute z-0 w-40 h-40 opacity-30 dark:opacity-60
+                left-[85%] top-[55%] rotate-6
+                dark:left-[2%] dark:top-[40%] dark:-rotate-12 dark:scale-125"
+         style="background-image: radial-gradient(var(--border-main) 4px, transparent 5px); background-size: 20px 20px;">
+    </div>
+
+    <!-- [Z-20 DEPAN] Partikel 4: Zigzag/Gelombang -->
+    <svg class="layout-anim absolute z-20 w-28 h-14 text-brutalGreen dark:text-neoOrange svg-shadow
+                left-[12%] bottom-[12%] rotate-12
+                dark:left-[55%] dark:top-[8%] dark:bottom-auto dark:-rotate-12 dark:scale-[1.3]" 
+         viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter">
+        <path d="M0 20 L15 5 L35 25 L55 5 L75 25 L95 5" />
+        <path d="M0 35 L15 20 L35 40 L55 20 L75 40 L95 20" />
+    </svg>
+
+    <!-- [Z-0 BELAKANG] Partikel 5: Bunga / Semanggi -->
+    <svg class="layout-anim absolute z-0 w-24 h-24 text-white dark:text-neoPink fill-current svg-shadow
+                left-[40%] top-[85%] -rotate-12
+                dark:left-[8%] dark:top-[12%] dark:rotate-[110deg] dark:scale-125" viewBox="0 0 100 100">
+         <path d="M50 15 A 18 18 0 1 1 70 50 A 18 18 0 1 1 50 85 A 18 18 0 1 1 30 50 A 18 18 0 1 1 50 15 Z" stroke="var(--border-main)" stroke-width="5"/>
+    </svg>
+
+    <!-- [Z-0 BELAKANG] Partikel 6: Setengah Lingkaran (Pie) -->
+    <div class="layout-anim absolute z-0 w-24 h-12 bg-brutalBlue dark:bg-neoOrange border-[3px] border-[var(--border-main)] shadow-[5px_5px_0_var(--border-main)]
+                right-[20%] bottom-[15%] rotate-[-25deg] 
+                dark:right-[45%] dark:top-[90%] dark:bottom-auto dark:rotate-[155deg] dark:scale-150"
+         style="border-top-left-radius: 60px; border-top-right-radius: 60px;">
+    </div>
+
+    <!-- [Z-20 DEPAN] Partikel 7: Segitiga -->
+    <svg class="layout-anim absolute z-20 w-16 h-16 text-brutalPink dark:text-neoBlue fill-current svg-shadow
+                left-[30%] top-[3%] rotate-[15deg]
+                dark:left-[75%] dark:top-[50%] dark:-rotate-[45deg] dark:scale-150" viewBox="0 0 100 100">
+         <polygon points="50,15 90,85 10,85" stroke="var(--border-main)" stroke-width="6" stroke-linejoin="round" />
+    </svg>
+    
+    <!-- [Z-0 BELAKANG] Partikel 8: Bentuk Mata/Daun -->
+    <svg class="layout-anim absolute z-0 w-20 h-20 text-brutalYellow dark:text-white fill-current svg-shadow dark:svg-shadow-alt
+                right-[5%] top-[55%] rotate-[-15deg]
+                dark:right-[25%] dark:top-[18%] dark:rotate-[75deg] dark:scale-[1.1]" viewBox="0 0 100 100">
+         <path d="M10 50 Q50 10 90 50 Q50 90 10 50 Z" stroke="var(--border-main)" stroke-width="5" />
+    </svg>
+</div>
+
+<!-- ========================================================= -->
+<!-- KONTAINER UTAMA KONTEN                                    -->
+<!-- ========================================================= -->
+<div class="layout-anim max-w-[1400px] mx-auto bg-[var(--card-bg)] brutal-border rounded-[2rem] sm:rounded-[3rem] brutal-shadow-lg relative z-10 flex flex-col min-h-[90vh]
+            dark:bg-neoBlue dark:border-4 dark:shadow-[15px_15px_0px_#D5FF00] dark:p-4">
+
+    <!-- Navbar -->
+    <nav class="layout-anim w-full px-6 sm:px-12 py-6 flex items-center justify-between border-b-[3px] border-[var(--border-main)] dark:bg-white dark:rounded-[2.5rem] dark:border-4">
+        <a href="#" onclick="showLandingView(); return false;" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden brutal-border">
+                <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah" class="w-full h-full object-cover">
+            </div>
+            <span class="font-black tracking-tight text-xl hidden sm:block dark:text-[#111]">studywith.mbah</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-black uppercase tracking-wider dark:text-[#111]">
+            <a href="#fundamental" onclick="showLandingView()" class="hover:text-brutalPink dark:hover:text-neoBlue transition-colors">Fundamental</a>
+            <a href="#subtes" onclick="showLandingView()" class="hover:text-brutalBlue dark:hover:text-neoOrange transition-colors">7 Subtes</a>
+            <a href="#alt4" onclick="showLandingView()" class="hover:text-brutalYellow dark:hover:text-neoGreen transition-colors">Program ALT</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <!-- Tombol Toggle Mode Gelap/Terang -->
+            <button id="theme-toggle" class="layout-anim p-3 brutal-border rounded-full hover-lift bg-brutalYellow text-[#111] dark:bg-neoGreen">
+                <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+            <a href="#join" onclick="showLandingView()" class="layout-anim brutal-btn bg-[#111] text-white dark:bg-neoOrange dark:text-[#111] px-6 py-3 rounded-full text-sm hover-lift">Join Komunitas</a>
+        </div>
+    </nav>
+
+    <!-- CONTENT AREA -->
+    <main class="w-full flex-grow flex flex-col items-center">
+        
+        <!-- LANDING VIEW -->
+        <div id="landing-view" class="w-full">
+            
+            <!-- ========================================================= -->
+            <!-- HERO SECTION (FIX: Menghapus overflow-hidden agar tombol tidak kepotong) -->
+            <!-- ========================================================= -->
+            <section class="w-full relative min-h-[750px] lg:min-h-[600px] mb-10">
+                
+                <!-- Teks Hero -->
+                <div class="layout-anim absolute z-10 flex flex-col 
+                            left-6 sm:left-16 top-[10%] lg:top-[20%] w-[90%] lg:w-[45%] text-left
+                            dark:left-1/2 dark:-translate-x-1/2 dark:top-[8%] dark:w-[90%] dark:lg:w-[70%] dark:text-center dark:-rotate-2 dark:bg-white dark:brutal-border dark:p-10 dark:rounded-[3rem] dark:shadow-[12px_12px_0px_#111]">
+                    
+                    <p class="layout-anim font-bold text-lg mb-4 dark:text-[#111] dark:font-black dark:text-xl dark:uppercase">Halo, selamat datang di markas besar.</p>
+                    
+                    <h1 class="layout-anim text-6xl sm:text-7xl md:text-[5.5rem] font-black tracking-tighter leading-[0.95] mb-6 uppercase dark:text-[#111]">
+                        <span class="layout-anim dark:neo-highlight">TEMBUS PTN.</span><br>
+                        <span class="layout-anim text-[#111] dark:text-[#111] dark:mt-4 dark:inline-block" style="text-shadow: 4px 4px 0px var(--border-main); -webkit-text-stroke: 2px var(--border-main); color: transparent;">BERSAMA MBAH.</span>
+                    </h1>
+                    
+                    <p class="layout-anim text-lg sm:text-xl font-bold leading-relaxed mb-10 max-w-lg opacity-90 dark:text-[#111] dark:mx-auto">
+                        Komunitas belajar intensif UTBK SNBT. Tidak mengandalkan hafal rumus, tetapi belajarlah dengan cara yang cerdas, fokus, dan konsisten.
+                    </p>
+                    
+                    <div class="layout-anim flex flex-wrap gap-4 dark:justify-center">
+                        <a href="#join" class="layout-anim brutal-btn bg-brutalYellow text-[#111] px-8 py-4 rounded-full text-lg hover-lift dark:bg-neoGreen dark:rounded-xl">
+                            Mulai Belajar →
+                        </a>
+                        <a href="#fundamental" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-4 rounded-full text-lg hover-lift dark:bg-white dark:rounded-xl">
+                            Lihat Modul
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gambar Hero -->
+                <div class="layout-anim absolute z-0 flex justify-center items-center
+                            right-6 sm:right-16 top-[55%] lg:top-[15%] w-[85%] sm:w-[60%] lg:w-[40%]
+                            dark:left-1/2 dark:-translate-x-1/2 dark:top-[65%] dark:lg:top-[58%] dark:w-[80%] dark:lg:w-[50%] dark:rotate-3">
+                    
+                    <!-- Dekorasi Teks (Maju Siap UTBK) -->
+                    <div class="layout-anim absolute -left-4 bottom-10 z-20 w-max brutal-border brutal-shadow bg-[#111] text-white px-5 py-3 rounded-full font-black text-sm
+                                dark:bg-neoOrange dark:text-[#111] dark:scale-[1.15] dark:-bottom-8 dark:left-10">
+                        ▶ 100% Siap UTBK
+                    </div>
+
+                    <!-- Wadah Foto Profil -->
+                    <div class="layout-anim w-full h-[350px] sm:h-[450px] bg-brutalPink brutal-border brutal-shadow-lg rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl overflow-hidden relative
+                                dark:bg-neoGreen dark:rounded-[3rem] dark:h-[300px] dark:lg:h-[350px]">
+                        <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah" class="w-full h-full object-cover opacity-90 mix-blend-multiply grayscale">
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Bagian Fundamental (Cards dgn Ikon) -->
+            <section id="fundamental" class="w-full px-6 sm:px-16 py-24 dark:bg-neoDarkBg layout-anim dark:rounded-[3rem] dark:mt-16 dark:text-white border-t-[3px] border-[var(--border-main)] dark:border-none">
+                <div class="text-center mb-16 relative">
+                    <span class="text-sm font-black uppercase tracking-widest mb-2 block dark:text-neoGreen">Pondasi Belajar</span>
+                    <h2 class="layout-anim text-5xl font-black tracking-tighter uppercase relative inline-block z-10 dark:bg-neoOrange dark:text-[#111] dark:px-6 dark:py-3 dark:rotate-[-2deg] dark:brutal-border">
+                        4 Fundamental
+                        <div class="layout-anim absolute -bottom-2 -right-4 w-full h-4 bg-brutalGreen -z-10 dark:opacity-0"></div>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Card 1 -->
+                    <div class="layout-anim bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer
+                                dark:rotate-[-3deg] dark:translate-y-4" onclick="openDetailModal('logika-fundamental')">
+                        <div class="w-16 h-16 brutal-border rounded-2xl bg-brutalBlue flex items-center justify-center mb-6 brutal-shadow dark:bg-neoBlue">
+                            <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 text-[#111]">Logika</h3>
+                        <p class="font-bold text-sm mb-6 flex-grow text-[#111]">Pemecahan masalah kritis, silogisme, dan penalaran induktif.</p>
+                        <div class="w-full border-t-[3px] border-[var(--border-main)] pt-4 font-black text-sm text-[#111]">Pelajari Modul →</div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="layout-anim bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer
+                                dark:rotate-[2deg] dark:-translate-y-2" onclick="openDetailModal('matematika-fundamental')">
+                        <div class="w-16 h-16 brutal-border rounded-2xl bg-[#00D084] flex items-center justify-center mb-6 brutal-shadow dark:bg-neoGreen">
+                            <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 text-[#111]">Matematika</h3>
+                        <p class="font-bold text-sm mb-6 flex-grow text-[#111]">Pemantapan konsep aljabar, aritmatika, geometri dari nol.</p>
+                        <div class="w-full border-t-[3px] border-[var(--border-main)] pt-4 font-black text-sm text-[#111]">Pelajari Modul →</div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="layout-anim bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer
+                                dark:-rotate-[2deg] dark:translate-y-2" onclick="openDetailModal('indonesia-fundamental')">
+                        <div class="w-16 h-16 brutal-border rounded-2xl bg-brutalPink flex items-center justify-center mb-6 brutal-shadow dark:bg-neoOrange">
+                            <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 text-[#111]">B. Indonesia</h3>
+                        <p class="font-bold text-sm mb-6 flex-grow text-[#111]">Penguasaan EBI, struktur kalimat, dan trik baca cepat.</p>
+                        <div class="w-full border-t-[3px] border-[var(--border-main)] pt-4 font-black text-sm text-[#111]">Pelajari Modul →</div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="layout-anim bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer
+                                dark:rotate-[3deg] dark:translate-y-6" onclick="openDetailModal('inggris-fundamental')">
+                        <div class="w-16 h-16 brutal-border rounded-2xl bg-brutalYellow flex items-center justify-center mb-6 brutal-shadow dark:bg-neoBlue">
+                            <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black mb-3 text-[#111]">B. Inggris</h3>
+                        <p class="font-bold text-sm mb-6 flex-grow text-[#111]">Pondasi grammar dan reading comprehension terarah.</p>
+                        <div class="w-full border-t-[3px] border-[var(--border-main)] pt-4 font-black text-sm text-[#111]">Pelajari Modul →</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Bagian 7 Subtes -->
+            <section id="subtes" class="w-full px-6 sm:px-16 py-24 border-t-[3px] border-[var(--border-main)] dark:bg-neoDarkBg dark:border-none">
+                <div class="text-center mb-16 relative">
+                    <span class="text-sm font-black uppercase tracking-widest mb-2 block dark:text-neoBlue">Materi Ujian UTBK</span>
+                    <h2 class="layout-anim text-5xl font-black tracking-tighter uppercase relative inline-block z-10 dark:bg-neoGreen dark:text-[#111] dark:px-6 dark:py-3 dark:rotate-[2deg] dark:brutal-border">
+                        7 Subtes UTBK
+                        <div class="layout-anim absolute -bottom-2 left-0 w-full h-4 bg-brutalBlue -z-10 dark:opacity-0"></div>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    
+                    <div class="layout-anim md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:rotate-1" onclick="openDetailModal('pu-subtest')">
+                        <div class="mb-8">
+                            <span class="bg-[#111] text-white px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full dark:bg-neoOrange dark:text-[#111] dark:brutal-border">Kategori TPS</span>
+                            <h3 class="text-3xl font-black mb-2 uppercase text-[#111]">Penalaran Umum</h3>
+                            <p class="font-bold text-[#111]">Induktif, deduktif, & kuantitatif.</p>
+                        </div>
+                        <div class="font-black text-sm uppercase tracking-widest text-[#111]">Buka Materi →</div>
+                    </div>
+
+                    <div class="layout-anim md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:-rotate-1" onclick="openDetailModal('ppu-subtest')">
+                        <div class="mb-8">
+                            <span class="bg-[#111] text-white px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full dark:bg-neoBlue dark:brutal-border">Kategori TPS</span>
+                            <h3 class="text-3xl font-black mb-2 uppercase text-[#111]">Pengetahuan Umum</h3>
+                            <p class="font-bold text-[#111]">Wawasan kognitif dan makna pesan.</p>
+                        </div>
+                        <div class="font-black text-sm uppercase tracking-widest text-[#111]">Buka Materi →</div>
+                    </div>
+
+                    <div class="layout-anim md:col-span-1 bg-brutalPink text-[#111] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:bg-neoOrange dark:scale-105" onclick="openDetailModal('pbm-subtest')">
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-black mb-2 uppercase">Pemahaman Bacaan & Menulis</h3>
+                        </div>
+                        <div class="font-black text-sm uppercase tracking-widest border-t-[3px] border-[#111] pt-4">Buka Materi →</div>
+                    </div>
+
+                    <!-- Highlighted Subtest -->
+                    <div class="layout-anim md:col-span-3 bg-brutalYellow text-[#111] brutal-border hover-lift rounded-3xl p-8 sm:p-12 flex flex-col justify-between cursor-pointer relative overflow-hidden dark:bg-white dark:-rotate-2 dark:shadow-[12px_12px_0px_#3B5AFE]" onclick="openDetailModal('pk-subtest')">
+                        <div class="absolute -right-6 -top-6 text-[10rem] opacity-20 dark:text-neoGreen dark:opacity-100">✦</div>
+                        <div class="mb-6 relative z-10">
+                            <span class="bg-white text-[#111] brutal-border px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full dark:bg-neoGreen">Subtes Paling Krusial</span>
+                            <h3 class="layout-anim text-4xl sm:text-5xl font-black mb-4 uppercase dark:neo-highlight dark:rotate-1 dark:mb-6">Pengetahuan Kuantitatif</h3>
+                            <p class="font-bold text-lg max-w-lg mt-2">Berpikir matematis menggunakan data dan probabilitas yang sangat menentukan kelulusan.</p>
+                        </div>
+                        <div class="font-black text-lg uppercase tracking-widest relative z-10 border-t-[3px] border-[#111] pt-4">Buka Modul Premium →</div>
+                    </div>
+
+                    <div class="layout-anim md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:translate-y-4" onclick="openDetailModal('lit-indo-subtest')">
+                        <div class="mb-8">
+                            <span class="border-[3px] border-[#111] text-[#111] px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full">LITERASI</span>
+                            <h3 class="text-3xl font-black mb-2 uppercase text-[#111]">Literasi B. Indonesia</h3>
+                        </div>
+                        <div class="font-black text-sm uppercase tracking-widest text-[#111]">Buka Materi →</div>
+                    </div>
+
+                    <div class="layout-anim md:col-span-1 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:-translate-y-2" onclick="openDetailModal('lit-inggris-subtest')">
+                        <div class="mb-8">
+                            <span class="border-[3px] border-[#111] text-[#111] px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full">LITERASI</span>
+                            <h3 class="text-2xl font-black mb-2 uppercase text-[#111]">Lit. B. Inggris</h3>
+                        </div>
+                        <div class="font-black text-sm uppercase tracking-widest text-[#111]">Buka Materi →</div>
+                    </div>
+
+                    <div class="layout-anim md:col-span-1 bg-[#A67CFF] text-[#111] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:bg-neoBlue" onclick="openDetailModal('pm-subtest')">
+                        <div class="mb-8">
+                            <span class="bg-white text-[#111] brutal-border px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full">LITERASI</span>
+                            <h3 class="text-2xl font-black mb-2 uppercase">Penalaran MTK</h3>
+                        </div>
+                        <div class="font-black text-sm uppercase tracking-widest border-t-[3px] border-[#111] pt-4">Buka Materi →</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- SEKSI: PROGRAM ALT 4.0 -->
+            <section id="alt4" class="w-full px-6 sm:px-16 py-24 bg-[var(--bg-body)] border-y-[3px] border-[var(--border-main)] dark:bg-neoDarkBg dark:border-none">
+                <div class="layout-anim bg-brutalBlue text-[#111] brutal-border rounded-[2.5rem] p-10 sm:p-16 brutal-shadow-lg relative overflow-hidden
+                            dark:bg-white dark:rotate-[2deg] dark:shadow-[15px_15px_0px_#FF6E00]">
+                    
+                    <!-- Dekorasi Lingkaran/Bentuk -->
+                    <div class="layout-anim absolute -top-32 -right-32 w-80 h-80 bg-brutalPink rounded-full brutal-border dark:bg-neoGreen dark:rounded-[3rem] dark:rotate-45"></div>
+
+                    <div class="relative z-10">
+                        <h2 class="text-5xl sm:text-7xl font-black tracking-tighter mb-4 uppercase">
+                            Daftar <span class="bg-white text-[#111] px-4 py-1 brutal-border inline-block rotate-3 mt-2 sm:mt-0 dark:bg-neoOrange">ALT 4.0</span>
+                        </h2>
+                        <p class="font-bold text-xl mb-12 max-w-3xl mt-6">
+                            Program bimbingan intensif persiapan UTBK bersama Alternatifa Batch 2. Gunakan kode diskon di bawah ini untuk mendapatkan potongan harga spesial!
+                        </p>
+                        
+                        <div class="bg-white brutal-border px-8 py-5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-12 w-max brutal-shadow dark:bg-neoBlue dark:text-white">
+                            <span class="text-sm font-black uppercase tracking-widest">KODE DISKON:</span>
+                            <span class="text-4xl font-black tracking-wider text-brutalPink dark:text-neoGreen select-all cursor-pointer">ALT-AYOPTN</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://www.alternatifa.com/" target="_blank" class="layout-anim brutal-btn bg-[#111] text-white px-8 py-5 text-xl rounded-2xl hover:bg-white hover:text-[#111] dark:hover:bg-neoOrange dark:hover:text-[#111]">
+                                Daftar Sekarang →
+                            </a>
+                            <a href="https://canva.link/ytl8sflsy6pptq4" target="_blank" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-5 text-xl rounded-2xl hover-lift dark:bg-[#111] dark:text-white">
+                                Tutorial Daftar
+                            </a>
+                            <a href="https://canva.link/xt097zfvjzq84rp" target="_blank" class="layout-anim brutal-btn bg-brutalYellow text-[#111] px-8 py-5 text-xl rounded-2xl hover-lift dark:bg-neoGreen dark:text-[#111]">
+                                Program Overview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Join CTA Footer -->
+            <section id="join" class="w-full px-6 py-32 text-center flex flex-col items-center dark:bg-neoDarkBg">
+                <h2 class="text-6xl sm:text-[7rem] font-black tracking-tighter uppercase mb-20 relative dark:text-white">
+                    JOIN THE<br>
+                    <span class="layout-anim text-[#00D084] dark:text-neoGreen dark:neo-highlight dark:-rotate-3 dark:mt-6 dark:inline-block" style="text-shadow: 6px 6px 0px var(--border-main); -webkit-text-stroke: 3px var(--border-main);">COMMUNITY</span>
+                </h2>
+                
+                <div class="flex flex-wrap justify-center gap-4 max-w-4xl relative z-20">
+                    <a href="https://discord.gg/Sd2WvzFpM" target="_blank" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-5 rounded-full text-lg hover-lift dark:bg-neoBlue">Discord Server</a>
+                    <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" class="layout-anim brutal-btn bg-[#00D084] text-[#111] px-8 py-5 rounded-full text-lg hover-lift dark:bg-neoGreen">WhatsApp</a>
+                    <a href="https://tiktok.com/@studywithmbah" target="_blank" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-5 rounded-full text-lg hover-lift dark:bg-white">TikTok</a>
+                    <a href="https://x.com/StudyWithMbah" target="_blank" class="layout-anim brutal-btn bg-[#111] text-white px-8 py-5 rounded-full text-lg hover-lift dark:bg-neoOrange dark:text-[#111]">Twitter / X</a>
+                </div>
+
+                <p class="mt-32 font-black text-sm tracking-widest uppercase opacity-70 dark:text-white">© 2026 Study with Mbah. Engineered for greatness.</p>
+            </section>
+
+        </div>
+
+        <!-- DYNAMIC SUBTEST VIEW -->
+        <div id="subtest-view" class="hidden w-full px-6 sm:px-16 py-16 dark:bg-neoDarkBg layout-anim dark:rounded-[3rem] dark:mt-10">
+            <button onclick="showLandingView()" class="layout-anim brutal-btn bg-white text-[#111] px-6 py-4 rounded-full mb-12 text-base font-black hover-lift dark:bg-neoOrange">
+                ← Kembali ke Beranda
+            </button>
+            <div id="subtest-content" class="w-full"></div>
+        </div>
+
+    </main>
+</div>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/6285185731236" target="_blank" class="layout-anim fixed bottom-6 right-6 sm:bottom-10 sm:right-10 z-[100] brutal-btn bg-[#00D084] text-[#111] px-6 py-5 rounded-full flex items-center gap-3 hover-lift dark:bg-neoGreen dark:scale-110">
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="hidden sm:block font-black text-sm uppercase">Chat Mbah</span>
+</a>
+
+<!-- BRUTALIST MODAL POPUP -->
+<div id="rich-modal" class="layout-anim fixed inset-0 z-[110] flex items-center justify-center p-4 bg-[var(--text-main)] bg-opacity-80 opacity-0 pointer-events-none dark:bg-neoDarkBg dark:bg-opacity-95" onclick="closeRichModal(event)">
+    <div class="layout-anim bg-white brutal-border brutal-shadow-lg max-w-xl w-full p-10 sm:p-14 rounded-[2.5rem] scale-95
+                dark:bg-neoBlue dark:border-4 dark:shadow-[15px_15px_0px_#D5FF00] dark:-rotate-2" id="modal-rich-card">
+        <button onclick="closeRichModalDirect()" class="absolute top-6 right-6 font-black text-3xl w-14 h-14 brutal-border hover-lift rounded-full bg-brutalPink text-[#111] flex items-center justify-center pb-2 dark:bg-neoOrange">&times;</button>
+        
+        <h3 id="rm-title" class="text-4xl sm:text-5xl font-black tracking-tighter mb-4 mt-2 uppercase text-[#111] dark:text-white">Title</h3>
+        <p id="rm-subtitle" class="font-black text-sm mb-6 px-5 py-2.5 brutal-border rounded-full bg-brutalYellow text-[#111] inline-block uppercase dark:bg-neoGreen"></p>
+        <p id="rm-desc" class="font-bold text-lg leading-relaxed mb-12 border-l-[4px] border-[var(--border-main)] pl-5 opacity-90 text-[#111] dark:text-white dark:border-white">Desc</p>
+        
+        <button id="rm-btn-page" class="w-full brutal-btn bg-[#111] text-white py-5 rounded-2xl text-xl hover-lift dark:bg-neoGreen dark:text-[#111]">Pelajari Modul Ini →</button>
+    </div>
+</div>
+
+<script>
+    function hideAllViews() {
+        ['landing-view', 'subtest-view'].forEach(id => {
+            document.getElementById(id).classList.add('hidden');
+        });
+    }
+
+    function showLandingView() { hideAllViews(); document.getElementById('landing-view').classList.remove('hidden'); window.scrollTo({top:0, behavior:'smooth'}); }
+
+    // Toggle Theme (Memicu animasi "Gong" Layout Realtime)
+    const themeBtn = document.getElementById('theme-toggle');
+    themeBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        document.documentElement.classList.toggle('light');
+    });
+
+    const subtestData = {
+        'logika-fundamental': { title: 'Logika', subtitle: 'Penalaran & Kritis', description: 'Dirancang untuk mengasah penalaran kritis, analisis argumen, serta pemecahan masalah secara logis.', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LPnITvrZvQ_yR5FnY6TTFiU&si=wxZihTVlzZbgDdoB', driveLink: '#' },
+        'matematika-fundamental': { title: 'Matematika', subtitle: 'Konsep Dasar', description: 'Pemantapan konsep inti agar mampu menyelesaikan tipe soal HOTS secara logis.', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LPJDunxjBOU0knXcBhbvJ1G&si=s877CiRpCZS-QNV2', driveLink: '#' },
+        'indonesia-fundamental': { title: 'B. Indonesia', subtitle: 'EBI & Struktur', description: 'Analisis bacaan panjang secara cepat dan akurat untuk menghadapi soal PBM.', youtubeLink: 'https://www.youtube.com/playlist?list=PLPtbHTXes2LPrYPjxuqNvKN-HyIMPf3ts', driveLink: '#' },
+        'inggris-fundamental': { title: 'B. Inggris', subtitle: 'Reading & Grammar', description: 'Meningkatkan kemampuan pemahaman bacaan akademik bahasa Inggris dan struktur.', youtubeLink: '#', driveLink: '#' },
+        'pu-subtest': { title: 'Penalaran Umum', subtitle: 'Logika Pemecahan', description: 'Uji kemampuan berpikir secara logis, analitis, dan runtut menggunakan data.', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LNXEln1sgp7UlJrlIeTDogq&si=IB63LAsLQDO_E8LS', driveLink: '#' },
+        'ppu-subtest': { title: 'PPU', subtitle: 'Wawasan Kognitif', description: 'Menguji wawasan dan pemahaman makna pesan dari teks tertulis secara komprehensif.', youtubeLink: 'https://youtube.com/playlist?list=PLWIeKCjmCGRBFTqBoGU62aNv3wftqZCB8&si=CAzmrFX0xH-2QKzb', driveLink: '#' },
+        'pbm-subtest': { title: 'PBM & Menulis', subtitle: 'Kaidah Penulisan', description: 'Fokus penguasaan ejaan bahasa Indonesia dan kerapihan struktur paragraf efektif.', youtubeLink: 'https://youtube.com/playlist?list=PLWIeKCjmCGRBFTqBoGU62aNv3wftqZCB8&si=CAzmrFX0xH-2QKzb', driveLink: '#' },
+        'pk-subtest': { title: 'Pengetahuan Kuantitatif', subtitle: 'Penerapan Matematis', description: 'Uji matematis mendalam untuk mengukur logika dasar berhitung. Sangat menentukan persentase kelulusan.', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LODiuJ0tHgrIMLeozqQakGM&si=hCN-NrVK8IRTFoXh', driveLink: '#' },
+        'lit-indo-subtest': { title: 'Lit. B. Indonesia', subtitle: 'Evaluasi Gagasan', description: 'Kemampuan membaca kritis ragam teks panjang dan mencari kesimpulan tersembunyi.', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LPdFISsxrircxNkJZ4DTKuz&si=I-_ug8kySwEuSxtf', driveLink: '#' },
+        'lit-inggris-subtest': { title: 'Lit. B. Inggris', subtitle: 'Academic Reading', description: 'Membaca wacana akademik dan menemukan implikasi kalimat sesuai konteks global.', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LOLIOQLMhkmiQ3H99DwL1_n&si=ew5oyUFfDPqEiYhw', driveLink: '#' },
+        'pm-subtest': { title: 'Penalaran MTK', subtitle: 'HOTS Realistis', description: 'Penyelesaian soal cerita panjang bernuansa kehidupan nyata (Matematika Terapan).', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LOPt4mtAcQwbWpD2y1QLJdr&si=tZ3U6_X34c3FhJCk', driveLink: '#' }
+    };
+
+    let activeId = null;
+    function openDetailModal(id) {
+        activeId = id; const d = subtestData[id]; if(!d) return;
+        document.getElementById('rm-title').innerText = d.title;
+        document.getElementById('rm-subtitle').innerText = d.subtitle;
+        document.getElementById('rm-desc').innerText = d.description;
+        document.getElementById('rm-btn-page').onclick = () => { closeRichModalDirect(); openSubtestPage(id); };
+        
+        const m = document.getElementById('rich-modal');
+        m.classList.remove('opacity-0', 'pointer-events-none');
+        document.getElementById('modal-rich-card').classList.remove('scale-95');
+        setTimeout(() => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.getElementById('modal-rich-card').classList.add('rotate-[-2deg]');
+            }
+        }, 50);
+    }
+
+    function closeRichModal(e) { if(e.target.id === 'rich-modal') closeRichModalDirect(); }
+    function closeRichModalDirect() {
+        document.getElementById('rich-modal').classList.add('opacity-0', 'pointer-events-none');
+        document.getElementById('modal-rich-card').classList.add('scale-95');
+    }
+
+    function openSubtestPage(id) {
+        hideAllViews(); const d = subtestData[id];
+        document.getElementById('subtest-content').innerHTML = `
+            <div class="layout-anim bg-brutalYellow text-[#111] brutal-border brutal-shadow-lg rounded-[2.5rem] p-10 sm:p-16 mb-12 relative overflow-hidden
+                        dark:bg-white dark:rotate-1 dark:shadow-[15px_15px_0px_#3B5AFE]">
+                <h1 class="layout-anim text-5xl sm:text-7xl font-black tracking-tighter mb-6 uppercase dark:neo-highlight">${d.title}</h1>
+                <p class="text-sm font-black mb-8 px-4 py-2 bg-white brutal-border rounded-full inline-block uppercase dark:bg-neoOrange dark:mt-6">${d.subtitle}</p>
+                <p class="font-bold max-w-4xl leading-relaxed text-lg sm:text-xl border-l-[3px] border-[#111] pl-5">${d.description}</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <a href="${d.youtubeLink}" target="_blank" class="layout-anim bg-white brutal-border hover-lift rounded-[2rem] p-10 sm:p-12 flex flex-col justify-between dark:bg-neoBlue dark:text-white dark:-rotate-1">
+                    <div>
+                        <div class="w-16 h-16 brutal-border rounded-full bg-brutalPink flex items-center justify-center mb-6 brutal-shadow dark:bg-neoGreen">
+                            <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-4xl font-black tracking-tight mb-4 uppercase">Video Materi</h3>
+                        <p class="font-bold text-lg mb-12 leading-relaxed opacity-90">Akses rekaman video penjelasan konsep materi secara detail dan terstruktur.</p>
+                    </div>
+                    <div class="font-black uppercase tracking-widest text-lg border-t-[3px] border-[#111] pt-6 dark:border-white">Buka YouTube ↗</div>
+                </a>
+                
+                <a href="${d.driveLink}" target="_blank" class="layout-anim bg-white brutal-border hover-lift rounded-[2rem] p-10 sm:p-12 flex flex-col justify-between dark:bg-neoOrange dark:text-[#111] dark:rotate-1">
+                    <div>
+                        <div class="w-16 h-16 brutal-border rounded-full bg-[#00D084] flex items-center justify-center mb-6 brutal-shadow dark:bg-neoBlue">
+                            <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-4xl font-black tracking-tight mb-4 uppercase">Bank Soal PDF</h3>
+                        <p class="font-bold text-lg mb-12 leading-relaxed opacity-90">Unduh modul latihan soal dan kunci pembahasan lengkap dari Google Drive.</p>
+                    </div>
+                    <div class="font-black uppercase tracking-widest text-lg border-t-[3px] border-[#111] pt-6">Buka G-Drive ↗</div>
+                </a>
+            </div>
+        `;
+        document.getElementById('subtest-view').classList.remove('hidden');
+        window.scrollTo({top:0, behavior:'smooth'});
+    }
+</script>
+</body>
+</html>
