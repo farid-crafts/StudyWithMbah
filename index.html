@@ -23,14 +23,14 @@
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
                     },
                     colors: {
-                        // Light Mode Colors (Playful)
+                        // Light Mode Colors
                         bgCream: '#F9EFE4',
                         brutalPink: '#FF5C9D',
                         brutalYellow: '#FFC83D',
                         brutalBlue: '#84B4FF',
                         brutalGreen: '#00D084',
                         
-                        // Dark Mode Colors (Neubrutalism)
+                        // Dark Mode Colors
                         neoDarkBg: '#111111',
                         neoGreen: '#D5FF00',
                         neoBlue: '#3B5AFE',
@@ -49,7 +49,6 @@
         /* ========================================================= */
         /* GLOBAL ANIMATION & TRANSITIONS                            */
         /* ========================================================= */
-        
         body {
             transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
             overflow-x: hidden;
@@ -62,8 +61,21 @@
             transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
         }
 
+        /* INITIAL STATE UNTUK ANIMASI LOAD & SCROLL (REVEAL) */
+        .init-slide-up {
+            opacity: 0 !important;
+            transform: translateY(100px) scale(0.9) !important;
+            pointer-events: none;
+        }
+        
+        .init-pop-in {
+            opacity: 0 !important;
+            transform: scale(0.1) rotate(-90deg) !important;
+            pointer-events: none;
+        }
+
         /* ========================================================= */
-        /* LIGHT MODE VARIABLES (Playful Brutalism)                  */
+        /* MODE VARIABLES                                            */
         /* ========================================================= */
         :root {
             --bg-body: #F9EFE4;
@@ -73,9 +85,6 @@
             --card-bg: #FFFFFF;
         }
 
-        /* ========================================================= */
-        /* DARK MODE VARIABLES (Neubrutalism)                        */
-        /* ========================================================= */
         .dark {
             --bg-body: #111111;
             --text-main: #111111;
@@ -94,13 +103,9 @@
         .brutal-shadow { box-shadow: 6px 6px 0px var(--shadow-main); }
         .brutal-shadow-lg { box-shadow: 12px 12px 0px var(--shadow-main); }
 
-        /* SVG Drop Shadow untuk Partikel Melayang */
-        .svg-shadow {
-            filter: drop-shadow(5px 5px 0px var(--shadow-main));
-        }
-        .dark .svg-shadow-alt {
-            filter: drop-shadow(5px 5px 0px #FF6E00);
-        }
+        /* SVG Drop Shadow untuk Partikel */
+        .svg-shadow { filter: drop-shadow(5px 5px 0px var(--shadow-main)); }
+        .dark .svg-shadow-alt { filter: drop-shadow(5px 5px 0px #FF6E00); }
 
         .brutal-btn {
             border: 3px solid var(--border-main);
@@ -140,25 +145,25 @@
 <!-- ========================================================= -->
 <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
     
-    <svg class="layout-anim absolute z-20 w-16 h-16 text-brutalPink dark:text-neoGreen fill-current svg-shadow
+    <svg class="layout-anim init-pop-in absolute z-20 w-16 h-16 text-brutalPink dark:text-neoGreen fill-current svg-shadow
                 left-[5%] top-[10%] rotate-12 scale-100
                 dark:left-[85%] dark:top-[25%] dark:-rotate-[60deg] dark:scale-[1.8]" viewBox="0 0 100 100">
         <path d="M50 0 Q50 50 100 50 Q50 50 50 100 Q50 50 0 50 Q50 50 50 0 Z"/>
     </svg>
 
-    <svg class="layout-anim absolute z-0 w-24 h-24 text-brutalYellow dark:text-neoBlue fill-current svg-shadow dark:svg-shadow-alt
+    <svg class="layout-anim init-pop-in absolute z-0 w-24 h-24 text-brutalYellow dark:text-neoBlue fill-current svg-shadow dark:svg-shadow-alt
                 right-[10%] top-[15%] rotate-45 scale-100
                 dark:right-[15%] dark:top-[85%] dark:rotate-180 dark:scale-75" viewBox="0 0 100 100">
         <path d="M35 15 H65 V35 H85 V65 H65 V85 H35 V65 H15 V35 H35 Z" stroke="var(--border-main)" stroke-width="4"/>
     </svg>
 
-    <div class="layout-anim absolute z-0 w-40 h-40 opacity-30 dark:opacity-60
+    <div class="layout-anim init-pop-in absolute z-0 w-40 h-40 opacity-30 dark:opacity-60
                 left-[85%] top-[55%] rotate-6
                 dark:left-[2%] dark:top-[40%] dark:-rotate-12 dark:scale-125"
          style="background-image: radial-gradient(var(--border-main) 4px, transparent 5px); background-size: 20px 20px;">
     </div>
 
-    <svg class="layout-anim absolute z-20 w-28 h-14 text-brutalGreen dark:text-neoOrange svg-shadow
+    <svg class="layout-anim init-pop-in absolute z-20 w-28 h-14 text-brutalGreen dark:text-neoOrange svg-shadow
                 left-[12%] bottom-[12%] rotate-12
                 dark:left-[55%] dark:top-[8%] dark:bottom-auto dark:-rotate-12 dark:scale-[1.3]" 
          viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter">
@@ -166,25 +171,25 @@
         <path d="M0 35 L15 20 L35 40 L55 20 L75 40 L95 20" />
     </svg>
 
-    <svg class="layout-anim absolute z-0 w-24 h-24 text-white dark:text-neoPink fill-current svg-shadow
+    <svg class="layout-anim init-pop-in absolute z-0 w-24 h-24 text-white dark:text-neoPink fill-current svg-shadow
                 left-[40%] top-[85%] -rotate-12
                 dark:left-[8%] dark:top-[12%] dark:rotate-[110deg] dark:scale-125" viewBox="0 0 100 100">
          <path d="M50 15 A 18 18 0 1 1 70 50 A 18 18 0 1 1 50 85 A 18 18 0 1 1 30 50 A 18 18 0 1 1 50 15 Z" stroke="var(--border-main)" stroke-width="5"/>
     </svg>
 
-    <div class="layout-anim absolute z-0 w-24 h-12 bg-brutalBlue dark:bg-neoOrange border-[3px] border-[var(--border-main)] shadow-[5px_5px_0_var(--border-main)]
+    <div class="layout-anim init-pop-in absolute z-0 w-24 h-12 bg-brutalBlue dark:bg-neoOrange border-[3px] border-[var(--border-main)] shadow-[5px_5px_0_var(--border-main)]
                 right-[20%] bottom-[15%] rotate-[-25deg] 
                 dark:right-[45%] dark:top-[90%] dark:bottom-auto dark:rotate-[155deg] dark:scale-150"
          style="border-top-left-radius: 60px; border-top-right-radius: 60px;">
     </div>
 
-    <svg class="layout-anim absolute z-20 w-16 h-16 text-brutalPink dark:text-neoBlue fill-current svg-shadow
+    <svg class="layout-anim init-pop-in absolute z-20 w-16 h-16 text-brutalPink dark:text-neoBlue fill-current svg-shadow
                 left-[30%] top-[3%] rotate-[15deg]
                 dark:left-[75%] dark:top-[50%] dark:-rotate-[45deg] dark:scale-150" viewBox="0 0 100 100">
          <polygon points="50,15 90,85 10,85" stroke="var(--border-main)" stroke-width="6" stroke-linejoin="round" />
     </svg>
     
-    <svg class="layout-anim absolute z-0 w-20 h-20 text-brutalYellow dark:text-white fill-current svg-shadow dark:svg-shadow-alt
+    <svg class="layout-anim init-pop-in absolute z-0 w-20 h-20 text-brutalYellow dark:text-white fill-current svg-shadow dark:svg-shadow-alt
                 right-[5%] top-[55%] rotate-[-15deg]
                 dark:right-[25%] dark:top-[18%] dark:rotate-[75deg] dark:scale-[1.1]" viewBox="0 0 100 100">
          <path d="M10 50 Q50 10 90 50 Q50 90 10 50 Z" stroke="var(--border-main)" stroke-width="5" />
@@ -197,8 +202,8 @@
 <div class="layout-anim max-w-[1400px] mx-auto bg-[var(--card-bg)] brutal-border rounded-[2rem] sm:rounded-[3rem] brutal-shadow-lg relative z-10 flex flex-col min-h-[90vh]
             dark:bg-neoBlue dark:border-4 dark:shadow-[15px_15px_0px_#D5FF00] dark:p-4">
 
-    <!-- Navbar -->
-    <nav class="layout-anim w-full px-6 sm:px-12 py-6 flex items-center justify-between border-b-[3px] border-[var(--border-main)] dark:bg-white dark:rounded-[2.5rem] dark:border-4">
+    <!-- Navbar (Akan slide-up dari atas) -->
+    <nav class="layout-anim init-slide-up w-full px-6 sm:px-12 py-6 flex items-center justify-between border-b-[3px] border-[var(--border-main)] dark:bg-white dark:rounded-[2.5rem] dark:border-4">
         <a href="#" onclick="showLandingView(); return false;" class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full overflow-hidden brutal-border">
                 <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah" class="w-full h-full object-cover">
@@ -231,42 +236,38 @@
             <section class="w-full relative min-h-[750px] lg:min-h-[600px] mb-10">
                 
                 <!-- Teks Hero -->
-                <div class="layout-anim absolute z-10 flex flex-col 
+                <div class="layout-anim init-slide-up absolute z-10 flex flex-col 
                             left-6 sm:left-16 top-[10%] lg:top-[20%] w-[90%] lg:w-[45%] text-left
                             dark:left-1/2 dark:-translate-x-1/2 dark:top-[8%] dark:w-[90%] dark:lg:w-[70%] dark:text-center dark:-rotate-2 dark:bg-white dark:brutal-border dark:p-10 dark:rounded-[3rem] dark:shadow-[12px_12px_0px_#111]">
                     
-                    <p class="layout-anim font-bold text-lg mb-4 dark:text-[#111] dark:font-black dark:text-xl dark:uppercase">Halo, selamat datang di markas besar.</p>
+                    <p class="font-bold text-lg mb-4 dark:text-[#111] dark:font-black dark:text-xl dark:uppercase">Halo, selamat datang di markas besar.</p>
                     
-                    <h1 class="layout-anim text-6xl sm:text-7xl md:text-[5.5rem] font-black tracking-tighter leading-[0.95] mb-6 uppercase dark:text-[#111]">
-                        <span class="layout-anim dark:neo-highlight">TEMBUS PTN.</span><br>
-                        <span class="layout-anim text-[#111] dark:text-[#111] dark:mt-4 dark:inline-block" style="text-shadow: 4px 4px 0px var(--border-main); -webkit-text-stroke: 2px var(--border-main); color: transparent;">BERSAMA MBAH.</span>
+                    <h1 class="text-6xl sm:text-7xl md:text-[5.5rem] font-black tracking-tighter leading-[0.95] mb-6 uppercase dark:text-[#111]">
+                        <span class="dark:neo-highlight">TEMBUS PTN.</span><br>
+                        <span class="text-[#111] dark:text-[#111] dark:mt-4 dark:inline-block" style="text-shadow: 4px 4px 0px var(--border-main); -webkit-text-stroke: 2px var(--border-main); color: transparent;">BERSAMA MBAH.</span>
                     </h1>
                     
-                    <p class="layout-anim text-lg sm:text-xl font-bold leading-relaxed mb-10 max-w-lg opacity-90 dark:text-[#111] dark:mx-auto">
+                    <p class="text-lg sm:text-xl font-bold leading-relaxed mb-10 max-w-lg opacity-90 dark:text-[#111] dark:mx-auto">
                         Komunitas belajar intensif UTBK SNBT. Tidak mengandalkan hafal rumus, tetapi belajarlah dengan cara yang cerdas, fokus, dan konsisten.
                     </p>
                     
-                    <div class="layout-anim flex flex-wrap gap-4 dark:justify-center">
-                        <a href="#join" class="layout-anim brutal-btn bg-brutalYellow text-[#111] px-8 py-4 rounded-full text-lg hover-lift dark:bg-neoGreen dark:rounded-xl">
-                            Mulai Belajar →
-                        </a>
-                        <a href="#fundamental" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-4 rounded-full text-lg hover-lift dark:bg-white dark:rounded-xl">
-                            Lihat Modul
-                        </a>
+                    <div class="flex flex-wrap gap-4 dark:justify-center">
+                        <a href="#join" class="layout-anim brutal-btn bg-brutalYellow text-[#111] px-8 py-4 rounded-full text-lg hover-lift dark:bg-neoGreen dark:rounded-xl">Mulai Belajar →</a>
+                        <a href="#fundamental" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-4 rounded-full text-lg hover-lift dark:bg-white dark:rounded-xl">Lihat Modul</a>
                     </div>
                 </div>
 
                 <!-- Gambar Hero -->
-                <div class="layout-anim absolute z-0 flex justify-center items-center
+                <div class="layout-anim init-slide-up absolute z-0 flex justify-center items-center
                             right-6 sm:right-16 top-[55%] lg:top-[15%] w-[85%] sm:w-[60%] lg:w-[40%]
                             dark:left-1/2 dark:-translate-x-1/2 dark:top-[65%] dark:lg:top-[58%] dark:w-[80%] dark:lg:w-[50%] dark:rotate-3">
                     
-                    <div class="layout-anim absolute -left-4 bottom-10 z-20 w-max brutal-border brutal-shadow bg-[#111] text-white px-5 py-3 rounded-full font-black text-sm
+                    <div class="absolute -left-4 bottom-10 z-20 w-max brutal-border brutal-shadow bg-[#111] text-white px-5 py-3 rounded-full font-black text-sm
                                 dark:bg-neoOrange dark:text-[#111] dark:scale-[1.15] dark:-bottom-8 dark:left-10">
                         ▶ 100% Siap UTBK
                     </div>
 
-                    <div class="layout-anim w-full h-[350px] sm:h-[450px] bg-brutalPink brutal-border brutal-shadow-lg rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl overflow-hidden relative
+                    <div class="w-full h-[350px] sm:h-[450px] bg-brutalPink brutal-border brutal-shadow-lg rounded-tl-[80px] rounded-br-[80px] rounded-tr-2xl rounded-bl-2xl overflow-hidden relative
                                 dark:bg-neoGreen dark:rounded-[3rem] dark:h-[300px] dark:lg:h-[350px]">
                         <img src="https://i.ibb.co.com/svN7crBV/image.jpg" alt="Mbah" class="w-full h-full object-cover opacity-90 mix-blend-multiply grayscale">
                     </div>
@@ -274,14 +275,10 @@
 
             </section>
 
-            <!-- ========================================================= -->
-            <!-- COUNTDOWN & TARGET SKOR (RESTORED & STYLED)               -->
-            <!-- ========================================================= -->
+            <!-- COUNTDOWN & TARGET SKOR -->
             <section class="w-full px-6 sm:px-16 mt-32 sm:mt-16 mb-24 grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-                <div class="layout-anim bg-[var(--card-bg)] brutal-border brutal-shadow-lg p-8 sm:p-10 md:col-span-2 flex flex-col justify-center rounded-3xl hover-lift dark:bg-neoOrange dark:text-[#111]">
-                    <p class="text-sm font-black uppercase tracking-widest mb-8 border-b-[3px] border-current pb-2 w-max">
-                        Countdown UTBK 2027
-                    </p>
+                <div class="layout-anim init-slide-up bg-[var(--card-bg)] brutal-border brutal-shadow-lg p-8 sm:p-10 md:col-span-2 flex flex-col justify-center rounded-3xl hover-lift dark:bg-neoOrange dark:text-[#111]">
+                    <p class="text-sm font-black uppercase tracking-widest mb-8 border-b-[3px] border-current pb-2 w-max">Hitung Mundur UTBK 2027</p>
                     <div class="grid grid-cols-4 gap-2 sm:gap-6 text-center">
                         <div>
                             <div id="cd-days" class="text-5xl sm:text-7xl font-black tracking-tighter text-brutalPink dark:text-white" style="text-shadow: 4px 4px 0px var(--border-main); -webkit-text-stroke: 1px var(--border-main);">00</div>
@@ -302,25 +299,24 @@
                     </div>
                 </div>
                 
-                <div class="layout-anim bg-brutalBlue text-[#111] brutal-border brutal-shadow-lg p-8 sm:p-10 flex flex-col justify-center text-center items-center rounded-3xl hover-lift dark:bg-neoGreen dark:text-[#111]">
-                    <div class="text-6xl sm:text-8xl font-black tracking-tighter mb-4 text-white dark:text-[#111]" style="text-shadow: 5px 5px 0px var(--border-main); -webkit-text-stroke: 2px var(--border-main);">740+</div>
+                <div class="layout-anim init-slide-up bg-brutalBlue text-[#111] brutal-border brutal-shadow-lg p-8 sm:p-10 flex flex-col justify-center text-center items-center rounded-3xl hover-lift dark:bg-neoGreen dark:text-[#111]">
+                    <div class="text-6xl sm:text-8xl font-black tracking-tighter mb-4 text-white dark:text-[#111]" style="text-shadow: 5px 5px 0px var(--border-main); -webkit-text-stroke: 2px var(--border-main);">730+</div>
                     <p class="text-sm font-black uppercase border-[3px] border-[var(--border-main)] py-2 px-4 bg-white text-[#111] dark:bg-white dark:text-[#111] rounded-full">Target Skor PTN</p>
                 </div>
             </section>
 
             <!-- Bagian Fundamental -->
-            <section id="fundamental" class="w-full px-6 sm:px-16 py-24 dark:bg-neoDarkBg layout-anim dark:rounded-[3rem] dark:text-white border-t-[3px] border-[var(--border-main)] dark:border-none">
-                <div class="text-center mb-16 relative">
+            <section id="fundamental" class="w-full px-6 sm:px-16 py-24 dark:bg-neoDarkBg dark:rounded-[3rem] dark:text-white border-t-[3px] border-[var(--border-main)] dark:border-none">
+                <div class="text-center mb-16 relative layout-anim init-slide-up">
                     <span class="text-sm font-black uppercase tracking-widest mb-2 block dark:text-neoGreen">Pondasi Belajar</span>
-                    <h2 class="layout-anim text-5xl font-black tracking-tighter uppercase relative inline-block z-10 dark:bg-neoOrange dark:text-[#111] dark:px-6 dark:py-3 dark:rotate-[-2deg] dark:brutal-border">
+                    <h2 class="text-5xl font-black tracking-tighter uppercase relative inline-block z-10 dark:bg-neoOrange dark:text-[#111] dark:px-6 dark:py-3 dark:rotate-[-2deg] dark:brutal-border">
                         4 Fundamental
-                        <div class="layout-anim absolute -bottom-2 -right-4 w-full h-4 bg-brutalGreen -z-10 dark:opacity-0"></div>
+                        <div class="absolute -bottom-2 -right-4 w-full h-4 bg-brutalGreen -z-10 dark:opacity-0"></div>
                     </h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Card 1 -->
-                    <div class="layout-anim bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer dark:rotate-[-3deg] dark:translate-y-4" onclick="openDetailModal('logika-fundamental')">
+                    <div class="layout-anim init-slide-up bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer dark:rotate-[-3deg] dark:translate-y-4" onclick="openDetailModal('logika-fundamental')">
                         <div class="w-16 h-16 brutal-border rounded-2xl bg-brutalBlue flex items-center justify-center mb-6 brutal-shadow dark:bg-neoBlue">
                             <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
@@ -329,8 +325,7 @@
                         <div class="w-full border-t-[3px] border-[var(--border-main)] pt-4 font-black text-sm text-[#111]">Pelajari Modul →</div>
                     </div>
 
-                    <!-- Card 2 -->
-                    <div class="layout-anim bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer dark:rotate-[2deg] dark:-translate-y-2" onclick="openDetailModal('matematika-fundamental')">
+                    <div class="layout-anim init-slide-up bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer dark:rotate-[2deg] dark:-translate-y-2" onclick="openDetailModal('matematika-fundamental')">
                         <div class="w-16 h-16 brutal-border rounded-2xl bg-[#00D084] flex items-center justify-center mb-6 brutal-shadow dark:bg-neoGreen">
                             <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                         </div>
@@ -339,8 +334,7 @@
                         <div class="w-full border-t-[3px] border-[var(--border-main)] pt-4 font-black text-sm text-[#111]">Pelajari Modul →</div>
                     </div>
 
-                    <!-- Card 3 -->
-                    <div class="layout-anim bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer dark:-rotate-[2deg] dark:translate-y-2" onclick="openDetailModal('indonesia-fundamental')">
+                    <div class="layout-anim init-slide-up bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer dark:-rotate-[2deg] dark:translate-y-2" onclick="openDetailModal('indonesia-fundamental')">
                         <div class="w-16 h-16 brutal-border rounded-2xl bg-brutalPink flex items-center justify-center mb-6 brutal-shadow dark:bg-neoOrange">
                             <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                         </div>
@@ -349,8 +343,7 @@
                         <div class="w-full border-t-[3px] border-[var(--border-main)] pt-4 font-black text-sm text-[#111]">Pelajari Modul →</div>
                     </div>
 
-                    <!-- Card 4 -->
-                    <div class="layout-anim bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer dark:rotate-[3deg] dark:translate-y-6" onclick="openDetailModal('inggris-fundamental')">
+                    <div class="layout-anim init-slide-up bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col items-start cursor-pointer dark:rotate-[3deg] dark:translate-y-6" onclick="openDetailModal('inggris-fundamental')">
                         <div class="w-16 h-16 brutal-border rounded-2xl bg-brutalYellow flex items-center justify-center mb-6 brutal-shadow dark:bg-neoBlue">
                             <svg class="w-8 h-8 text-[#111]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
                         </div>
@@ -363,17 +356,17 @@
 
             <!-- Bagian 7 Subtes -->
             <section id="subtes" class="w-full px-6 sm:px-16 py-24 border-t-[3px] border-[var(--border-main)] dark:bg-neoDarkBg dark:border-none">
-                <div class="text-center mb-16 relative">
+                <div class="text-center mb-16 relative layout-anim init-slide-up">
                     <span class="text-sm font-black uppercase tracking-widest mb-2 block dark:text-neoBlue">Materi Ujian UTBK</span>
-                    <h2 class="layout-anim text-5xl font-black tracking-tighter uppercase relative inline-block z-10 dark:bg-neoGreen dark:text-[#111] dark:px-6 dark:py-3 dark:rotate-[2deg] dark:brutal-border">
+                    <h2 class="text-5xl font-black tracking-tighter uppercase relative inline-block z-10 dark:bg-neoGreen dark:text-[#111] dark:px-6 dark:py-3 dark:rotate-[2deg] dark:brutal-border">
                         7 Subtes UTBK
-                        <div class="layout-anim absolute -bottom-2 left-0 w-full h-4 bg-brutalBlue -z-10 dark:opacity-0"></div>
+                        <div class="absolute -bottom-2 left-0 w-full h-4 bg-brutalBlue -z-10 dark:opacity-0"></div>
                     </h2>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                     
-                    <div class="layout-anim md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:rotate-1" onclick="openDetailModal('pu-subtest')">
+                    <div class="layout-anim init-slide-up md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:rotate-1" onclick="openDetailModal('pu-subtest')">
                         <div class="mb-8">
                             <span class="bg-[#111] text-white px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full dark:bg-neoOrange dark:text-[#111] dark:brutal-border">Kategori TPS</span>
                             <h3 class="text-3xl font-black mb-2 uppercase text-[#111]">Penalaran Umum</h3>
@@ -382,7 +375,7 @@
                         <div class="font-black text-sm uppercase tracking-widest text-[#111]">Buka Materi →</div>
                     </div>
 
-                    <div class="layout-anim md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:-rotate-1" onclick="openDetailModal('ppu-subtest')">
+                    <div class="layout-anim init-slide-up md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:-rotate-1" onclick="openDetailModal('ppu-subtest')">
                         <div class="mb-8">
                             <span class="bg-[#111] text-white px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full dark:bg-neoBlue dark:brutal-border">Kategori TPS</span>
                             <h3 class="text-3xl font-black mb-2 uppercase text-[#111]">Pengetahuan Umum</h3>
@@ -391,7 +384,7 @@
                         <div class="font-black text-sm uppercase tracking-widest text-[#111]">Buka Materi →</div>
                     </div>
 
-                    <div class="layout-anim md:col-span-1 bg-brutalPink text-[#111] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:bg-neoOrange dark:scale-105" onclick="openDetailModal('pbm-subtest')">
+                    <div class="layout-anim init-slide-up md:col-span-1 bg-brutalPink text-[#111] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:bg-neoOrange dark:scale-105" onclick="openDetailModal('pbm-subtest')">
                         <div class="mb-8">
                             <h3 class="text-2xl font-black mb-2 uppercase">Pemahaman Bacaan & Menulis</h3>
                         </div>
@@ -399,17 +392,17 @@
                     </div>
 
                     <!-- Highlighted Subtest -->
-                    <div class="layout-anim md:col-span-3 bg-brutalYellow text-[#111] brutal-border hover-lift rounded-3xl p-8 sm:p-12 flex flex-col justify-between cursor-pointer relative overflow-hidden dark:bg-white dark:-rotate-2 dark:shadow-[12px_12px_0px_#3B5AFE]" onclick="openDetailModal('pk-subtest')">
+                    <div class="layout-anim init-slide-up md:col-span-3 bg-brutalYellow text-[#111] brutal-border hover-lift rounded-3xl p-8 sm:p-12 flex flex-col justify-between cursor-pointer relative overflow-hidden dark:bg-white dark:-rotate-2 dark:shadow-[12px_12px_0px_#3B5AFE]" onclick="openDetailModal('pk-subtest')">
                         <div class="absolute -right-6 -top-6 text-[10rem] opacity-20 dark:text-neoGreen dark:opacity-100">✦</div>
                         <div class="mb-6 relative z-10">
                             <span class="bg-white text-[#111] brutal-border px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full dark:bg-neoGreen">Subtes Paling Krusial</span>
-                            <h3 class="layout-anim text-4xl sm:text-5xl font-black mb-4 uppercase dark:neo-highlight dark:rotate-1 dark:mb-6">Pengetahuan Kuantitatif</h3>
+                            <h3 class="text-4xl sm:text-5xl font-black mb-4 uppercase dark:neo-highlight dark:rotate-1 dark:mb-6">Pengetahuan Kuantitatif</h3>
                             <p class="font-bold text-lg max-w-lg mt-2">Berpikir matematis menggunakan data dan probabilitas yang sangat menentukan kelulusan.</p>
                         </div>
                         <div class="font-black text-lg uppercase tracking-widest relative z-10 border-t-[3px] border-[#111] pt-4">Buka Modul Premium →</div>
                     </div>
 
-                    <div class="layout-anim md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:translate-y-4" onclick="openDetailModal('lit-indo-subtest')">
+                    <div class="layout-anim init-slide-up md:col-span-2 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:translate-y-4" onclick="openDetailModal('lit-indo-subtest')">
                         <div class="mb-8">
                             <span class="border-[3px] border-[#111] text-[#111] px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full">LITERASI</span>
                             <h3 class="text-3xl font-black mb-2 uppercase text-[#111]">Literasi B. Indonesia</h3>
@@ -417,7 +410,7 @@
                         <div class="font-black text-sm uppercase tracking-widest text-[#111]">Buka Materi →</div>
                     </div>
 
-                    <div class="layout-anim md:col-span-1 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:-translate-y-2" onclick="openDetailModal('lit-inggris-subtest')">
+                    <div class="layout-anim init-slide-up md:col-span-1 bg-[var(--card-bg)] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:-translate-y-2" onclick="openDetailModal('lit-inggris-subtest')">
                         <div class="mb-8">
                             <span class="border-[3px] border-[#111] text-[#111] px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full">LITERASI</span>
                             <h3 class="text-2xl font-black mb-2 uppercase text-[#111]">Lit. B. Inggris</h3>
@@ -425,7 +418,7 @@
                         <div class="font-black text-sm uppercase tracking-widest text-[#111]">Buka Materi →</div>
                     </div>
 
-                    <div class="layout-anim md:col-span-1 bg-[#A67CFF] text-[#111] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:bg-neoBlue" onclick="openDetailModal('pm-subtest')">
+                    <div class="layout-anim init-slide-up md:col-span-1 bg-[#A67CFF] text-[#111] brutal-border hover-lift rounded-3xl p-8 flex flex-col justify-between cursor-pointer dark:bg-neoBlue" onclick="openDetailModal('pm-subtest')">
                         <div class="mb-8">
                             <span class="bg-white text-[#111] brutal-border px-3 py-1.5 font-black text-xs uppercase mb-5 inline-block rounded-full">LITERASI</span>
                             <h3 class="text-2xl font-black mb-2 uppercase">Penalaran MTK</h3>
@@ -438,10 +431,10 @@
 
             <!-- SEKSI: PROGRAM ALT 4.0 -->
             <section id="alt4" class="w-full px-6 sm:px-16 py-24 bg-[var(--bg-body)] border-y-[3px] border-[var(--border-main)] dark:bg-neoDarkBg dark:border-none">
-                <div class="layout-anim bg-brutalBlue text-[#111] brutal-border rounded-[2.5rem] p-10 sm:p-16 brutal-shadow-lg relative overflow-hidden
+                <div class="layout-anim init-slide-up bg-brutalBlue text-[#111] brutal-border rounded-[2.5rem] p-10 sm:p-16 brutal-shadow-lg relative overflow-hidden
                             dark:bg-white dark:rotate-[2deg] dark:shadow-[15px_15px_0px_#FF6E00]">
                     
-                    <div class="layout-anim absolute -top-32 -right-32 w-80 h-80 bg-brutalPink rounded-full brutal-border dark:bg-neoGreen dark:rounded-[3rem] dark:rotate-45"></div>
+                    <div class="absolute -top-32 -right-32 w-80 h-80 bg-brutalPink rounded-full brutal-border dark:bg-neoGreen dark:rounded-[3rem] dark:rotate-45"></div>
 
                     <div class="relative z-10">
                         <h2 class="text-5xl sm:text-7xl font-black tracking-tighter mb-4 uppercase">
@@ -457,15 +450,9 @@
                         </div>
 
                         <div class="flex flex-wrap gap-4">
-                            <a href="https://www.alternatifa.com/" target="_blank" class="layout-anim brutal-btn bg-[#111] text-white px-8 py-5 text-xl rounded-2xl hover:bg-white hover:text-[#111] dark:hover:bg-neoOrange dark:hover:text-[#111]">
-                                Daftar Sekarang →
-                            </a>
-                            <a href="https://canva.link/ytl8sflsy6pptq4" target="_blank" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-5 text-xl rounded-2xl hover-lift dark:bg-[#111] dark:text-white">
-                                Tutorial Daftar
-                            </a>
-                            <a href="https://canva.link/xt097zfvjzq84rp" target="_blank" class="layout-anim brutal-btn bg-brutalYellow text-[#111] px-8 py-5 text-xl rounded-2xl hover-lift dark:bg-neoGreen dark:text-[#111]">
-                                Program Overview
-                            </a>
+                            <a href="https://www.alternatifa.com/" target="_blank" class="layout-anim brutal-btn bg-[#111] text-white px-8 py-5 text-xl rounded-2xl hover:bg-white hover:text-[#111] dark:hover:bg-neoOrange dark:hover:text-[#111]">Daftar Sekarang →</a>
+                            <a href="https://canva.link/ytl8sflsy6pptq4" target="_blank" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-5 text-xl rounded-2xl hover-lift dark:bg-[#111] dark:text-white">Tutorial Daftar</a>
+                            <a href="https://canva.link/xt097zfvjzq84rp" target="_blank" class="layout-anim brutal-btn bg-brutalYellow text-[#111] px-8 py-5 text-xl rounded-2xl hover-lift dark:bg-neoGreen dark:text-[#111]">Program Overview</a>
                         </div>
                     </div>
                 </div>
@@ -473,19 +460,19 @@
 
             <!-- Join CTA Footer -->
             <section id="join" class="w-full px-6 py-32 text-center flex flex-col items-center dark:bg-neoDarkBg">
-                <h2 class="text-6xl sm:text-[7rem] font-black tracking-tighter uppercase mb-20 relative dark:text-white">
+                <h2 class="layout-anim init-slide-up text-6xl sm:text-[7rem] font-black tracking-tighter uppercase mb-20 relative dark:text-white">
                     JOIN THE<br>
-                    <span class="layout-anim text-[#00D084] dark:text-neoGreen dark:neo-highlight dark:-rotate-3 dark:mt-6 dark:inline-block" style="text-shadow: 6px 6px 0px var(--border-main); -webkit-text-stroke: 3px var(--border-main);">COMMUNITY</span>
+                    <span class="text-[#00D084] dark:text-neoGreen dark:neo-highlight dark:-rotate-3 dark:mt-6 dark:inline-block" style="text-shadow: 6px 6px 0px var(--border-main); -webkit-text-stroke: 3px var(--border-main);">COMMUNITY</span>
                 </h2>
                 
-                <div class="flex flex-wrap justify-center gap-4 max-w-4xl relative z-20">
+                <div class="layout-anim init-slide-up flex flex-wrap justify-center gap-4 max-w-4xl relative z-20">
                     <a href="https://discord.gg/Sd2WvzFpM" target="_blank" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-5 rounded-full text-lg hover-lift dark:bg-neoBlue">Discord Server</a>
                     <a href="https://whatsapp.com/channel/0029Vb7kpIi8qJ00B3SXhr2m" target="_blank" class="layout-anim brutal-btn bg-[#00D084] text-[#111] px-8 py-5 rounded-full text-lg hover-lift dark:bg-neoGreen">WhatsApp</a>
                     <a href="https://tiktok.com/@studywithmbah" target="_blank" class="layout-anim brutal-btn bg-white text-[#111] px-8 py-5 rounded-full text-lg hover-lift dark:bg-white">TikTok</a>
                     <a href="https://x.com/StudyWithMbah" target="_blank" class="layout-anim brutal-btn bg-[#111] text-white px-8 py-5 rounded-full text-lg hover-lift dark:bg-neoOrange dark:text-[#111]">Twitter / X</a>
                 </div>
 
-                <p class="mt-32 font-black text-sm tracking-widest uppercase opacity-70 dark:text-white">© 2026 Study with Mbah. Engineered for greatness.</p>
+                <p class="layout-anim init-slide-up mt-32 font-black text-sm tracking-widest uppercase opacity-70 dark:text-white">© 2026 Study with Mbah. Engineered for greatness.</p>
             </section>
 
         </div>
@@ -502,7 +489,7 @@
 </div>
 
 <!-- FLOATING WHATSAPP BUTTON -->
-<a href="https://wa.me/6285185731236" target="_blank" class="layout-anim fixed bottom-6 right-6 sm:bottom-10 sm:right-10 z-[100] brutal-btn bg-[#00D084] text-[#111] px-6 py-5 rounded-full flex items-center gap-3 hover-lift dark:bg-neoGreen dark:scale-110">
+<a href="https://wa.me/6285185731236" target="_blank" class="layout-anim init-pop-in fixed bottom-6 right-6 sm:bottom-10 sm:right-10 z-[100] brutal-btn bg-[#00D084] text-[#111] px-6 py-5 rounded-full flex items-center gap-3 hover-lift dark:bg-neoGreen dark:scale-110">
     <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
@@ -525,6 +512,47 @@
 
 <!-- SCRIPTS -->
 <script>
+    // ----------------------------------------------------
+    // SCROLL REVEAL & LOAD ANIMATION (INTERSECTION OBSERVER)
+    // ----------------------------------------------------
+    document.addEventListener("DOMContentLoaded", () => {
+        let delayCounter = 0;
+        let delayTimer = null;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Beri delay beruntun (stagger) biar masuknya kayak gelombang
+                    setTimeout(() => {
+                        entry.target.classList.remove('init-slide-up', 'init-pop-in');
+                    }, delayCounter * 80); // Stagger 80ms per elemen
+                    
+                    delayCounter++;
+                    
+                    // Reset counter stlh batch beres (300ms tdk ada elemen baru)
+                    clearTimeout(delayTimer);
+                    delayTimer = setTimeout(() => {
+                        delayCounter = 0;
+                    }, 300);
+
+                    // Stop observing stlh elemen dimunculkan
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1, // Trigger saat 10% masuk layar
+            rootMargin: "0px 0px -50px 0px" // Trigger agak awal biar mulus
+        });
+
+        // Pantau semua elemen yg awalnya disembunyikan
+        document.querySelectorAll('.init-slide-up, .init-pop-in').forEach(el => {
+            observer.observe(el);
+        });
+    });
+
+    // ----------------------------------------------------
+    // MENU & VIEW NAVIGATION
+    // ----------------------------------------------------
     function hideAllViews() {
         ['landing-view', 'subtest-view'].forEach(id => {
             document.getElementById(id).classList.add('hidden');
@@ -533,14 +561,16 @@
 
     function showLandingView() { hideAllViews(); document.getElementById('landing-view').classList.remove('hidden'); window.scrollTo({top:0, behavior:'smooth'}); }
 
-    // Toggle Theme (Memicu animasi "Gong" Layout Realtime)
+    // Toggle Theme
     const themeBtn = document.getElementById('theme-toggle');
     themeBtn.addEventListener('click', () => {
         document.documentElement.classList.toggle('dark');
         document.documentElement.classList.toggle('light');
     });
 
-    // Countdown UTBK Script (Aktif lagi)
+    // ----------------------------------------------------
+    // COUNTDOWN UTBK
+    // ----------------------------------------------------
     const utbkDate = new Date("April 22, 2027 07:30:00").getTime();
     setInterval(() => {
         const now = new Date().getTime();
@@ -553,6 +583,9 @@
         }
     }, 1000);
 
+    // ----------------------------------------------------
+    // MODAL & DATA
+    // ----------------------------------------------------
     const subtestData = {
         'logika-fundamental': { title: 'Logika', subtitle: 'Penalaran & Kritis', description: 'Dirancang untuk mengasah penalaran kritis, analisis argumen, serta pemecahan masalah secara logis.', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LPnITvrZvQ_yR5FnY6TTFiU&si=wxZihTVlzZbgDdoB', driveLink: '#' },
         'matematika-fundamental': { title: 'Matematika', subtitle: 'Konsep Dasar', description: 'Pemantapan konsep inti agar mampu menyelesaikan tipe soal HOTS secara logis.', youtubeLink: 'https://youtube.com/playlist?list=PLPtbHTXes2LPJDunxjBOU0knXcBhbvJ1G&si=s877CiRpCZS-QNV2', driveLink: '#' },
