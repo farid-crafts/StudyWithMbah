@@ -44,7 +44,7 @@ if(FINE&&!RM){$$('[data-mag]').forEach(el=>{const s=spring(el,.15,.7);el.addEven
 let n=0;$$('#h1 .ln').forEach(l=>{const t=l.textContent;l.textContent='';l.setAttribute('aria-hidden','true');[...t].forEach(ch=>{const s=document.createElement('span');s.className='ch';s.textContent=ch;s.style.setProperty('--i',n++);l.append(s)})});
 /* scroll: parallax, reveal, buddy */
 addEventListener('scroll',()=>document.documentElement.style.setProperty('--sy',scrollY),{passive:true});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const target=e.target,gsapOwnsMotion=!!window.SWM_GSAP_MOTION_READY&&(target.classList.contains('rv')||target.classList.contains('sb'));if(!gsapOwnsMotion)target.classList.add('in');io.unobserve(target)}}),{threshold:.15});
 $$('.rv').forEach(el=>io.observe(el));
 const bd=$('#buddy'),map={fundamental:1,subtes:7,alt:5,komunitas:6};let last='';
 $$('#fundamental,#subtes,#alt,#komunitas').forEach(s=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&last!==s.id){last=s.id;bd.src=P[map[s.id]];bd.classList.remove('pp');void bd.offsetWidth;bd.classList.add('pp')}}),{rootMargin:'-45% 0px -50% 0px'}).observe(s));
