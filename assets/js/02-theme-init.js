@@ -1,0 +1,1 @@
+try{var s=localStorage.getItem('swm-theme');document.documentElement.dataset.theme=s||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch(e){document.documentElement.dataset.theme='light'}
