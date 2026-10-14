@@ -163,10 +163,10 @@
       const hoverTargets = gsap.utils.toArray('nav a, nav button, .btn:not([data-mag]), .tg, #wa, #replay');
       hoverTargets.forEach(element => {
         element.addEventListener('pointerenter', () => {
-          gsap.to(element, { y: -2, duration: 0.22, ease: 'power3.out', overwrite: 'auto' });
+          gsap.to(element, { scale: 1.018, duration: 0.22, ease: 'power3.out', overwrite: 'auto' });
         }, { passive: true });
         element.addEventListener('pointerleave', () => {
-          gsap.to(element, { y: 0, duration: 0.36, ease: 'power3.out', overwrite: 'auto' });
+          gsap.to(element, { scale: 1, duration: 0.36, ease: 'power3.out', overwrite: 'auto' });
         }, { passive: true });
       });
     }
