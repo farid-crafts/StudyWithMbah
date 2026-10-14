@@ -194,6 +194,23 @@
   box-shadow: inset 0 1px 2px rgb(42 22 8 / 15%);
   transform: translate(-50%, -50%);
 }
+.swm-eye-crop-window {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+.swm-eye-source-crop {
+  position: absolute;
+  display: block;
+  max-width: none !important;
+  object-fit: fill;
+  user-select: none;
+  pointer-events: none;
+}
 .swm-pupil {
   position: absolute;
   left: 50%;
