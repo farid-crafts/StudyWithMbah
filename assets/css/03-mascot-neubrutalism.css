@@ -78,6 +78,25 @@
   border: 3px solid var(--ink, #2A1608);
   background: #fffdf7;
   box-shadow: 7px 7px 0 var(--ink, #2A1608);
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1), box-shadow 220ms cubic-bezier(.2,.8,.2,1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .swm-neo-card:hover {
+    transform: translate(-2px,-2px);
+    box-shadow: 9px 9px 0 var(--ink, #2A1608);
+  }
+}
+.swm-scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0,22px,0) scale(.985);
+  transition:
+    opacity 650ms cubic-bezier(.2,.8,.2,1),
+    transform 650ms cubic-bezier(.2,.8,.2,1);
+  transition-delay: calc(var(--swm-reveal-index, 0) * 60ms);
+}
+.swm-scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0,0,0) scale(1);
 }
 .swm-card-head {
   display: flex;
@@ -333,6 +352,9 @@
 @media (prefers-reduced-motion: reduce) {
   .swm-expression-button,
   .swm-pupil,
-  .swm-eyelid { transition: none !important; }
+  .swm-eyelid,
+  .swm-neo-card,
+  .swm-scroll-reveal { transition: none !important; }
+  .swm-scroll-reveal { opacity: 1 !important; transform: none !important; }
   .swm-mascot-head { will-change: auto; }
 }
