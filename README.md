@@ -39,3 +39,8 @@ assets/
 The active `index.html` uses GSAP 3.15 and ScrollTrigger for premium viewport reveals, module-card entrance, a thin scroll progress line, restrained background parallax, and post-intro navigation/detail transitions. The existing cinematic intro and mascot engines are intentionally preserved. Reduced-motion users and CDN failures keep the original CSS/IntersectionObserver fallback.
 
 See [the full HTML motion audit](docs/html-motion-audit.md).
+
+
+## Tautan latihan soal
+
+Tombol **Bank Soal PDF → Buka G-Drive** pada halaman detail setiap materi menggunakan folder Google Drive khusus mata pelajaran. Pemetaan URL disimpan pada data `FUND` dan `SUB` di `assets/js/03-app.js`, sehingga tiap kartu membuka folder yang sesuai. Video materi tetap menggunakan tautan YouTube yang sudah ada.
