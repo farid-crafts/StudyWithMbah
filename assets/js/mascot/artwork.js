@@ -58,8 +58,8 @@ export function MbahArtwork({
           style: {
             width: `${100 / diameter}%`,
             height: `${100 * aspect / diameter}%`,
-            left: `${-eye.x / diameter * 100}%`,
-            top: `${-eye.y * aspect / diameter * 100}%`,
+            left: `${(0.5 - eye.x / diameter) * 100}%`,
+            top: `${(0.5 - eye.y * aspect / diameter) * 100}%`,
           },
         }),
       ),
