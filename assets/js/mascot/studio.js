@@ -93,8 +93,32 @@ export function MascotMotionStudio() {
   const [mascotId, setMascotId] = useState("hero");
   const [expression, setExpression] = useState("happy");
   const [showPlayer, setShowPlayer] = useState(true);
+  const reducedMotion = useReducedMotion();
   const mascot = MASCOTS[mascotId];
   const mood = EXPRESSIONS[expression];
+
+  useEffect(() => {
+    const section = document.getElementById("mascot-motion-lab");
+    if (!section) return undefined;
+    const targets = section.querySelectorAll(".swm-motion-heading, .swm-motion-stamp, .swm-neo-card");
+    targets.forEach((node, index) => {
+      node.classList.add("swm-scroll-reveal");
+      node.style.setProperty("--swm-reveal-index", String(index));
+    });
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      targets.forEach((node) => node.classList.add("is-visible"));
+      return undefined;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -5% 0px" });
+    targets.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, [reducedMotion]);
 
   useEffect(() => {
     // Keep the legacy site's mascot reactions available while testing an expression.
@@ -173,7 +197,7 @@ export function MascotMotionStudio() {
           compositionHeight: 500,
           fps: 30,
           loop: true,
-          autoPlay: true,
+          autoPlay: !reducedMotion,
           controls: true,
           clickToPlay: true,
           doubleClickToFullscreen: true,
