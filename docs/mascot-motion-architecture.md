@@ -63,7 +63,7 @@ The old DOM rig's asset lookup is currently explicit for `image-002.webp`, `imag
 - `breath`: subtle breathing multiplier;
 - `interactive`, `onPointerMove`, `onPointerLeave`: optional interaction hooks.
 
-This boundary keeps expression rendering reusable in a live website view, a Remotion composition, and future onboarding/tutorial screens. The art component is built without JSX so the static homepage can load it as standard browser ESM; the `h()` calls are equivalent to `React.createElement`.
+The eye overlay crops the actual source-image pixels around each original eye landmark, then translates that crop inside a clipped circular window to preserve the mascot's original eye texture while animating gaze. The art component is built without JSX so the static homepage can load it as standard browser ESM; the `h()` calls are equivalent to `React.createElement`. Brows and mouth are overlays that approximate expression changes, rather than a destructive edit to the source artwork.
 
 ### Motion controller — `assets/js/mascot/studio.js`
 
