@@ -32,3 +32,10 @@ assets/
 - Data URI SVG kecil untuk kursor dekoratif tetap inline.
 - Tidak diperlukan bundler; deploy situs statis dari root seperti sebelumnya.
 - File versi HTML lama di root dibiarkan tanpa perubahan. Pemisahan ini diterapkan pada `index.html` utama.
+
+
+## Premium GSAP motion
+
+The active `index.html` uses GSAP 3.15 and ScrollTrigger for premium viewport reveals, module-card entrance, a thin scroll progress line, restrained background parallax, and post-intro navigation/detail transitions. The existing cinematic intro and mascot engines are intentionally preserved. Reduced-motion users and CDN failures keep the original CSS/IntersectionObserver fallback.
+
+See [the full HTML motion audit](docs/html-motion-audit.md).
