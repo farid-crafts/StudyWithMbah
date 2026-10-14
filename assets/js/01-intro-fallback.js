@@ -1,0 +1,1 @@
+setTimeout(function(){if(!document.getElementById('intro')){document.documentElement.classList.remove('intro-pending');if(document.body)document.body.classList.remove('lock')}},6000)

@@ -1,0 +1,1 @@
+html.intro-pending::before{display:none!important}html.intro-pending :is(.hero .hi,#h1,.hero p.d,.hero .cta,.tag,.stage .blob){opacity:1!important}body.lock{overflow:auto!important}.rv,.sb{opacity:1!important;transform:none!important}
