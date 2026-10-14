@@ -68,7 +68,7 @@ export function MbahArtwork({
     case "round": mouth = h("ellipse", { cx: 0, cy: 1.25, rx: 1.1, ry: 1.65, fill: "#3A1D0B" }); break;
     case "crooked": mouth = h("path", { d: "M -2.9 0.2 Q -0.5 -1.7 0.7 0.4 Q 2.2 1.7 3 0", className: "swm-mouth-line" }); break;
     case "flat": mouth = h("path", { d: "M -2.6 0.6 L 2.6 0.6", className: "swm-mouth-line" }); break;
-    case "open": mouth = h("ellipse", { cx: 0, cy: 1.05, rx: 1.75, ry: 2.1, fill: "#3A1D0B" }, h("ellipse", { cx: 0, cy: 1.75, rx: 0.9, ry: 0.55, fill: "#FF6A55" })); break;
+    case "open": mouth = h("g", null, h("ellipse", { cx: 0, cy: 1.05, rx: 1.75, ry: 2.1, fill: "#3A1D0B" }), h("ellipse", { cx: 0, cy: 1.75, rx: 0.9, ry: 0.55, fill: "#FF6A55" })); break;
     case "frown": mouth = h("path", { d: "M -2.9 1.7 Q 0 -1.2 2.9 1.7", className: "swm-mouth-line" }); break;
     case "grin": mouth = h("path", { d: "M -3.05 -0.2 Q 0 3.5 3.05 -0.2", className: "swm-mouth-line" }); break;
     default: mouth = h("path", { d: "M -2.3 0.7 L 2.3 0.7", className: "swm-mouth-line" });
