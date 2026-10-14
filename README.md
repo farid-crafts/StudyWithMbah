@@ -1,6 +1,6 @@
-# StudyWithMbah — separated frontend files
+# StudyWithMbah — frontend terstruktur
 
-Halaman utama `index.html` sekarang memuat struktur HTML dan mereferensikan CSS serta JavaScript dari folder `assets/`.
+Halaman utama telah dipisahkan menjadi HTML, CSS, JavaScript, dan aset gambar.
 
 ## Struktur
 
@@ -20,11 +20,15 @@ assets/
     07-scroll-effects.js
     08-mascot-life.js
     09-mascot-rig.js
+  images/
+    image-001.webp
+    ...
 ```
 
 ## Catatan
 
-- Urutan tag JavaScript di HTML dipertahankan untuk menjaga dependensi antarskrip.
-- Data gambar berbasis `data:image/...;base64` tetap berada di berkas JavaScript yang memang menggunakannya; belum dikonversi menjadi aset terpisah agar perubahan tetap berupa pemisahan struktur, bukan perubahan runtime.
-- Tidak diperlukan bundler. Sajikan/deploy repositori sebagai situs statis dari root seperti sebelumnya.
-- File HTML versi terdahulu di root dibiarkan apa adanya; refactor ini ditujukan pada `index.html` yang digunakan sebagai halaman utama.
+- Urutan dan posisi pemanggilan JavaScript dipertahankan agar dependensi antarskrip tetap sama.
+- Data gambar raster yang sebelumnya tertanam sebagai data URI dipindahkan ke `assets/images/`; payload yang sama menggunakan file bersama.
+- Data URI SVG kecil untuk kursor dekoratif tetap inline.
+- Tidak diperlukan bundler; deploy situs statis dari root seperti sebelumnya.
+- File versi HTML lama di root dibiarkan tanpa perubahan. Pemisahan ini diterapkan pada `index.html` utama.
