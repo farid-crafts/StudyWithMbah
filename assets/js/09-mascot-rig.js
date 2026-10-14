@@ -6,7 +6,9 @@ const rigs=[];let px=-9999,py=-9999,pt=-1e9,vis=0,raf=0,last=0;
 addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;pt=performance.now()},{passive:true});
 function tr(s,w,h){if(!s||s==='none')return'0px 0px';return s.split(' ').map((v,i)=>v.endsWith('%')?(parseFloat(v)*(i?h:w)/100)+'px':v).join(' ')}
 function Rig(el){this.el=el;this.on=0;this.build()}
-Rig.prototype.build=function(){const el=this.el,d=RIG[el.src.length];this.clear();if(!d||!el.naturalWidth)return;this.d=d;this.P=PS[d.p]||PS.def;
+const ASSET_RIG={"image-002.webp":"103671","image-004.webp":"28891","image-006.webp":"27983"};
+function rigForImage(el){const url=el.currentSrc||el.src||"";let name="";try{name=new URL(url,location.href).pathname.split("/").pop()}catch(e){}return RIG[ASSET_RIG[name]]||RIG[url.length]||RIG[el.src.length]}
+Rig.prototype.build=function(){const el=this.el;this.clear();const d=rigForImage(el);if(!d||!el.naturalWidth)return;this.d=d;this.P=PS[d.p]||PS.def;
  const ov=this.ov=document.createElement('div');ov.className='rgo';ov.setAttribute('aria-hidden','true');el.after(ov);
  const hg=this.hg=document.createElement('div');hg.className='hg';ov.append(hg);
  const hc=document.createElement('canvas');hc.className='hc';hc.width=d.w;hc.height=d.H;hc.getContext('2d').drawImage(el,0,0,d.w,d.H);hg.append(hc);
@@ -49,5 +51,5 @@ $$('#hm,.fc>img,.sb>img,#buddy,.join img.m,#detail img.m').forEach(add);
 document.addEventListener('visibilitychange',kick);
 document.addEventListener('pointerdown',e=>{pt=performance.now();px=e.clientX;py=e.clientY;rigs.forEach(r=>{if(!r.on||!r.vis)return;const b=r.ov.getBoundingClientRect();if(e.clientX>b.left-8&&e.clientX<b.right+8&&e.clientY>b.top-8&&e.clientY<b.bottom+8){r.happy=performance.now()/1000}})});
 document.addEventListener('pointerover',e=>{const c=e.target.closest&&e.target.closest('.fc,.sb');if(!c)return;const r=rigs.find(x=>x.el.parentElement===c);if(r&&r.on&&performance.now()/1000-r.hv>3){r.hv=performance.now()/1000;r.blAt=0}});
-window.MbahRig={rigs,blink:()=>rigs.forEach(r=>{r.blT0=performance.now()/1000;r.blAt=r.blT0+9}),happy:()=>rigs.forEach(r=>r.happy=performance.now()/1000)};
+window.MbahRig={rigs,blink:()=>rigs.forEach(r=>{r.blT0=performance.now()/1000;r.blAt=r.blT0+9}),happy:()=>rigs.forEach(r=>r.happy=performance.now()/1000),setExpression:(name)=>{const map={happy:"wave",curious:"think",focused:"write",calm:"calm",proud:"proud",surprised:"fly",sad:"read"};rigs.forEach(r=>{if(!r.on)return;r.P=PS[map[name]||"def"];r.happy=name==="happy"?performance.now()/1000:-9;r.glAt=0})}};
 kick()})();
