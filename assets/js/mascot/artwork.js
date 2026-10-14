@@ -31,20 +31,38 @@ export function MbahArtwork({
   };
   const baseStyle = { maskImage: baseMask, WebkitMaskImage: baseMask };
   const eyeNodes = mascot.eyes.map((eye, index) => {
-    const diameter = 2.9 * eye.r * 100;
+    // Preserve the original eye pixels from the mascot art and move that crop
+    // inside a clipped circle. This ports the legacy canvas rig's gaze behavior.
+    const diameter = 2.9 * eye.r;
+    const aspect = mascot.height / mascot.width;
     return h("span", {
       className: "swm-eye",
       key: index,
-      style: { left: `${eye.x * 100}%`, top: `${eye.y * 100}%`, width: `${diameter}%`, background: mascot.eyeWhite },
+      style: {
+        left: `${eye.x * 100}%`,
+        top: `${eye.y * 100}%`,
+        width: `${diameter * 100}%`,
+        background: `radial-gradient(circle, ${mascot.eyeWhite} 70%, transparent 100%)`,
+      },
       "aria-hidden": "true",
     },
       h("span", {
-        className: "swm-pupil",
-        style: {
-          background: mascot.pupil,
-          transform: `translate(calc(-50% + ${gaze[0] * 14}%), calc(-50% + ${gaze[1] * 14}%)) scale(${expression === "surprised" ? 0.9 : expression === "focused" ? 0.82 : 1})`,
-        },
-      }),
+        className: "swm-eye-crop-window",
+        style: { transform: `translate(${gaze[0] * 16}%, ${gaze[1] * 16}%)` },
+      },
+        h("img", {
+          className: "swm-eye-source-crop",
+          src: mascot.src,
+          alt: "",
+          draggable: false,
+          style: {
+            width: `${100 / diameter}%`,
+            height: `${100 * aspect / diameter}%`,
+            left: `${-eye.x / diameter * 100}%`,
+            top: `${-eye.y * aspect / diameter * 100}%`,
+          },
+        }),
+      ),
       h("span", { className: "swm-eye-glint" }),
       h("span", { className: "swm-eyelid", style: { transform: `scaleY(${blink})` } }),
     );
