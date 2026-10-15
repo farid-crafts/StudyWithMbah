@@ -26,49 +26,7 @@
     observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
   };
 
-  const safe = (name, fn) => {
-    try {
-      fn();
-    } catch (error) {
-      console.warn("[StudyWithMbah] visual effect skipped: " + name, error);
-    }
-  };
-
-  safe("register ScrollTrigger", () => gsap.registerPlugin(ST));
-
-  /* 1. Signature moment: marker circle first, then the LULUS stamp lands. */
-  safe("LULUS stamp", () => {
-    const stamp = $(".swm-stamp");
-    const path = $(".swm-scribble path");
-    const length = path ? path.getTotalLength() : 0;
-
-    if (stamp) gsap.set(stamp, { autoAlpha: 0, scale: 3, rotation: -24 });
-    if (path && length) {
-      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-    }
-
-    whenIntroDone(() => {
-      const timeline = gsap.timeline({ delay: 1.2 });
-      if (path && length) {
-        timeline.to(path, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" });
-      }
-      if (stamp) {
-        timeline
-          .to(stamp, {
-            autoAlpha: 1,
-            scale: 0.9,
-            rotation: 0,
-            duration: 0.3,
-            ease: "power4.in"
-          }, path && length ? "+=0.1" : 0)
-          .to(stamp, {
-            scale: 1,
-            duration: 0.45,
-            ease: "elastic.out(1, 0.4)",
-          });
-      }
-    });
-  });
+  try { gsap.registerPlugin(ST); } catch (_) { /* Keep the remaining effects optional. */ }
 
   /* 2. Kawung texture drifts with scroll using CSS variables, not section transforms. */
   safe("batik drift", () => {
@@ -85,24 +43,6 @@
           scrub: 0.6,
           invalidateOnRefresh: true
         }
-      });
-    });
-  });
-
-  /* 3. Hand-drawn red marker beneath the existing .ttl headings. */
-  safe("title marker", () => {
-    $$(".ttl").forEach((title) => {
-      gsap.set(title, { "--ink": 0 });
-      ST.create({
-        trigger: title,
-        start: "top 88%",
-        once: true,
-        onEnter: () => gsap.to(title, {
-          "--ink": 1,
-          duration: 0.7,
-          ease: "power3.out",
-          delay: 0.35
-        })
       });
     });
   });
