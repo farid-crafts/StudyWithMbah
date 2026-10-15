@@ -76,7 +76,9 @@ footer::before {
 }
 
 /* Avoid a visible reset while GSAP prepares its intro animation. */
-html.swm-gsap-ready .swm-stamp {
+/* Hide only while the signature script has explicitly initialized the intro.
+   If the script fails, the static stamp remains visible. */
+html.swm-signature-ready .swm-stamp {
   visibility: hidden;
   opacity: 0;
 }
@@ -98,7 +100,7 @@ html.swm-gsap-ready .swm-stamp {
   stroke-linejoin: round;
 }
 
-html.swm-gsap-ready .swm-scribble path {
+html.swm-signature-ready .swm-scribble path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
 }
