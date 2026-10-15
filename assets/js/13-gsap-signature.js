@@ -26,88 +26,7 @@
     observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
   };
 
-  const restoreStaticSignature = () => {
-    root.classList.remove("swm-signature-ready");
-    const stamp = $(".swm-stamp");
-    const path = $(".swm-scribble path");
-    try {
-      if (stamp) gsap.killTweensOf(stamp);
-      if (path) gsap.killTweensOf(path);
-    } catch (_) {
-      // The CSS fallback below is still enough if the animation engine is damaged.
-    }
-    if (stamp) {
-      stamp.style.removeProperty("opacity");
-      stamp.style.removeProperty("visibility");
-      stamp.style.removeProperty("transform");
-    }
-    if (path) {
-      path.style.removeProperty("stroke-dasharray");
-      path.style.removeProperty("stroke-dashoffset");
-    }
-  };
-
-  const safe = (name, fn) => {
-    try {
-      fn();
-    } catch (error) {
-      // If setup fails after partially setting inline styles, restore static content.
-      if (name === "LULUS stamp") restoreStaticSignature();
-      console.warn("[StudyWithMbah] visual effect skipped: " + name, error);
-    }
-  };
-
-  safe("register ScrollTrigger", () => gsap.registerPlugin(ST));
-
-  /* 1. Signature moment: marker circle first, then the LULUS stamp lands. */
-  safe("LULUS stamp", () => {
-    const stamp = $(".swm-stamp");
-    const path = $(".swm-scribble path");
-    let length = 0;
-    if (path) {
-      try {
-        length = path.getTotalLength();
-      } catch (error) {
-        // The circle is decorative; a missing SVG geometry API must not hide the stamp.
-        console.warn("[StudyWithMbah] scribble geometry unavailable; using static path.", error);
-      }
-    }
-
-    // This CSS class is set only when the animation is actually being initialized.
-    // If setup throws, safe() removes it and restores the visible static fallback.
-    if (stamp || (path && length > 0)) root.classList.add("swm-signature-ready");
-    if (stamp) gsap.set(stamp, { autoAlpha: 0, scale: 3, rotation: -24 });
-    if (path && length > 0) {
-      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-    }
-
-    whenIntroDone(() => {
-      try {
-        const timeline = gsap.timeline({ delay: 1.2 });
-        if (path && length > 0) {
-          timeline.to(path, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" });
-        }
-        if (stamp) {
-          timeline
-            .to(stamp, {
-              autoAlpha: 1,
-              scale: 0.9,
-              rotation: 0,
-              duration: 0.3,
-              ease: "power4.in"
-            }, path && length > 0 ? "+=0.1" : 0)
-            .to(stamp, {
-              scale: 1,
-              duration: 0.45,
-              ease: "elastic.out(1, 0.4)"
-            });
-        }
-      } catch (error) {
-        restoreStaticSignature();
-        console.warn("[StudyWithMbah] LULUS stamp animation failed; static badge restored.", error);
-      }
-    });
-  });
+  try { gsap.registerPlugin(ST); } catch (_) { /* Keep the remaining effects optional. */ }
 
   /* 2. Kawung texture drifts with scroll using CSS variables, not section transforms. */
   safe("batik drift", () => {
@@ -124,24 +43,6 @@
           scrub: 0.6,
           invalidateOnRefresh: true
         }
-      });
-    });
-  });
-
-  /* 3. Hand-drawn red marker beneath the existing .ttl headings. */
-  safe("title marker", () => {
-    $$(".ttl").forEach((title) => {
-      gsap.set(title, { "--ink": 0 });
-      ST.create({
-        trigger: title,
-        start: "top 88%",
-        once: true,
-        onEnter: () => gsap.to(title, {
-          "--ink": 1,
-          duration: 0.7,
-          ease: "power3.out",
-          delay: 0.35
-        })
       });
     });
   });
