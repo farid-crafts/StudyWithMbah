@@ -26,26 +26,33 @@
     observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
   };
 
+  const restoreStaticSignature = () => {
+    root.classList.remove("swm-signature-ready");
+    const stamp = $(".swm-stamp");
+    const path = $(".swm-scribble path");
+    try {
+      if (stamp) gsap.killTweensOf(stamp);
+      if (path) gsap.killTweensOf(path);
+    } catch (_) {
+      // The CSS fallback below is still enough if the animation engine is damaged.
+    }
+    if (stamp) {
+      stamp.style.removeProperty("opacity");
+      stamp.style.removeProperty("visibility");
+      stamp.style.removeProperty("transform");
+    }
+    if (path) {
+      path.style.removeProperty("stroke-dasharray");
+      path.style.removeProperty("stroke-dashoffset");
+    }
+  };
+
   const safe = (name, fn) => {
     try {
       fn();
     } catch (error) {
-      // If stamp setup fails after partially setting inline styles, restore the
-      // static fallback rather than leaving an invisible badge or scribble.
-      if (name === "LULUS stamp") {
-        root.classList.remove("swm-signature-ready");
-        const stamp = $(".swm-stamp");
-        if (stamp) {
-          stamp.style.removeProperty("opacity");
-          stamp.style.removeProperty("visibility");
-          stamp.style.removeProperty("transform");
-        }
-        const path = $(".swm-scribble path");
-        if (path) {
-          path.style.removeProperty("stroke-dasharray");
-          path.style.removeProperty("stroke-dashoffset");
-        }
-      }
+      // If setup fails after partially setting inline styles, restore static content.
+      if (name === "LULUS stamp") restoreStaticSignature();
       console.warn("[StudyWithMbah] visual effect skipped: " + name, error);
     }
   };
@@ -75,24 +82,29 @@
     }
 
     whenIntroDone(() => {
-      const timeline = gsap.timeline({ delay: 1.2 });
-      if (path && length > 0) {
-        timeline.to(path, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" });
-      }
-      if (stamp) {
-        timeline
-          .to(stamp, {
-            autoAlpha: 1,
-            scale: 0.9,
-            rotation: 0,
-            duration: 0.3,
-            ease: "power4.in"
-          }, path && length > 0 ? "+=0.1" : 0)
-          .to(stamp, {
-            scale: 1,
-            duration: 0.45,
-            ease: "elastic.out(1, 0.4)",
-          });
+      try {
+        const timeline = gsap.timeline({ delay: 1.2 });
+        if (path && length > 0) {
+          timeline.to(path, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" });
+        }
+        if (stamp) {
+          timeline
+            .to(stamp, {
+              autoAlpha: 1,
+              scale: 0.9,
+              rotation: 0,
+              duration: 0.3,
+              ease: "power4.in"
+            }, path && length > 0 ? "+=0.1" : 0)
+            .to(stamp, {
+              scale: 1,
+              duration: 0.45,
+              ease: "elastic.out(1, 0.4)"
+            });
+        }
+      } catch (error) {
+        restoreStaticSignature();
+        console.warn("[StudyWithMbah] LULUS stamp animation failed; static badge restored.", error);
       }
     });
   });
