@@ -30,6 +30,22 @@
     try {
       fn();
     } catch (error) {
+      // If stamp setup fails after partially setting inline styles, restore the
+      // static fallback rather than leaving an invisible badge or scribble.
+      if (name === "LULUS stamp") {
+        root.classList.remove("swm-signature-ready");
+        const stamp = $(".swm-stamp");
+        if (stamp) {
+          stamp.style.removeProperty("opacity");
+          stamp.style.removeProperty("visibility");
+          stamp.style.removeProperty("transform");
+        }
+        const path = $(".swm-scribble path");
+        if (path) {
+          path.style.removeProperty("stroke-dasharray");
+          path.style.removeProperty("stroke-dashoffset");
+        }
+      }
       console.warn("[StudyWithMbah] visual effect skipped: " + name, error);
     }
   };
@@ -40,16 +56,27 @@
   safe("LULUS stamp", () => {
     const stamp = $(".swm-stamp");
     const path = $(".swm-scribble path");
-    const length = path ? path.getTotalLength() : 0;
+    let length = 0;
+    if (path) {
+      try {
+        length = path.getTotalLength();
+      } catch (error) {
+        // The circle is decorative; a missing SVG geometry API must not hide the stamp.
+        console.warn("[StudyWithMbah] scribble geometry unavailable; using static path.", error);
+      }
+    }
 
+    // This CSS class is set only when the animation is actually being initialized.
+    // If setup throws, safe() removes it and restores the visible static fallback.
+    if (stamp || (path && length > 0)) root.classList.add("swm-signature-ready");
     if (stamp) gsap.set(stamp, { autoAlpha: 0, scale: 3, rotation: -24 });
-    if (path && length) {
+    if (path && length > 0) {
       gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
     }
 
     whenIntroDone(() => {
       const timeline = gsap.timeline({ delay: 1.2 });
-      if (path && length) {
+      if (path && length > 0) {
         timeline.to(path, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" });
       }
       if (stamp) {
@@ -60,7 +87,7 @@
             rotation: 0,
             duration: 0.3,
             ease: "power4.in"
-          }, path && length ? "+=0.1" : 0)
+          }, path && length > 0 ? "+=0.1" : 0)
           .to(stamp, {
             scale: 1,
             duration: 0.45,
