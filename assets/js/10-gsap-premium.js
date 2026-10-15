@@ -42,6 +42,18 @@
       if (element.dataset.swmMotionPrepared === 'true') return;
       element.dataset.swmMotionPrepared = 'true';
 
+      // Elements already visible (or already passed) must not be hidden and replayed
+      // when the GSAP CDN arrives after the first paint.
+      const box = element.getBoundingClientRect();
+      if (
+        box.bottom < 0 ||
+        (box.top < window.innerHeight * 0.89 &&
+          box.bottom > 0 &&
+          getComputedStyle(element).opacity !== '0')
+      ) {
+        return;
+      }
+
       // Remove a fallback observer class in case it fired while the CDN was loading.
       element.classList.remove('in');
       const index = Number.parseFloat(element.style.getPropertyValue('--i')) || 0;

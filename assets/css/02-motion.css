@@ -77,3 +77,55 @@ html.swm-gsap-ready .sb.swm-motion-done {
     translate: none !important;
   }
 }
+
+/* ===== Motion update v2: easing tokens, ambient CSS motion, scroll-driven header ===== */
+:root {
+  --swm-ease-out: cubic-bezier(.22, 1, .36, 1);
+  --swm-ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+@supports (transition-timing-function: linear(0, 1)) {
+  :root {
+    --swm-ease-spring: linear(0, .21 3%, .69 8%, 1.1 14%, 1.23 18%, 1.19 22%, 1.05 30%, .98 36%, 1 50%, 1);
+  }
+}
+
+/* Badges on the hero float gently, out of phase, so the scene never feels static. */
+@keyframes swm-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+.tag.a { animation: swm-float 5.6s ease-in-out infinite; }
+.tag.s { animation: swm-float 6.8s ease-in-out -2.4s infinite; }
+
+/* Modal backdrop eases in instead of popping. */
+@keyframes swm-fade { from { opacity: 0; } }
+dialog[open]::backdrop { animation: swm-fade .35s var(--swm-ease-out); }
+
+/* Pressed feedback for non-magnetic buttons (magnetic ones own translate). */
+@media (hover: hover) and (pointer: fine) {
+  .btn:not([data-mag]):active,
+  .tg:active,
+  #wa:active { translate: 0 1px; scale: .98; transition-duration: .08s; }
+}
+
+/* Parallax frame for the ALT photo (image is moved by GSAP, frame clips it). */
+.altg .ph { overflow: hidden; }
+.altg .ph img { display: block; width: 100%; transform-origin: 50% 50%; }
+
+/* Scroll-driven header depth: pure CSS where supported, no JS cost. */
+@keyframes swm-header-depth { to { box-shadow: 0 6px 0 rgb(42 22 8 / 12%); } }
+@supports (animation-timeline: scroll()) {
+  header {
+    animation: swm-header-depth linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 140px;
+  }
+}
+
+/* Words revealed by scroll (GSAP scrubs opacity; CSS only sets the resting state). */
+.swm-w { display: inline; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tag.a, .tag.s, header { animation: none !important; }
+  dialog[open]::backdrop { animation: none !important; }
+}
