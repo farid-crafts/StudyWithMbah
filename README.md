@@ -61,3 +61,8 @@ Key files:
 - `assets/css/03-mascot-neubrutalism.css` — isolated, responsive neo-brutalist styling.
 
 The homepage pins React and Remotion Player via an import map to keep the no-build static hosting path. The legacy image rig in `assets/js/09-mascot-rig.js` now resolves the three extracted mascot assets by explicit filename rather than depending only on embedded data-URI length.
+
+ 
+## Update motion & perbaikan
+
+Lihat [docs/gsap-css-update.md](docs/gsap-css-update.md): perbaikan section Mascot Lab yang tertutup, fallback React/Remotion, animasi CSS baru (`02-motion.css`), dan 8 animasi GSAP baru (`assets/js/12-gsap-motion.js`).
