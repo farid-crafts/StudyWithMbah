@@ -65,7 +65,6 @@
             scale: 1,
             duration: 0.45,
             ease: "elastic.out(1, 0.4)",
-            clearProps: "opacity,visibility"
           });
       }
     });
