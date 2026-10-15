@@ -1,6 +1,6 @@
 
 /* overlapping sections + scroll velocity */
-(()=>{if(RM)return;const main=$('#landing'),stk=[$('#top'),$('.cd'),$('#fundamental'),$('#subtes'),$('#alt')].filter(Boolean),cover=$('#komunitas'),all=[...stk,cover],R=document.documentElement;
+(()=>{if(RM)return;const main=$('#landing'),stk=[$('#top'),$('.cd'),$('#mascot-motion-lab'),$('#fundamental'),$('#subtes'),$('#alt')].filter(Boolean),cover=$('#komunitas'),all=[...stk,cover],R=document.documentElement;
 stk.forEach((s,i)=>{s.classList.add('stk');s.style.zIndex=i+2});cover.style.zIndex=stk.length+2;
 const cl=(v,a,b)=>Math.min(b,Math.max(a,v));
 function tops(){const off=matchMedia('(max-width:760px)').matches?64:0;stk.forEach(s=>{s.style.top=Math.min(0,innerHeight-s.offsetHeight-off)+'px'})}
